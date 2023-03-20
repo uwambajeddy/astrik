@@ -1,0 +1,162 @@
+<%- include('_header')%>
+
+<!--================Home Banner Area =================-->
+<section class="home_banner_area_lil">
+	<div class="container">
+		<div class="media">
+			<div class="banner_content ">
+				<h2>Blogs</h2>
+				<div class="page_link">
+					<a href="/" class="page_link_a">Home</a>
+					<a href="/blogs">Blogs</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!--================Home Banner Area =================-->
+
+<!--================Blog Area =================-->
+<section class="blog_area">
+	<div class="container">
+		<div class="blog_area_content">
+			<div class="blog_area_content_a">
+				<div class="blog_left_sidebar">
+					<article class=" blog_item">
+						<div class="blog_item_a">
+						</div>
+						<% 
+							   const newLikes = blog.likedBy.map(like => like.toJSON());
+                               let date= `${blog.date}`.split(" ");%>
+						<div class="blog_item_b">
+							<div class="blog_post">
+								<img src="/img/blog/<%= blog.image%>" alt="">
+								<div class="blog_info">
+									<ul class="blog_meta list">
+										<li><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %><i
+												class="lnr lnr-calendar-full"></i></li>
+										<li onclick="handleLike('<%= blog._id%>')"><%= blog.likedBy.length%>
+											Like<%= blog.likedBy.length>1 ? "s": ""%><i
+												class="fa fa-heart<%= newLikes.indexOf(locals.user?.id)  >=0 ? '' : '-o' %>"></i>
+										</li>
+										<li><%= blog.comments.length%> Comment<%= blog.comments.length >1 ? "s": ""%><i
+												class="lnr lnr-bubble"></i></li>
+									</ul>
+								</div>
+								<div class="blog_details">
+									<h2><%= blog.title %></h2>
+									<% blog.body.split("\n").map(line =>{%>
+									<p><%= line %></p>
+									<%})%>
+								</div>
+							</div>
+							<!--------------------------------------->
+							<div class="single-post-area">
+								<div class="navigation-area">
+
+									<%
+                                            const values = blogs.map(object => object._id.toJSON());
+                                            let prevId = values.indexOf(blog._id.toJSON())-1;
+                                            let nextId = values.indexOf(blog._id.toJSON()) +1;
+                                            if(prevId >=0){ 
+                                                let prevBlog= blogs[prevId];
+                                                %>
+									<div class=" nav-left ">
+										<a href="/blog/<%= prevBlog._id %>">
+											<div class="thumb">
+												<div class="arrow">
+													<span class="lnr lnr-arrow-left"></span>
+												</div>
+											</div>
+
+											<div class="detials">
+												<p>Prev Post</p>
+												<h4> <%= prevBlog.title.slice(15) %>...</h4>
+											</div>
+										</a>
+									</div>
+									<% }%>
+
+									<% if(nextId < blogs.length){ 
+                                                    let nextBlog= blogs[nextId];
+                                                    %>
+									<div class="nav-right">
+										<a href="/blog/<%= nextBlog._id %>">
+											<div class="detials">
+												<p>Next Post</p>
+												<h4> <%= nextBlog.title.slice(0,15) %>...</h4>
+											</div>
+
+											<div class="thumb">
+												<div class="arrow">
+													<span class="lnr lnr-arrow-right"></span>
+												</div>
+											</div>
+										</a>
+									</div>
+									<% }%>
+								</div>
+							</div>
+
+							<% if(blog.comments.length > 0){ %>
+							<div class="comments-area">
+								<h4><%= blog.comments.length%> Comment<%= blog.comments.length >1 ? "s": ""%></h4>
+								<div class="comment-list">
+									<% blog.comments.map(comment =>{
+                                                let date= `${comment.date}`.split(" ");
+                                                %>
+									<div class="single-comment ">
+										<div class="user ">
+											<div class="thumb">
+												<img src="<%= comment.user[0].image.includes('http') ? comment.user[0].image : `/img/users/${comment.user[0].image}` %>"
+													alt="">
+											</div>
+											<div class="desc">
+												<h5><%= comment.user[0].name%></h5>
+												<p class="date"> <%= date[2] %> <%= date[1] %> <%= date[3] %> at
+													<%= date[4].slice(0,-3) %></p>
+												<p class="comment">
+													<%= comment.comment%>
+												</p>
+											</div>
+										</div>
+									</div>
+									<%})%>
+								</div>
+							</div>
+							<% } %>
+
+							<div class="comment-form">
+								<h4>Leave a Reply</h4>
+								<form class="comment_form" action="#" method="post">
+									<div class="form-group form-inline">
+										<div class="form-group">
+											<input type="hidden" name="id" id="userId" value="<%= blog._id%>">
+											<textarea class="form-control " rows="5" name="message" id="message"
+												placeholder="Message" required=""></textarea>
+										</div>
+										<div class="submit_btn_disable_comment disible-control"></div>
+										<button type="submit" value="submit" id="add-comment" class="btn submit_btn">
+											Post Comment</button>
+
+								</form>
+							</div>
+						</div>
+
+
+					</article>
+				</div>
+
+
+
+			</div>
+			<%- include('_sidebar.ejs') %>
+		</div>
+
+	</div>
+</section>
+<!--================Blog Area =================-->
+<script src="/js/comments.js"></script>
+<script src="/js/likes.js"></script>
+<%- include('_footer')%>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/img/favicon.png" type="image/png">
+    <title>MeetMe Personal</title>
+    <!-- Icons -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendors/flaticon/flaticon.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="/vendors/linericon/style.css">
+    <link rel="stylesheet" href="/css/style-dash.css">
+    <link rel="stylesheet" href="/css/responsive-dash.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <%- include('../popup')
+    %>
+    <!--================Main Area =================-->
+    <div class="main">
+        <div class="container">
+            <!--=============modal Banner Area =================-->
+            <section class="menu_banner_area">
+                <div class="user-icon">
+                    <img src="<%= locals.user.image.includes('http') ? locals.user.image : `/img/users/${locals.user.image}` %>"
+                        alt="">
+                    <a href="/admin/profile">
+                        <%= locals.user.name%>
+                    </a>
+                </div>
+                <div class="navbar-nav">
+                    <ul class="list basic_info">
+                        <li>
+                            <script>
+                                location.href.split('/').length === 4 ? document.write(
+                                        '<a href="/admin" class="active"><i class="lnr lnr-chart-bars"></i>') : document
+                                    .write('<a href="/admin"><i class="lnr lnr-chart-bars"></i>')
+                            </script>
+                            <p> Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('blog') ? document.write(
+                                        '<a href="/admin/blogs" class="active"><i class="lnr lnr-license"></i>') :
+                                    document
+                                    .write('<a href="/admin/blogs"><i class="lnr lnr-license"></i>')
+                            </script>
+                            <p>Blogs</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('project') ? document.write(
+                                        '<a href="/admin/projects" class="active"><i class="lnr lnr-bubble"></i>') :
+                                    document
+                                    .write('<a href="/admin/projects"><i class="lnr lnr-bubble"></i>')
+                            </script>
+                            <p>Projects</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('subscribers') ? document.write(
+                                        '<a href="/admin/subscribers" class="active"><i class="lnr lnr-pushpin"></i>') :
+                                    document
+                                    .write('<a href="/admin/subscribers"><i class="lnr lnr-pushpin"></i>')
+                            </script>
+                            <p> Subscribers</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('messages') ? document.write(
+                                        '<a href="/admin/messages" class="active"><i class="lnr lnr-envelope"></i>') :
+                                    document
+                                    .write('<a href="/admin/messages"><i class="lnr lnr-envelope"></i>')
+                            </script>
+                            <p>Messages</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('users') ? document.write(
+                                        '<a href="/admin/users" class="active"><i class="lnr lnr-license"></i>') :
+                                    document
+                                    .write('<a href="/admin/users"><i class="lnr lnr-license"></i>')
+                            </script>
+                            <p>Users</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logout_btn" onclick="logoutDash()">
+                    <i class="lnr lnr-exit"></i> Logout
+                </div>
+            </section>
+            <!--================Menu Banner Area =================-->

@@ -1,0 +1,20 @@
+<%- include('_header')%>
+
+<!--================Unsubscribe Banner Area =================-->
+<section class="login_banner_area">
+  <div class="container">
+    <form class="contact_form" action="#" method="post">
+      <h2 class="happyface">We are so sad to see you leaving 😔</h2>
+      <div class="contact_form_text">
+        <div class="submit_btn_disable_reg disible-control"></div>
+        <button type="submit" value="submit" id="subscription" class="btn submit_btn">
+          <%= locals.user.subscription ? "Unsubscribe" : "Subscribe"%>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+<!--================Unsubscribe Banner Area =================-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/unsubscribe.js"></script>
+<script src="/js/main.js"></script>

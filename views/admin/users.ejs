@@ -1,0 +1,58 @@
+<%- include("_sidebar")%>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Subscribers</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Image</div>
+                <div class="table_column">Name</div>
+                <div class="table_column">Email</div>
+                <div class="table_column">Subscription</div>
+                <div class="table_column">Role</div>
+                <div class="table_column">Active</div>
+            </div>
+            <% users.map( user =>{
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><img
+                        src="<%= user.image.includes('http') ? user.image : `/img/users/${user.image}` %>" alt=""></div>
+                <div class="table_column"><%= user.name%> </div>
+                <div class="table_column"><%= user.email%> </div>
+                <div class="table_column <%= user.subscription ? 'truthy-rec':'falsy-rec'%>"><%= user.subscription%>
+                </div>
+                <div class="table_column <%= user.role === 'admin' ? 'admin-rec':'user-rec'%>"><%= user.role%> </div>
+                <div class="table_column <%= user.active ? 'truthy-rec':'falsy-rec'%>"><%= user.active%> </div>
+            </div>
+            <% });%>
+
+
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+
+
+<!--  JavaScript -->
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>
