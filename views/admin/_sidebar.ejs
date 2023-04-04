@@ -5,8 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="/img/favicon.png" type="image/png">
-    <title>MeetMe Personal</title>
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <title>Astrik | Admin</title>
     <!-- Icons -->
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendors/flaticon/flaticon.css">
@@ -26,10 +26,10 @@
             <!--=============modal Banner Area =================-->
             <section class="menu_banner_area">
                 <div class="user-icon">
-                    <img src="<%= locals.user.image.includes('http') ? locals.user.image : `/img/users/${locals.user.image}` %>"
+                    <img src="/images/favicon.png"
                         alt="">
-                    <a href="/admin/profile">
-                        <%= locals.user.name%>
+                    <a href="/admin">
+                       Astrik international ltd
                     </a>
                 </div>
                 <div class="navbar-nav">
@@ -65,16 +65,6 @@
                         </li>
                         <li>
                             <script>
-                                location.href.includes('subscribers') ? document.write(
-                                        '<a href="/admin/subscribers" class="active"><i class="lnr lnr-pushpin"></i>') :
-                                    document
-                                    .write('<a href="/admin/subscribers"><i class="lnr lnr-pushpin"></i>')
-                            </script>
-                            <p> Subscribers</p>
-                            </a>
-                        </li>
-                        <li>
-                            <script>
                                 location.href.includes('messages') ? document.write(
                                         '<a href="/admin/messages" class="active"><i class="lnr lnr-envelope"></i>') :
                                     document
@@ -85,12 +75,12 @@
                         </li>
                         <li>
                             <script>
-                                location.href.includes('users') ? document.write(
-                                        '<a href="/admin/users" class="active"><i class="lnr lnr-license"></i>') :
+                                location.href.includes('profile') ? document.write(
+                                        '<a href="/admin/profile" class="active"><i class="lnr lnr-license"></i>') :
                                     document
-                                    .write('<a href="/admin/users"><i class="lnr lnr-license"></i>')
+                                    .write('<a href="/admin/profile"><i class="lnr lnr-license"></i>')
                             </script>
-                            <p>Users</p>
+                            <p>Profile</p>
                             </a>
                         </li>
                     </ul>

@@ -56,71 +56,78 @@ export const blogsPage = catchAsync(async (req, res, next) => {
 
 export const blogPage = catchAsync(async (req, res, next) => {
   const { id } = req.params;
-  const admin = await userModel.find({ role: 'admin' });
-  const blogs = await blogModel.aggregate([
-    {
-      $lookup: {
-        from: 'comments',
-        as: 'comments',
-        let: { blog: '$_id' },
-        pipeline: [
-          {
-            $match: { $expr: { $eq: ['$blog', '$$blog'] }, approve: true },
-          },
-        ],
-      },
-    },
-  ]);
+  // const admin = await userModel.find({ role: 'admin' });
+  // const blogs = await blogModel.aggregate([
+  //   {
+  //     $lookup: {
+  //       from: 'comments',
+  //       as: 'comments',
+  //       let: { blog: '$_id' },
+  //       pipeline: [
+  //         {
+  //           $match: { $expr: { $eq: ['$blog', '$$blog'] }, approve: true },
+  //         },
+  //       ],
+  //     },
+  //   },
+  // ]);
 
-  const blog = await blogModel.aggregate([
-    {
-      $match: { _id: mongoose.Types.ObjectId(id) },
-    },
-    {
-      $lookup: {
-        from: 'comments',
-        as: 'comments',
-        let: { blog: '$_id' },
-        pipeline: [
-          {
-            $match: {
-              $expr: { $eq: ['$blog', '$$blog'] },
-              approve: true,
-            },
-          },
-          {
-            $unwind: '$user',
-          },
-          {
-            $lookup: {
-              from: 'users',
-              localField: 'user',
-              foreignField: '_id',
-              as: 'user',
-            },
-          },
-          {
-            $unset: ['user.password', 'user.role', 'user.active', 'user.email'],
-          },
-        ],
-      },
-    },
-  ]);
-  if (!blog) {
-    return next(new AppError('No Blog found with that ID', 404));
-  }
+  // const blog = await blogModel.aggregate([
+  //   {
+  //     $match: { _id: mongoose.Types.ObjectId(id) },
+  //   },
+  //   {
+  //     $lookup: {
+  //       from: 'comments',
+  //       as: 'comments',
+  //       let: { blog: '$_id' },
+  //       pipeline: [
+  //         {
+  //           $match: {
+  //             $expr: { $eq: ['$blog', '$$blog'] },
+  //             approve: true,
+  //           },
+  //         },
+  //         {
+  //           $unwind: '$user',
+  //         },
+  //         {
+  //           $lookup: {
+  //             from: 'users',
+  //             localField: 'user',
+  //             foreignField: '_id',
+  //             as: 'user',
+  //           },
+  //         },
+  //         {
+  //           $unset: ['user.password', 'user.role', 'user.active', 'user.email'],
+  //         },
+  //       ],
+  //     },
+  //   },
+  // ]);
+  // if (!blog) {
+  //   return next(new AppError('No Blog found with that ID', 404));
+  // }
 
   res.status(200).render('blog-details', {
-    blog: blog[0],
-    blogs,
-    admin: admin[0],
+    // blog: blog[0],
+    // blogs,
+    // admin: admin[0],
   });
 });
 
-export const projectPage = catchAsync(async (req, res, next) => {
+export const projectsPage = catchAsync(async (req, res, next) => {
   const projects = await projectModel.find();
 
   res.status(200).render('project', {
+    projects,
+  });
+});
+export const projectPage = catchAsync(async (req, res, next) => {
+  const projects = await projectModel.find();
+
+  res.status(200).render('project-details', {
     projects,
   });
 });

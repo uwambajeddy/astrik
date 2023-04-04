@@ -20,7 +20,7 @@ const DB = process.env.DATABASE.replace(
 
 if (process.env.NODE_ENV === 'production') {
   moongose.connect(DB).then(() => console.log('DB connected successful !!'));
-} else if (process.env.NODE_ENV === 'development') {
+} else if (process.env.NODE_ENV === 'development') { 
   moongose
     .connect('mongodb://localhost:27017/astrik')
     .then(() => console.log('DB connected successful !'));
@@ -32,9 +32,9 @@ const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
 
-if (process.env.NODE_ENV === "development") {
-  open(`http://localhost:${port}`);
-}
+  // if (process.env.NODE_ENV === "development") {
+  //   open(`http://localhost:${port}`);
+  // }
 
 process.on('unhandledRejection', (err) => {
   console.log('UNHANDLED REJECTION! 💥 Shutting down...');

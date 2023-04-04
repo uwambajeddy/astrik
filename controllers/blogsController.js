@@ -1,5 +1,4 @@
 import sharp from 'sharp';
-import multer from 'multer';
 import mongoose from 'mongoose';
 import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
@@ -7,36 +6,10 @@ import blogModel from '../models/blogModel.js';
 import commentModel from '../models/commentModal.js';
 import Email from '../util/email.js';
 import userModel from '../models/userModel.js';
+import { fileUpload } from '../util/multer.js';
+import BlogImages from '../models/blogImagesModal.js';
 
-const multerStorage = multer.memoryStorage();
 
-const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith('image')) {
-    cb(null, true);
-  } else {
-    cb(new AppError('Not an image! Please upload only images.', 400), false);
-  }
-};
-
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter,
-});
-
-export const uploadBlogImage = upload.single('image');
-
-export const resizeBlogPhoto = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
-
-  req.file.originalname = `blog-${Date.now()}.jpeg`;
-  await sharp(req.file.buffer)
-    .resize(630, 350)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/blog/${req.file.originalname}`);
-
-  next();
-});
 
 export const getBlogs = catchAsync(async (req, res, next) => {
   const blogs = await blogModel.aggregate([
@@ -48,21 +21,7 @@ export const getBlogs = catchAsync(async (req, res, next) => {
         pipeline: [
           {
             $match: { $expr: { $eq: ['$blog', '$$blog'] }, approve: true },
-          },
-          {
-            $unwind: '$user',
-          },
-          {
-            $lookup: {
-              from: 'users',
-              localField: 'user',
-              foreignField: '_id',
-              as: 'user',
-            },
-          },
-          {
-            $unset: ['user.password', 'user.role', 'user.active', 'user.email'],
-          },
+          }
         ],
       },
     },
@@ -95,20 +54,6 @@ export const getBlog = catchAsync(async (req, res, next) => {
               approve: true,
             },
           },
-          {
-            $unwind: '$user',
-          },
-          {
-            $lookup: {
-              from: 'users',
-              localField: 'user',
-              foreignField: '_id',
-              as: 'user',
-            },
-          },
-          {
-            $unset: ['user.password', 'user.role', 'user.active', 'user.email'],
-          },
         ],
       },
     },
@@ -139,25 +84,14 @@ export const deleteBlog = catchAsync(async (req, res, next) => {
 });
 
 export const createBlog = catchAsync(async (req, res, next) => {
-  if (req.file) req.body.image = req.file.originalname;
+  let blog = await blogModel.create(req.body);
 
-  const blog = await blogModel.create(req.body);
-  const users = await userModel.find({ subscription: true });
-  const url = `${req.protocol}://${req.get('host')}/blog/${blog._id}`;
-  const rootDir = `${req.protocol}://${req.get('host')}`;
-  const message = {
-    image: blog.image,
-    title: blog.title,
-    body: blog.body,
-  };
-  users.map(async (user) => {
-    try {
-      await new Email(user, url, message, rootDir).sendNewPost();
-    } catch (err) {
-      console.log(err);
-    }
-  });
-
+  if (req.file) {
+    req.body.image = await fileUpload(req);
+    const blogImage = await BlogImages.create({ blog: blog._id, image: req.body.image });
+  
+    blog.image = blogImage;
+  }
   res.status(201).json({
     status: 'success',
     data: {
@@ -167,8 +101,6 @@ export const createBlog = catchAsync(async (req, res, next) => {
 });
 
 export const updateBlog = catchAsync(async (req, res, next) => {
-  if (req.file) req.body.image = req.file.originalname;
-
   const blog = await blogModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -186,26 +118,7 @@ export const updateBlog = catchAsync(async (req, res, next) => {
   });
 });
 
-export const handleLike = catchAsync(async (req, res, next) => {
-  const blog = await blogModel.findById(req.params.id);
-  if (!blog) {
-    return next(new AppError('No Blog found with that ID', 404));
-  }
-  if (!blog.likedBy.includes(req.user.id)) {
-    blog.likedBy.push(req.user.id);
-    blog.save();
-  } else {
-    blog.likedBy.pull(req.user.id);
-    blog.save();
-  }
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      blog,
-    },
-  });
-});
 
 export const getAllComments = catchAsync(async (req, res, next) => {
   const { id } = req.params;
@@ -269,5 +182,59 @@ export const createComment = catchAsync(async (req, res, next) => {
     data: {
       comment,
     },
+  });
+});
+
+export const createBlogImage = catchAsync(async (req, res, next) => {
+
+  if (!req.file) {
+    return next(new AppError('Image required', 400));
+  }
+    req.body.image = await fileUpload(req);
+    req.body.blog = req.params.id;
+    const blogImage = await BlogImages.create(req.body);
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      blogImage
+    }
+  });
+});
+
+export const updateBlogImage = catchAsync(async (req, res, next) => {
+  if (!req.file) {
+    return next(new AppError('Image required', 400));
+  }
+
+  req.body.image = await fileUpload(req);
+
+  const image = await BlogImages.findByIdAndUpdate(req.params.id, {image: req.body.image}, {
+    new: true,
+    runValidators: true
+  });
+
+  if (!image) {
+    return next(new AppError('No image found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: image
+    }
+  });
+});
+
+export const deleteBlogImage = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+  const image = await BlogImages.deleteOne({ _id: id });
+  if (!image) {
+    return next(new AppError('No image found with that ID', 404));
+  }
+
+  res.status(204).json({
+    status: 'success',
+    data: null
   });
 });

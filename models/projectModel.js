@@ -2,20 +2,23 @@ import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
-const projectSchema = new Schema(
+const ProjectSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
-      required: [true, 'project should have a title']
+      required: [true, 'Project should have a name']
     },
-    link: {
+    description: {
       type: String,
-      required: [true, 'project should have a link']
+      required: [true, 'Project should have a description']
     },
-    image: String
+    date: {
+      type: Date,
+      required: [true, 'Project should have a date']
+    },
   }
 );
 
-const project = model('project', projectSchema);
+const Project = model('Project', ProjectSchema);
 
-export default project;
+export default Project;

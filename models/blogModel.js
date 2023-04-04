@@ -12,7 +12,6 @@ const blogSchema = new Schema(
       type: String,
       required: [true, 'Blog should have a body']
     },
-    image: String,
     date: {
       type: Date,
       default: Date.now()

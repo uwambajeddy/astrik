@@ -7,18 +7,16 @@ import {
   resetPassword,
   updatePassword,
   logout,
-  restrictedTo
+  
 } from '../controllers/authController.js';
 import {
   getAllUsers,
   getUser,
   updateUser,
   deleteMe,
-  getMe,
-  uploadUserImage,
-  resizeUserPhoto,
-  subscription
+  getMe
 } from '../controllers/userController.js';
+import { uploads } from '../util/multer.js';
 
 const router = express.Router();
 
@@ -32,11 +30,9 @@ router.patch('/resetpassword/:token', resetPassword);
 router.use(protect);
 router.get('/me', getMe);
 router.patch('/updatepassword', updatePassword);
-router.route('/updateMe').patch(uploadUserImage, resizeUserPhoto, updateUser);
+router.route('/updateMe').patch(uploads.single("image"), updateUser);
 router.route('/deleteMe').delete(deleteMe);
-router.get('/subscription', subscription);
 
-router.use(restrictedTo('admin'));
 router.route('/').get(getAllUsers);
 router.route('/:id').get(getUser);
 

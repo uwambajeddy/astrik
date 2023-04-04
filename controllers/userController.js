@@ -1,39 +1,7 @@
-import multer from 'multer';
-import sharp from 'sharp';
 import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
 import userModel from '../models/userModel.js';
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith('image')) {
-    cb(null, true);
-  } else {
-    cb(new AppError('Not an image! Please upload only images.', 400), false);
-  }
-};
-
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter
-});
-
-export const uploadUserImage = upload.single('image');
-
-export const resizeUserPhoto = catchAsync(async (req, res, next) => {
-  
-  if (!req.file) return next();
-
-  req.file.originalname = `user-${Date.now()}.jpeg`;
-  await sharp(req.file.buffer)
-    .resize(120, 120)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/users/${req.file.originalname}`);
-
-  next();
-});
+import { fileUpload } from '../util/multer.js';
 
 
 export const getAllUsers = catchAsync(async (req, res, next) => {
@@ -64,19 +32,6 @@ export const getUser = catchAsync(async (req, res, next) => {
   });
 });
 
-export const subscription = catchAsync(async (req, res, next) => {
-  const user = await userModel.findById(req.user.id);
-
-  user.subscription ? user.subscription = false : user.subscription= true;
-  await user.save({validateBeforeSave: false})
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      user
-    }
-  });
-});
 
 export const getMe = catchAsync(async (req, res, next) => {
   const user = await userModel.findById(req.user.id);
@@ -97,7 +52,7 @@ export const updateUser = catchAsync(async (req, res, next) => {
   const user = await userModel.findById(req.user.id);
   user.name = req.body.name;
   user.email = req.body.email;
-  if (req.file) user.image = req.file.originalname;
+  if (req.file) user.image = await fileUpload(req);
   
   await user.save({ validateBeforeSave: false });
 

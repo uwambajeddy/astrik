@@ -5,6 +5,8 @@ import userModel from '../models/userModel.js';
 import commentModel from '../models/commentModal.js';
 import messageModel from '../models/messageModal.js';
 import mongoose from 'mongoose';
+import ProjectImages from '../models/projectImagesModal.js';
+import BlogImages from '../models/blogImagesModal.js';
 
 export const adminPage = catchAsync(async (req, res, next) => {
     const projects = await projectModel.find();
@@ -40,8 +42,10 @@ export const adminMessagesPage = catchAsync(async (req, res, next) => {
 });
 export const adminProjectsPage = catchAsync(async (req, res, next) => {
     const projects = await projectModel.find();
+    const projectImages = await ProjectImages.find();
     res.status(200).render('admin/projects', {
-        projects
+        projects,
+        projectImages
     });
 });
 
@@ -71,9 +75,10 @@ export const adminBlogsPage = catchAsync(async (req, res, next) => {
             },
         },
     ]);
-
+    const blogImages = await BlogImages.find();
     res.status(200).render('admin/blogs', {
         blogs,
+        blogImages
     });
 });
 
@@ -127,6 +132,30 @@ export const adminUsersPage = catchAsync(async (req, res, next) => {
 
     res.status(200).render('admin/users', {
         users,
+    });
+});
+export const adminProjectImagesPage = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const images = await ProjectImages.find({ project: id });
+
+    if (!images) {
+        return next(new AppError('No Images found with that ID', 404));
+      }
+
+    res.status(200).render('admin/project_images', {
+        images,
+    });
+});
+export const adminBlogImagesPage = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const images = await BlogImages.find({ blog: id });
+
+    if (!images) {
+        return next(new AppError('No Images found with that ID', 404));
+      }
+
+    res.status(200).render('admin/blog_images', {
+        images,
     });
 });
 

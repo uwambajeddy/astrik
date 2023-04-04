@@ -1,46 +1,44 @@
 import express from 'express';
-import { protect, restrictedTo } from '../controllers/authController.js';
+import { protect } from '../controllers/authController.js';
 import {
   getBlogs,
   createBlog,
   getBlog,
   deleteBlog,
   updateBlog,
-  handleLike,
   deleteComment,
   createComment,
   approveComment,
   getAllComments,
-  uploadBlogImage,
-  resizeBlogPhoto
 } from '../controllers/blogsController.js';
+import { uploads } from '../util/multer.js';
 
 const router = express.Router();
 
 router
+  .route('/')
+  .get(getBlogs)
+  .post(protect, uploads.single("image"), createBlog);
+
+router
   .route('/:id')
   .get(getBlog)
-  .patch(protect, restrictedTo('admin'), uploadBlogImage, resizeBlogPhoto, updateBlog)
-  .delete(protect, restrictedTo('admin'), deleteBlog);
+  .patch(protect,  updateBlog)
+  .delete(protect, deleteBlog);
 
-router.route('/like/:id').post(protect, handleLike);
 
 router
   .route('/comment/:id')
-  .get(protect, restrictedTo('admin'), getAllComments)
+  .get(protect, getAllComments)
   .post(protect, createComment);
 
 router
   .route('/comment/approve/:id')
-  .get(protect, restrictedTo('admin'), approveComment);
+  .get(protect, approveComment);
 router
   .route('/comment/delete/:id')
-  .delete(protect, restrictedTo('admin'), deleteComment);
+  .delete(protect, deleteComment);
 
-router
-  .route('/')
-  .get(getBlogs)
-  .post(protect, restrictedTo('admin'), uploadBlogImage, resizeBlogPhoto, createBlog);
 
 
 export default router;

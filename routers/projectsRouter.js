@@ -1,27 +1,26 @@
 import express from 'express';
-import { protect, restrictedTo } from '../controllers/authController.js';
+import { protect } from '../controllers/authController.js';
 import {
   getProjects,
   createProject,
   getProject,
   deleteProject,
   updateProject,
-  resizeProjectPhoto,
-  uploadProjectImage
 } from '../controllers/projectsController.js';
+import { uploads } from '../util/multer.js';
 
 const router = express.Router();
 
 router
   .route('/:id')
   .get(getProject)
-  .patch(protect, restrictedTo('admin'), uploadProjectImage, resizeProjectPhoto, updateProject)
-  .delete(protect, restrictedTo('admin'), deleteProject);
+  .patch(protect, uploads.single("image"), updateProject)
+  .delete(protect, deleteProject);
 
 router
   .route('/')
   .get(getProjects)
-  .post(protect, restrictedTo('admin'), uploadProjectImage, resizeProjectPhoto, createProject);
+  .post(protect, uploads.single("image"), createProject);
 
 
 export default router;

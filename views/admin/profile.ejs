@@ -62,7 +62,7 @@
         <div class="main_content profile_widget">
             <aside class="single_sidebar_widget ">
                 <img class="author_img rounded-circle"
-                    src="<%= locals.user.image.includes('http') ? locals.user.image : `/img/users/${locals.user.image}` %>"
+                src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_160,q_auto,w_160/v1680510708/<%= locals.user.image.split('/').pop() %>"
                     alt="">
                 <h4>
                     <%= locals.user.name%>

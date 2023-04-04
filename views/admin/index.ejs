@@ -43,36 +43,29 @@
     <div class="main_content">
         <div class="main_table">
             <div class="table_row row_header">
-                <div class="table_column">Image</div>
-                <div class="table_column">Title</div>
-                <div class="table_column">Body</div>
-                <div class="table_column">Comments</div>
-                <div class="table_column">Likes</div>
+                <div class="table_column">Name</div>
+                <div class="table_column">Email</div>
+                <div class="table_column">Message</div>
                 <div class="table_column">Date</div>
                 <div class="table_column">Modify</div>
             </div>
-            <% blogs.map( blog =>{
-                let date= `${blog.date}`.split(" ");
-                
+            <% messages.map( message =>{
+                let date= `${message.date}`.split(" ");
                 %>
             <div class="table_row row_dark">
-                <div class="table_column"><img src="/img/blog/<%= blog.image%>" alt=""></div>
-                <div class="table_column" onclick="readMoreModal('Title',`<%= blog.title%>`)">
-                    <%= blog.title.slice(0,15)%>... </div>
-                <div class="table_column" onclick="readMoreModal('Content',`<%= blog.body %>`)">
-                    <%= blog.body.slice(0,20)%>...</div>
-                <div class="table_column"><a href="/admin/blogs/comments/<%= blog._id%>"
-                        class="mod_btn nav_btn"><%= blog.comments.length%></a></div>
-                <div class="table_column"><%= blog.likedBy.length %></div>
+                <div class="table_column"><%= message.name%> </div>
+                <div class="table_column"><%= message.email%> </div>
+                <div class="table_column" onclick="readMoreModal('Massage',`<%= message.message%>`)">
+                    <%= message.message.slice(0,15)%>... </div>
                 <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
                 <div class="table_column">
-                    <button class="mod_btn update_btn" onclick="updateModal('<%= blog._id%>')"><span
-                            class="lnr lnr-upload"></span> Update</button>
-                    <button class="mod_btn delete_btn" onclick="deleteBlog('<%= blog._id%>')"><span
+                    <button class="mod_btn update_btn"><a href="mailto:<%= message.email%>"  target="_blank"><i class="lnr lnr-checkmark-circle"></i> Reply</a></button>
+                    <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= message._id%>`)"><span
                             class="lnr lnr-trash"></span> Delete</button>
                 </div>
             </div>
             <% });%>
+
         </div>
     </div>
     <div class="main_footer">
@@ -124,7 +117,7 @@
 <!--================Modal Banner Area =================-->
 
 <!--  JavaScript -->
-<script src="/js/blogs.js"></script>
+<script src="/js/adminMessages.js"></script>
 <script src="/js/main-dash.js"></script>
 <!--  JavaScript -->
 </body>

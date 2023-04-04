@@ -24,11 +24,6 @@ const CommentSchema = new Schema({
     required: [true, 'Please! provide your email.'],
     lowercase: true
   },
-  tags: [
-    {
-      type: String,
-    }
-  ],
   approve: {
     type: Boolean,
     default: false

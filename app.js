@@ -12,6 +12,8 @@ import messageRouter from './routers/messageRouter.js';
 import userRouter from './routers/userRouter.js';
 import blogsRouter from './routers/blogsRouter.js';
 import projectsRouter from './routers/projectsRouter.js';
+import projectImagesRouter from './routers/projectImagesRouter.js';
+import blogImagesRouter from './routers/blogtImagesRouter.js';
 
 const { urlencoded, json } = bodyParser;
 
@@ -49,7 +51,9 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 app.use('/api/v1/user/', userRouter);
 app.use('/api/v1/blogs/', blogsRouter);
+app.use('/api/v1/blog-images/', blogImagesRouter);
 app.use('/api/v1/projects/', projectsRouter);
+app.use('/api/v1/project-images/', projectImagesRouter);
 app.use('/api/v1/messages/', messageRouter);
 app.use('/', viewRouter);
 

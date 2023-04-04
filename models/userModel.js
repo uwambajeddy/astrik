@@ -39,21 +39,7 @@ const userSchema = new Schema({
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
-  passwordResetExpires: Date,
-  active: { 
-    type: Boolean,
-    default: true,
-    select: false
-  },
-  subscription: { 
-    type: Boolean,
-    default: true
-  },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
-  }
+  passwordResetExpires: Date
 });
 
 userSchema.pre('save', async function(next) {

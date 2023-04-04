@@ -1,5 +1,5 @@
 import express from 'express';
-import { protect, restrictedTo } from '../controllers/authController.js';
+import { protect } from '../controllers/authController.js';
 import {
   getMessages,
   createMessage,
@@ -11,12 +11,12 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(protect, restrictedTo('admin'), getMessages)
+  .get(protect, getMessages)
   .post(createMessage);
 
 router
   .route('/:id')
-  .get(protect, restrictedTo('admin'), getMessage)
-  .delete(protect, restrictedTo('admin'), deleteMessage);
+  .get(protect, getMessage)
+  .delete(protect, deleteMessage);
 
 export default router;
