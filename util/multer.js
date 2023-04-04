@@ -1,6 +1,6 @@
-import AppError from "./appError.js";
 import cloudinary from "../config/cloudinary.config.js";
 import multer from "multer";
+import AppError from "./AppError.js";
 
 const storage = multer.diskStorage({});
 
