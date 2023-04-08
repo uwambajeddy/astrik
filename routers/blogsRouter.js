@@ -30,7 +30,7 @@ router
 router
   .route('/comment/:id')
   .get(protect, getAllComments)
-  .post(protect, createComment);
+  .post(createComment);
 
 router
   .route('/comment/approve/:id')
