@@ -58,6 +58,12 @@
                                           <h2><a href="/projects/<%= project._id%>" class="text-white font-20 letter-spacing-4 text-uppercase"><%= project.name%></a></h2>
                                           <p><%= project.description.slice(0,150)%>...
                                           </p>
+                                            <ul class="list-arrow">
+                                                <li><b>CLIENT:</b> <%= project.client%></li>
+                                                <li><b>LOCATION:</b> <%= project.location%></li>
+                                                <li><b>ROLE:</b> <%= project.role%></li>
+                                                <li><b>COST:</b> $<%= project.cost%></li>
+                                            </ul>
                                           <a href="/projects/<%= project._id%>" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
                                       </div>
                                   </div>

@@ -12,13 +12,33 @@ const ProjectSchema = new Schema(
       type: String,
       required: [true, 'Project should have a type']
     },
+    cost: {
+      type: String,
+      required: [true, 'Project should have a cost']
+    },
+    client: {
+      type: String,
+      required: [true, 'Project should have a client']
+    },
+    location: {
+      type: String,
+      required: [true, 'Project should have a location']
+    },
+    role: {
+      type: String,
+      required: [true, 'Project should have a role']
+    },
     description: {
       type: String,
       required: [true, 'Project should have a description']
     },
     date: {
       type: Date,
-      required: [true, 'Project should have a date']
+      required: [true, 'Project should have a starting date']
+    },
+    date_to: {
+      type: Date,
+      required: [true, 'Project should have an edning date']
     },
   }
 );

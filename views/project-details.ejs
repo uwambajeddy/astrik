@@ -30,8 +30,8 @@
 	<!-- SECTION CONTENT START -->
 	<% 
 	let date= `${project.date}`.split(" ");
+	let dateTo= `${project.date_to}`.split(" ");
 	let URL = `https://astrikltd.com/projects/${project._id.toJSON()}`;
-	console.log(projects)
 	%>
 	<div class="section-full p-tb90 square_shape1 square_shape3">
 					<div class="container">
@@ -67,6 +67,29 @@
 																	<div class="wt-post-text">
 																					<p><%= project.description%></p>
 																	</div>
+																	<table class="table m-tb100">
+																		<thead>
+																						<tr>
+																										<th>Client</th>
+																										<th>Location</th>
+																										<th>Role</th>
+																										<th>Cost</th>
+																										<th>Starting date</th>
+																										<th>Ending date</th>
+																						</tr>
+																		</thead>
+																		<tbody>
+																						<tr>
+																										<td><%= project.client%></td>
+																										<td><%= project.location%></td>
+																										<td><%= project.role%></td>
+																										<td>$<%= project.cost%></td>
+																										<td><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></td>
+																										<td><%= dateTo[0] %> <%= dateTo[1] %> <%= dateTo[2] %> <%= dateTo[3] %></td>
+																						</tr>
+																		</tbody>
+														</table>
+
 																	<div class="row">
 																					<div class="col-md-4 col-sm-6">
 																									<div class="wt-box">
