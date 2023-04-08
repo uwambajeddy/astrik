@@ -2,7 +2,7 @@
  <!-- CONTENT START -->
  <div class="page-content">
     <!-- INNER PAGE BANNER -->
-    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url(images/banner/1.jpg);">
+    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url(/images/banner/6.jpg);">
         <div class="overlay-main bg-black opacity-07"></div>
         <div class="container">
             <div class="wt-bnr-inr-entry">
@@ -32,259 +32,34 @@
         <div class="container-fluid">
             <div class="portfolio-wrap mfp-gallery news-masonry clearfix">
                 <div class="row">
-                    <!-- COLUMNS 1 -->
+                    <% blogs.map( blog =>{
+                        const images = blogImages.filter(image=> image?.blog?.toJSON() == blog?._id?.toJSON());
+                        let date= `${blog.date}`.split(" ");
+                        
+                        %>
                     <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
                         <div class="blog-post blog-grid date-style-1">
                             <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic2.jpg" alt=""></a>
+                                <a href="/news/<%= blog._id%>"><img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= images[0]?.image.split('/').pop()%>" alt=""></a>
                             </div>
                             <div class="wt-post-info p-t30 text-black">
                                 <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
+                                    <h2 class="post-title"><a href="/news/<%= blog._id%>" class="text-black font-20 letter-spacing-4 font-weight-600"> <%= blog.title.slice(0,15)%></a></h2>
                                 </div>
                                 <div class="wt-post-meta ">
                                     <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
+                                        <li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
                                         <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
                                     </ul>
                                 </div>
                                 <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
+                                    <p><%= blog.body.slice(0,30)%></p> 
                                 </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
+                                <a href="/news/<%= blog._id%>" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
                             </div>
                         </div>
                     </div>
-                    <!-- COLUMNS 2 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/portrait/pic1.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 3 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic1.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 4 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/portrait/pic3.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 5 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/portrait/pic5.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 6 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic3.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 7 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic6.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>                                    
-                    </div>
-                    <!-- COLUMNS 8 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/portrait/pic4.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 9 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic7.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 10 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic2.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- COLUMNS 11 -->
-                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
-                        <div class="blog-post blog-grid date-style-1">
-                            <div class="wt-post-media wt-img-effect zoom-slow">
-                                <a href="javascript:void(0);"><img src="images/gallery/pic4.jpg" alt=""></a>
-                            </div>
-                            <div class="wt-post-info p-t30 text-black">
-                                <div class="wt-post-title ">
-                                    <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-4 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                </div>
-                                <div class="wt-post-meta ">
-                                    <ul>
-                                        <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                    </ul>
-                                </div>
-                                <div class="wt-post-text">
-                                    <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis</p> 
-                                </div>
-                                <a href="Javascript:;" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                            </div>
-                        </div>
-                    </div>
+                    <% });%>
                                                                                    
                 </div>
             </div>

@@ -15,8 +15,8 @@
     <div class="main_content">
         <div class="main_table">
             <div class="table_row row_header">
-                <div class="table_column">Blog ID</div>
-                <div class="table_column">User</div>
+                <div class="table_column">Author</div>
+                <div class="table_column">Email</div>
                 <div class="table_column">Comment</div>
                 <div class="table_column">Approved</div>
                 <div class="table_column">Date</div>
@@ -26,8 +26,8 @@
                 let date= `${comment.date}`.split(" ");
                 %>
             <div class="table_row row_dark">
-                <div class="table_column"><%= blog._id%></div>
-                <div class="table_column"><%= comment.user[0]?.email%></div>
+                <div class="table_column"><%= comment.author%></div>
+                <div class="table_column"><%= comment.email %></div>
                 <div class="table_column" onclick="readMoreModal('Comment',`<%= comment.comment%>`)">
                     <%= comment.comment.slice(0,20)%>...</div>
                 <div class="table_column <%= comment.approve ? 'truthy-rec':'falsy-rec'%>"><%= comment.approve%></div>

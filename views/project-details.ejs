@@ -3,97 +3,142 @@
 <!-- CONTENT START -->
 <div class="page-content ">
 	<!-- INNER PAGE BANNER -->
-	<div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center" data-stellar-background-ratio="0.5"
-		style="background-image:url(/images/banner/6.jpg);">
+	<div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url(/images/banner/6.jpg);">
 		<div class="overlay-main bg-black opacity-07"></div>
-		<div class="container">
-			<div class="wt-bnr-inr-entry">
-				<div class="banner-title-outer">
-					<div class="banner-title-name">
-						<h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">high quality,
-							effective, and inspiring built space.</h2>
+					<div class="container">
+									<div class="wt-bnr-inr-entry">
+										<div class="banner-title-outer">
+														<div class="banner-title-name">
+															<h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">high quality, effective, and inspiring built space.</h2>
+																	</div>
+													</div>
+													<!-- BREADCRUMB ROW -->                            
+													<div class="p-tb20">
+																	<div>
+																					<ul class="wt-breadcrumb breadcrumb-style-2">
+																									<li><a href="javascript:void(0);">Home</a></li>
+																									<li>Post Details</li>
+																					</ul>
+																	</div>
+													</div>
+													<!-- BREADCRUMB ROW END -->                        
+									</div>
 					</div>
-				</div>
-				<!-- BREADCRUMB ROW -->
-				<div class="p-tb20">
-					<div>
-						<ul class="wt-breadcrumb breadcrumb-style-2">
-							<li><a href="javascript:void(0);">Home</a></li>
-							<li>Project Details</li>
-						</ul>
-					</div>
-				</div>
-				<!-- BREADCRUMB ROW END -->
-			</div>
-		</div>
 	</div>
 	<!-- INNER PAGE BANNER END -->
-
+	
 	<!-- SECTION CONTENT START -->
+	<% 
+	let date= `${project.date}`.split(" ");
+	let URL = `https://astrikltd.com/projects/${project._id.toJSON()}`;
+	console.log(projects)
+	%>
 	<div class="section-full p-tb90 square_shape1 square_shape3">
-		<div class="container">
-			<div class="blog-post blog-lg date-style-1 text-black">
-
-				<div class="wt-post-media">
-					<!--Fade slider-->
-					<div class="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right">
-
-						<div class="item">
-							<div class="aon-thum-bx">
-								<img src="/images/blog/default/thum1.jpg" alt="">
-							</div>
+					<div class="container">
+									<div class="blog-post blog-lg date-style-1 text-black">
+	
+													<div class="wt-post-media">
+																	<!--Fade slider-->
+																	<div class="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right">
+																	
+																		<% 
+																		project.images.map(image =>{
+																		%>
+																					<div class="item">
+																									<div class="aon-thum-bx">
+																										<img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= image.image.split('/').pop()%>" alt="">
+																									</div>
+																					</div>
+																					
+																				    <%})%>                                     
+																	
+																	</div>
+																	<!--fade slider END-->
+													</div>
+													<div class="wt-post-info p-t30 bg-white">
+																	<div class="wt-post-title ">
+																					<h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-2 font-weight-600"><%= project.name%></a></h2>
+																	</div>
+																	<div class="wt-post-meta">
+																					<ul>
+																									<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
+																					</ul>
+																	</div>
+																	<div class="wt-post-text">
+																					<p><%= project.description%></p>
+																	</div>
+																	<div class="row">
+																					<div class="col-md-4 col-sm-6">
+																									<div class="wt-box">
+																									<div class="row  p-lr15">
+																													<h4 class="tagcloud text-uppercase">Share this Post:</h4>
+																													<div class="widget_social_inks">
+																														<ul class="social-icons social-md social-square social-dark m-b0">
+																															<li><a href="https://www.facebook.com/sharer/sharer.php?u=<%= URL%>" class="fa fa-facebook"></a></li>
+																															<li><a href="https://twitter.com/share?url=<%= URL%>&text=<TEXT>via='astrik ltd'" class="fa fa-twitter"></a></li>
+																															<li><a href="https://reddit.com/submit?url=<%= URL%>&title=<%= project.name%>" class="fa fa-rss"></a></li>
+																															<li><a href="https://www.linkedin.com/shareArticle?url=<%= URL%>&title=<%= project.name%>&summary=<SUMMARY>&source=<%= URL%>" class="fa fa-linkedin"></a></li>
+																															<li><a href="mailto:?subject=<%= project.name%>&body=<BODY>" class="fa fa-envelope-o"></a></li>
+																											</ul>
+																												</div>
+																									</div>
+																									
+																					</div>
+																					</div>
+																	</div>
+													</div>
+													
+									</div>
+									<!-- BLOG START -->
+									<div class="wt-divider divider-3px bg-gray-dark"><i class="icon-dot c-square"></i></div>
+									
+									<div class="section-content">
+										<!-- TITLE START -->
+										<div class="text-left">
+														<h2 class="text-uppercase font-36">More Projects</h2>
+														<div class="wt-separator-outer">
+																		<div class="wt-separator bg-black"></div>
+														</div>
+										</div>
+										<!-- TITLE END -->
+										<!-- CAROUSEL -->
+										<div class="section-content">
+																		<div class="owl-carousel blog-related-slider  owl-btn-top-right">
+																						<!-- COLUMNS 1 --> 
+																						<% projects.map( project =>{
+																							let date= `${project.date}`.split(" ");
+																							
+																							%>
+																						<div class="item">
+																											<div class="blog-post blog-grid date-style-1">
+																														<div class="wt-post-media wt-img-effect zoom-slow">
+																															<a href="/projects/<%= project._id%>"><img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= project.images[0]?.image.split('/').pop()%>"  alt=""></a>
+																														</div>
+																														<div class="wt-post-info p-a20 bg-gray text-black">
+																																		<div class="wt-post-title ">
+																																						<h2 class="post-title"><a href="/projects/<%= project._id%>" class="text-black font-16 letter-spacing-2 font-weight-600"><%= project.name%></a></h2>
+																																		</div>
+																																		<div class="wt-post-meta ">
+																																						<ul>
+																																										<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
+																																						</ul>
+																																		</div>
+																																		<div class="wt-post-text">
+																																			<p><%= project.description.slice(0,30)%></p> 
+																																		</div>
+																																		<a href="/projects/<%= project._id%>" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
+																														</div>
+																										</div>
+																						</div>
+																						<% })%>
+																		</div>
+														</div>
 						</div>
-
-						<div class="item">
-							<div class="aon-thum-bx">
-								<img src="/images/blog/default/thum2.jpg" alt="">
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="aon-thum-bx">
-								<img src="/images/blog/default/thum3.jpg" alt="">
-							</div>
-						</div>
-
+									
+									
+									<!-- BLOG END -->
+													
 					</div>
-					<!--fade slider END-->
-				</div>
-				<div class="wt-post-info p-t30 bg-white">
-					<div class="wt-post-title ">
-						<h2 class="post-title"><a href="javascript:void(0);"
-								class="text-black font-20 letter-spacing-2 font-weight-600">Blogpost With Image Slider
-								there are many variations of passages of Lorem Ipsum available, but the majority have
-								suffered alteration in some form.</a></h2>
-					</div>
-					<div class="wt-post-meta">
-						<ul>
-							<li class="post-date"> <strong>20 Dec</strong> <span> 2017</span> </li>
-						</ul>
-					</div>
-					<div class="wt-post-text">
-						<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis
-							quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus
-							officia in neque veniam debitis Consectetur, Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad
-							molestias deserunt in ipsam ea quasi cum culpa adipisci dolores voluptatum fuga at!
-							assumenda provident lorem ipsum dolor sit amet, consectetur.</p>
-						<p>Donec posuere bibendum metus. Quisque gravida luctus volutpat. Mauris interdum, lectus in
-							dapibus molestie, quam felis sollicitudin mauris, sit amet tempus velit lectus nec lorem.
-							Nullam vel mollis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel
-							enim dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-							mus. Sed tincidunt accumsan massa id viverra. Sed sagittis, nisl sit amet imperdiet
-							convallis, nunc tortor consequat tellus, vel molestie neque nulla non ligula. Proin
-							tincidunt tellus ac porta volutpat. Cras mattis congue lacus id bibendum. Mauris ut sodales
-							libero. Maecenas feugiat sit amet enim in accumsan.</p>
-					</div>
-				</div>
-
-			</div>
-			
-			<!-- BLOG END -->
-
-		</div>
 	</div>
 	<!-- SECTION CONTENT END -->
 

@@ -167,15 +167,11 @@ export const approveComment = catchAsync(async (req, res, next) => {
 });
 
 export const createComment = catchAsync(async (req, res, next) => {
-  const blog = await blogModel.findById(req.params.id);
+  const blog = await blogModel.findById(req.body.blog);
   if (!blog) {
     return next(new AppError('No Blog found with that ID', 404));
   }
-  const comment = await commentModel.create({
-    comment: req.body.comment,
-    user: req.user._id,
-    blog: req.params.id,
-  });
+  const comment = await commentModel.create(req.body);
 
   res.status(201).json({
     status: 'success',

@@ -5,6 +5,7 @@ const { Schema, model } = mongoose;
 const CommentSchema = new Schema({
   comment: {
     type: String,
+    unique:false,
     required: [true, 'Comment section can not be empty! ']
   },
   date: {
@@ -22,7 +23,8 @@ const CommentSchema = new Schema({
   email: {
     type: String,
     required: [true, 'Please! provide your email.'],
-    lowercase: true
+    lowercase: true,
+    unique:false
   },
   approve: {
     type: Boolean,

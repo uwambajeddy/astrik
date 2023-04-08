@@ -69,7 +69,7 @@ export const adminBlogsPage = catchAsync(async (req, res, next) => {
                 let: { blog: '$_id' },
                 pipeline: [
                     {
-                        $match: { $expr: { $eq: ['$blog', '$$blog'] }, approve: true },
+                        $match: { $expr: { $eq: ['$blog', '$$blog'] } },
                     },
                 ],
             },
@@ -99,21 +99,7 @@ export const adminCommentsPage = catchAsync(async (req, res, next) => {
                         $match: {
                             $expr: { $eq: ['$blog', '$$blog'] },
                         },
-                    },
-                    {
-                        $unwind: '$user',
-                    },
-                    {
-                        $lookup: {
-                            from: 'users',
-                            localField: 'user',
-                            foreignField: '_id',
-                            as: 'user',
-                        },
-                    },
-                    {
-                        $unset: ['user.password', 'user.role', 'user.active'],
-                    },
+                    }
                 ],
             },
         },

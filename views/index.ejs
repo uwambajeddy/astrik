@@ -490,16 +490,14 @@
 																<div class="section-content">
 																	<div class="row">
 																		<div class="col-md-5 col-sm-12 text-uppercase text-black">
-																									<span class="font-30 font-weight-300">Welcome</span>
-																												<h2 class="font-40">
-																																We are <span class="text-yellow">creative</span> Building  - Design  Company
-																												</h2>
-																												<p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts, and in general</p>
-																												<p class="text-lowercase">typefaces and layouts, and in appearance of different general 
-																																		the content of dummy text is nonsensical.typefaces and layouts, 
-																																		different general the content of dummy text is nonsensical.
+																									<span class="font-30 font-weight-300">Welcome,</span>
+																									<h2 class="font-40">
+																										We are <span class="text-yellow">creative</span> Building  - Design  Company
+																						</h2>
+																												<p>with its office based in Kigali City of Kigali, Rwanda</p>
+																												<p class="text-lowercase">ASTRIK has been at service to different Clients/Employers in Rwanda and the Region and has successfully undertaken a different number of projects. The Staff are skilled in providing consulting services on Engineering infrastructure and operations, appropriate solutions which are sustainable and affordable to the public and private sectors as well as transfer of technological knowledge to the practitioners in Rwanda and beyond.
 																												</p>
-																													<a href="javascript:void(0);" class="btn-half site-button button-lg m-b15"><span>Read More</span><em></em></a>
+																													<a href="/docs/profile.pdf" class="btn-half site-button button-lg m-b15" download><span>Read More</span><em></em></a>
 																								</div>
 																								
 																					<div class="col-md-7 col-sm-12">
@@ -575,156 +573,31 @@
 												<div class="section-content">
 																<div class="owl-carousel owl-carousel-filter  owl-btn-bottom-left">
 																				<!-- COLUMNS 1 --> 
-																				<div class="item fadingcol building-col">
+																				<% projects.map( project =>{
+																					
+																					%>
+																				<div class="item fadingcol <%= project.type == 'house' ? 'building-col':'roads-col' %>">
 																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic1.jpg" alt="">
+																												<img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_500/v1680510708/<%= project.images[0]?.image.split('/').pop()%>" alt="">
 																												<div class="overlay-bx-2 ">
 																																<div class="line-amiation">
 																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
+																																								<h2><a href="/projects/<%= project._id%>" class="text-white font-20 letter-spacing-4 text-uppercase"><%= project.name%></a></h2>
+																																								<p><%= project.description.slice(0,50)%>...
 																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
+																																								<a href="/projects/<%= project._id%>" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
 																																				</div>
 																																</div>
 																											</div>
 																								</div>
 																				</div>
-																				<!-- COLUMNS 2 --> 
-																				<div class="item fadingcol  building-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic2.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-																				<!-- COLUMNS 3 --> 
-																				<div class="item fadingcol building-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic3.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-																				<!-- COLUMNS 4 --> 
-																				<div class="item fadingcol building-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic4.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-																				<!-- COLUMNS 5 --> 
-																				<div class="item fadingcol roads-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic5.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-																				<!-- COLUMNS 6 --> 
-																				<div class="item fadingcol building-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic6.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-																				<!-- COLUMNS 7 --> 
-																				<div class="item fadingcol building-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic7.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																							</div>
-																				</div>   
-																				<!-- COLUMNS 8 -->                         
-																				<div class="item fadingcol roads-col">
-																								<div class="wt-img-effect ">
-																												<img src="/images/gallery/portrait/pic8.jpg" alt="">
-																												<div class="overlay-bx-2 ">
-																																<div class="line-amiation">
-																																				<div class="text-white  font-weight-300 p-a40">
-																																								<h2><a href="javascript:void(0);" class="text-white font-20 letter-spacing-4 text-uppercase">Triangle Concrete House on lake</a></h2>
-																																								<p>Morbi mattis ex non urna condimentum,
-																																														eget eleifend diam molestie. Curabitur 
-																																														lorem enim, maximus non null.
-																																								</p>
-																																								<a href="javscript:;" class="v-button letter-spacing-4 font-12 text-uppercase p-l20">Read More</a>
-																																				</div>
-																																</div>
-																											</div>
-																								</div>
-																				</div>
-
+																				<% })%>
 													</div>
 												</div>
 												
 												<div class="hilite-title p-lr20 m-tb20 text-right text-uppercase bdr-gray bdr-right">
 																<strong>Awesome</strong>
-																<span class="text-black">Designs</span>
+																<span class="text-black">Projects</span>
 												</div>
 									</div>   
 								<!-- LATEST PRJECTS SLIDER END --> 
@@ -741,35 +614,37 @@
 																												<div class="wt-separator bg-black"></div>
 																								</div>
 																				</div>
-																				<!-- TITLE END -->                    
+																				<!-- TITLE END -->      
+																				<%
+																				let blog0_date= `${blog[0].date}`.split(" ");
+																				let blog1_date= `${blog[1].date}`.split(" ");
+																				let blog2_date= `${blog[2].date}`.split(" ");
+																				%>              
 																	<div class="row">
 																								<div class="col-md-6 col-sm-12">
-																									<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer p-a20 m-b30" style="background-image:url(images/blog/landscap-half/pic1.jpg);">
+																									<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer p-a20 m-b30" style="background-image:url('<%= blog[0].images[0]?.image%>');">
 																													<div class="overlay-main bg-black opacity-04"></div>
 																																<div class="latest-blog-dark text-uppercase p-a20">
-																																				<h3 class="m-a0"><span class="text-white">Title of first blog post</span></h3>
-																																				<div class="v-date  text-yellow font-weight-700">10 Aug 2016</div>
+																																				<a href="/news/<%= blog[0]._id%>"><h3 class="m-a0"><span class="text-white"><%= blog[0].title%></span></h3></a>
+																																				<div class="v-date  text-yellow font-weight-700"> <%= blog0_date[1] %> <%= blog0_date[2] %> <%= blog0_date[3] %></div>
 																																</div>
 																												</div>
-																												<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer p-a20 m-b30" style="background-image:url(images/blog/landscap-half/pic2.jpg);">
+																												<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer p-a20 m-b30" style="background-image:url('<%= blog[1].images[0]?.image%>');">
 																													<div class="overlay-main bg-black opacity-04"></div>
 																																<div class="latest-blog-dark text-uppercase p-a20">
-																																				<h3 class="m-a0"><span class="text-white">Title of first blog post</span></h3>
-																																				<div class="v-date  text-yellow font-weight-700">10 Aug 2016</div>
+																																	<a href="/news/<%= blog[1]._id%>"><h3 class="m-a0"><span class="text-white"><%= blog[1].title%></span></h3></a>
+																																				<div class="v-date  text-yellow font-weight-700"> <%= blog1_date[1] %> <%= blog1_date[2] %> <%= blog1_date[3] %></div>
 																																</div>
 																												</div>
 																								</div>
 																								<div class="col-md-6 col-sm-12">
-																									<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer2 m-b30" style="background-image:url(images/blog/square/pic1.jpg);">
+																									<div class="overlay-wraper bg-no-repeat bg-cover latest-blog-dark-outer2 m-b30" style="background-image:url('<%= blog[2].images[0]?.image%>');">
 																													<div class="overlay-main bg-black opacity-07"></div>
 																																<div class="latest-blog-square text-white">
-																																				<h2 class="m-t0 m-b10"><span class="text-white font-30 text-uppercase">Small & Minimal House On Paters on Hill</span></h2>
-																																				<p class="font-weight-300">typefaces and layouts, and in appeara
-																																								nce of different general the content of
-																																								dummy text is nonsensical.typefaces 
-																																								of dummy text is nonsensical.</p>
-																																				<a href="javascript:;" class="letter-spacing-4 font-12 text-white text-uppercase">Read More</a>     
-																																				<div class="v-date  text-yellow font-weight-700 text-uppercase">10 Aug 2016</div>
+																																	<a href="/news/<%= blog[2]._id%>"><h2 class="m-t0 m-b10"><span class="text-white font-30 text-uppercase"><%= blog[2].title%></span></h2></a>
+																																				<p class="font-weight-300"><%= blog[2].body.slice(0,180)%>...</p>
+																																				<a href="/news/<%= blog[2]._id%>" class="letter-spacing-4 font-12 text-white text-uppercase">Read More</a>     
+																																				<div class="v-date  text-yellow font-weight-700 text-uppercase"><%= blog2_date[1] %> <%= blog2_date[2] %> <%= blog2_date[3] %></div>
 																																</div>
 																												</div>                            	
 																								</div>
@@ -786,7 +661,7 @@
 								<!-- BLOG SECTION END -->  
 								
 								<!-- CLIENT LOGO SECTION START -->
-								<div class="section-full p-tb100  bg-repeat " style="background-image:url(images/background/ptn-1.png);">
+								<div class="section-full p-tb100  bg-repeat " style="background-image:url(/images/background/ptn-1.png);">
 												<div class="container">
 																<div class="section-content">
 																
@@ -836,6 +711,24 @@
 																																								<a href="javascript:void(0);"><img src="/images/client-logo/w6.png" alt=""></a></div>
 																																				</div>
 																																</div>
+																																<div class="item">
+																																				<div class="ow-client-logo">
+																																								<div class="client-logo client-logo-media">
+																																								<a href="javascript:void(0);"><img src="/images/client-logo/w7.png" alt=""></a></div>
+																																				</div>
+																																</div>
+																																<div class="item">
+																																				<div class="ow-client-logo">
+																																								<div class="client-logo client-logo-media">
+																																								<a href="javascript:void(0);"><img src="/images/client-logo/w8.png" alt=""></a></div>
+																																				</div>
+																																</div>
+																																<div class="item">
+																																				<div class="ow-client-logo">
+																																								<div class="client-logo client-logo-media">
+																																								<a href="javascript:void(0);"><img src="/images/client-logo/w9.png" alt=""></a></div>
+																																				</div>
+																																</div>
 																																
 																												</div>
 																								</div>
@@ -857,9 +750,7 @@
 																												<h2 class="font-50">
 																																<span class="text-yellow">Intresting Facts</span>
 																												</h2>
-																												<p class="font-18 font-weight-300">Morbi mattis ex non urna condimentum, eget eleif
-end diam molestie. Curabitur lorem enim, maximus 
-non nulla sed, egestas venenatis felis. 
+																												<p class="font-18 font-weight-300">The company has experience of working on World Bank, AfDB and other donor financed assignments, which also require that projects be implemented in accordance with strict health, safety and environmental procedures.
 																												</p>
 																								</div>
 																								</div>
@@ -870,7 +761,7 @@ non nulla sed, egestas venenatis felis.
 																												<div class="col-md-4 col-sm-4">
 																																<div class="wt-icon-box-wraper p-a10 text-white m-b30">
 																																				<div class="icon-content text-center">
-																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">451</span></div>
+																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">50</span></div>
 																																								<div class="wt-separator-outer m-b20"><div class="wt-separator bg-white"></div></div>
 																																								<span class="text-uppercase">Happy Clients</span>
 																																				</div>
@@ -879,7 +770,7 @@ non nulla sed, egestas venenatis felis.
 																												<div class="col-md-4 col-sm-4">
 																																<div class="wt-icon-box-wraper p-a10 text-white m-b30">
 																																				<div class="icon-content text-center">
-																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">532</span></div>
+																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">32</span></div>
 																																								<div class="wt-separator-outer m-b20"><div class="wt-separator bg-white"></div></div>
 																																								<span class="text-uppercase">Finished projects</span>
 																																				</div>
@@ -888,7 +779,7 @@ non nulla sed, egestas venenatis felis.
 																												<div class="col-md-4 col-sm-4">
 																																<div class="wt-icon-box-wraper p-a10 text-white m-b30">
 																																				<div class="icon-content text-center">
-																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">299</span></div>
+																																								<div class="font-40 font-weight-600 m-b5 text-yellow"><span class="counter">5</span></div>
 																																								<div class="wt-separator-outer m-b20"><div class="wt-separator bg-white"></div></div>
 																																								<span class="text-uppercase">Working Days</span>
 																																				</div>
@@ -954,82 +845,8 @@ non nulla sed, egestas venenatis felis.
 																																				</div>
 																																</div>
 																												</div>                                
-																												<div class="item">
-																																<div class="testimonial-6">
-																																				<div class="testimonial-pic-block"> 
-																																								<div class="testimonial-pic">
-																																												<img src="/images/testimonials/pic2.jpg" width="132" height="132" alt="">
-																																								</div>
-																																				</div>
-																																				<div class="testimonial-text clearfix bg-white">
-																																								<div class="testimonial-detail clearfix">
-																																												<strong class="testimonial-name">Taylor Roberts</strong>
-																																												<span class="testimonial-position p-t0">Co-manager associated</span>
-																																								</div>
-																																								<div class="testimonial-paragraph text-black p-t15">
-																																												<span class="fa fa-quote-left"></span>
-																																												<p>typefaces and layouts, and in appearance of different general the content of dummy text is nonsensical.typefaces of dummy text is nonsensical.</p>
-																																								</div>
-																																				</div>
-																																</div>
-																												</div>                                
-																												<div class="item">
-																																<div class="testimonial-6">
-																																				<div class="testimonial-pic-block"> 
-																																								<div class="testimonial-pic">
-																																												<img src="/images/testimonials/pic3.jpg" width="132" height="132" alt="">
-																																								</div>
-																																				</div>
-																																				<div class="testimonial-text clearfix bg-white">
-																																								<div class="testimonial-detail clearfix">
-																																												<strong class="testimonial-name">Robert willson</strong>
-																																												<span class="testimonial-position p-t0">Co-manager associated</span>
-																																								</div>
-																																								<div class="testimonial-paragraph text-black p-t15">
-																																												<span class="fa fa-quote-left"></span>
-																																												<p>typefaces and layouts, and in appearance of different general the content of dummy text is nonsensical.typefaces of dummy text is nonsensical.</p>
-																																								</div>
-																																				</div>
-																																</div>
-																												</div>
-																												<div class="item">
-																																<div class="testimonial-6">
-																																				<div class="testimonial-pic-block"> 
-																																								<div class="testimonial-pic">
-																																												<img src="/images/testimonials/pic1.jpg" width="132" height="132" alt="">
-																																								</div>
-																																				</div>
-																																				<div class="testimonial-text clearfix bg-white">
-																																								<div class="testimonial-detail clearfix">
-																																												<strong class="testimonial-name">Taylor Roberts</strong>
-																																												<span class="testimonial-position p-t0">Co-manager associated</span>
-																																								</div>
-																																								<div class="testimonial-paragraph text-black p-t15">
-																																												<span class="fa fa-quote-left"></span>
-																																												<p>typefaces and layouts, and in appearance of different general the content of dummy text is nonsensical.typefaces of dummy text is nonsensical.</p>
-																																								</div>
-																																				</div>
-																																</div>
-																												</div> 
-																												<div class="item">
-																																<div class="testimonial-6">
-																																				<div class="testimonial-pic-block"> 
-																																								<div class="testimonial-pic">
-																																												<img src="/images/testimonials/pic4.jpg" width="132" height="132" alt="">
-																																								</div>
-																																				</div>
-																																				<div class="testimonial-text clearfix bg-white">
-																																								<div class="testimonial-detail clearfix">
-																																												<strong class="testimonial-name">Taylor Roberts</strong>
-																																												<span class="testimonial-position p-t0">Co-manager associated</span>
-																																								</div>
-																																								<div class="testimonial-paragraph text-black p-t15">
-																																												<span class="fa fa-quote-left"></span>
-																																												<p>typefaces and layouts, and in appearance of different general the content of dummy text is nonsensical.typefaces of dummy text is nonsensical.</p>
-																																								</div>
-																																				</div>
-																																</div>
-																												</div>                                                                                                
+																												
+																												                                                                                                
 																								</div>
 																				</div>
 																</div>

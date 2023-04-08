@@ -636,18 +636,19 @@ table {
 	float:none;
 }
 ::selection {
-	background: #484848;
-	color: #fff;
+	color: #ffffff;
+  background: #0FA958;
 }
 
-::-moz-selection {
-	background: #484848;
-	color: #fff;
+::-moz-selection { 
+	color: #ffffff;
+	background: #0FA958;
 }
+
 
 ::-webkit-selection {
-	 background: #484848;
-	 color: #fff;
+	color: #ffffff;
+	background: #0FA958;
 }
 
 @media only screen and (max-width:600px) {

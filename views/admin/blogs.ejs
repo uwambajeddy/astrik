@@ -26,7 +26,7 @@
                 <div class="table_column">Date</div>
                 <div class="table_column">Modify</div>
             </div>
-            <% blogs.map( blog =>{
+                <% blogs.map( blog =>{
                 const images = blogImages.filter(image=> image?.blog?.toJSON() == blog?._id?.toJSON());
                 let date= `${blog.date}`.split(" ");
                 
@@ -112,7 +112,7 @@ var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
             <div class="form-group">
                 <textarea class="form-control" name="body" id="body" rows="1"><%= blog.body%></textarea>
             </div>
-            <button type="submit" value="submit" class="btn submit_btn">Update</button>
+            <button type="submit"  class="btn submit_btn">Update</button>
         </div>
 
     </form>
