@@ -37,7 +37,7 @@
                 let to_date= `${project.date_to}`.split(" ");
                 %>
             <div class="table_row row_dark">
-                <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0].image%>" alt=""></a></div>
+                <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0]?.image%>" alt=""></a></div>
                 <div class="table_column" onclick="readMoreModal('Project name','<%= project.name%>')">
                     <%= project.name.slice(0,15)%>... </div>
                 <div class="table_column" onclick="readMoreModal('Full description','<%= project.description%>')">

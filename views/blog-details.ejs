@@ -76,11 +76,11 @@
 																													<h4 class="tagcloud text-uppercase">Share this Post:</h4>
 																													<div class="widget_social_inks">
 																														<ul class="social-icons social-md social-square social-dark m-b0">
-																															<li><a href="https://www.facebook.com/sharer/sharer.php?u=<%= URL%>" class="fa fa-facebook"></a></li>
-																															<li><a href="https://twitter.com/share?url=<%= URL%>&text=<TEXT>via='astrik ltd'" class="fa fa-twitter"></a></li>
-																															<li><a href="https://reddit.com/submit?url=<%= URL%>&title=<%= blog.title%>" class="fa fa-rss"></a></li>
-																															<li><a href="https://www.linkedin.com/shareArticle?url=<%= URL%>&title=<%= blog.title%>&summary=<SUMMARY>&source=<%= URL%>" class="fa fa-linkedin"></a></li>
-																															<li><a href="mailto:?subject=<%= blog.title%>&body=<BODY>" class="fa fa-envelope-o"></a></li>
+																															<li><a href="https://www.facebook.com/sharer/sharer.php?u='https://astrikltd.com/news/<%= blog._id%>'" class="fa fa-facebook"></a></li>
+																															<li><a href="https://twitter.com/share?url='https://astrikltd.com/news/<%= blog._id%>'&text='<%= blog.title%>'via='astrik ltd'" class="fa fa-twitter"></a></li>
+																															<li><a href="https://reddit.com/submit?url='https://astrikltd.com/news/<%= blog._id%>'&title=<%= blog.title%>" class="fa fa-rss"></a></li>
+																															<li><a href="https://www.linkedin.com/shareArticle?url='https://astrikltd.com/news/<%= blog._id%>'&title=<%= blog.title%>&summary=<%= blog.title%>&source='https://astrikltd.com/news/<%= blog._id%>'" class="fa fa-linkedin"></a></li>
+																															<li><a href="mailto:?subject=<%= blog.title%>&body=<%= blog.body%>" class="fa fa-envelope-o"></a></li>
 																											</ul>
 																												</div>
 																									</div>
