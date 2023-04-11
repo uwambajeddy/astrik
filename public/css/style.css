@@ -4074,7 +4074,7 @@ header .logo{	display:block;	padding:4px 0;}
 -------------------------------------*/  
 /*.is-fixed.color-fill .main-bar {    padding:0px 64px;}*/
 .is-fixed.color-fill .header-nav .nav > li { margin:0; padding:0;}
-.is-fixed.color-fill .header-nav .nav > li > a { margin:0; padding:25px 12px;}
+.is-fixed.color-fill .header-nav .nav > li > a { margin:0; padding:25px 12px;font-weight: 600px;}
 
 @media only screen and (max-width:767px){
 .main-bar,

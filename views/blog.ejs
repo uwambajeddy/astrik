@@ -2,7 +2,7 @@
  <!-- CONTENT START -->
  <div class="page-content">
     <!-- INNER PAGE BANNER -->
-    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url(images/banner/6.jpg);">
+    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
         <div class="overlay-main bg-black opacity-07"></div>
         <div class="container">
             <div class="wt-bnr-inr-entry">
@@ -49,7 +49,7 @@
                                 <div class="wt-post-meta ">
                                     <ul>
                                         <li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
-                                        <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
+                                        <li class="post-author"><a href="javascript:void(0);"><%= blog.comments.length%> <span>Comments</span></a> </li>
                                     </ul>
                                 </div>
                                 <div class="wt-post-text">
