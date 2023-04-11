@@ -53,7 +53,7 @@ export const createProject = catchAsync(async (req, res, next) => {
   if (req.file) {
     req.body.image = await fileUpload(req);
   } else {
-    req.body.image = "https://res.cloudinary.com/dvibmdi1y/image/upload/v1681206731/astrik/images/background/astrik-min_okgr4d.jpg"
+    req.body.image = "https://res.cloudinary.com/dvibmdi1y/image/upload/v1681210354/astrik/images/background/astrik-no_cjetpt.jpg"
   }
 
   const projectImage = await projectImageModal.create({ project: project._id, image: req.body.image });
