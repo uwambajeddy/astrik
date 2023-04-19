@@ -517,6 +517,9 @@ button:focus {
     margin: auto;
     width: 100%;
  }
+  .image-container .item {
+   height: 300px;
+ }
   .image-container .image {
     position: relative;
     padding-bottom: 100%;
