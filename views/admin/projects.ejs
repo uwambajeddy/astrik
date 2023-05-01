@@ -25,7 +25,6 @@
                 <div class="table_column">Client</div>
                 <div class="table_column">Role</div>
                 <div class="table_column">Location</div>
-                <div class="table_column">Cost</div>
                 <div class="table_column">Starting Date</div>
                 <div class="table_column">Ending Date</div>
                 <div class="table_column">Modify</div>
@@ -46,7 +45,6 @@
                 <div class="table_column"><%=  project?.client %></div>
                 <div class="table_column"><%=  project?.role %></div>
                 <div class="table_column"><%=  project?.location %></div>
-                <div class="table_column">$<%=  project?.cost %></div>
                 <div class="table_column">
                     <%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
                 <div class="table_column">
@@ -83,9 +81,6 @@
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="name" placeholder="Project name">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="cost" name="cost" placeholder="Project cost in USD">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="client" name="client" placeholder="Project client">
@@ -136,9 +131,6 @@ var dateStringTo = new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 600
         <div class="contact_form_text">
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="name" value="<%= project.name%>">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="cost" name="cost" value="<%= project.cost%>" placeholder="Project cost in USD">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="client" name="client" value="<%= project.client%>" placeholder="Project client">
