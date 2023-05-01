@@ -12,10 +12,6 @@ const ProjectSchema = new Schema(
       type: String,
       required: [true, 'Project should have a type']
     },
-    cost: {
-      type: String,
-      required: [true, 'Project should have a cost']
-    },
     client: {
       type: String,
       required: [true, 'Project should have a client']

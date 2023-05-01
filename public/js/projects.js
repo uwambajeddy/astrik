@@ -38,6 +38,7 @@ if (modalAdd) {
             }, 3000);
 
         } catch (error) {
+            console.log(error)
             popupLoadingRemove();
             if (error.response.data?.message) {
                 popup(failure, `${error.response.data.message}`);
