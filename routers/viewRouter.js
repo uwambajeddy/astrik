@@ -14,6 +14,7 @@ import {
   blogPage,
   resetpassword,
   subscription,
+  careerPage,
 } from '../controllers/viewController.js';
 
 import { isLoggedIn, protect } from '../controllers/authController.js';
@@ -36,6 +37,7 @@ router.use(isLoggedIn);
 router.get('/', homePage);
 router.get('/training', trainingPage);
 router.get('/about', aboutPage);
+router.get('/careers', careerPage);
 router.get('/projects', projectsPage);
 router.get('/projects/:id', projectPage);
 router.get('/services', servicesPage);

@@ -46,6 +46,9 @@ export const homePage = catchAsync(async (req, res, next) => {
 export const contactPage = catchAsync(async (req, res, next) => { 
   res.status(200).render('contact');
 });
+export const careerPage = catchAsync(async (req, res, next) => { 
+  res.status(200).render('careers');
+});
 
 export const servicesPage = catchAsync(async (req, res, next) => { 
   res.status(200).render('services');
