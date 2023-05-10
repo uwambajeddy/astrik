@@ -4,8 +4,6 @@ import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
 import blogModel from '../models/blogModel.js';
 import commentModel from '../models/commentModal.js';
-import Email from '../util/email.js';
-import userModel from '../models/userModel.js';
 import { fileUpload } from '../util/multer.js';
 import BlogImages from '../models/blogImagesModal.js';
 
