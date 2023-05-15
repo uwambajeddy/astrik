@@ -75,11 +75,6 @@ export const updateJob = catchAsync(async (req, res, next) => {
 });
 
 
-
-
-
-
-
 export const getApplications = catchAsync(async (req, res, next) => {
   const applications = await applicationModel.find();
 
