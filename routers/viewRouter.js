@@ -7,7 +7,6 @@ import {
   projectsPage,
   projectPage,
   loginPage,
-  signupPage,
   trainingPage,
   forgotPage,
   servicesPage,
@@ -44,7 +43,6 @@ router.get('/news', blogsPage);
 router.get('/news/:id', blogPage);
 router.get('/login', loginPage);
 router.get('/forgot', forgotPage);
-router.get('/signup', signupPage);
 router.get('/contact', contactPage);
 router.get('/resetpassword/:token', resetpassword);
 

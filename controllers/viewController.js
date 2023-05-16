@@ -76,19 +76,22 @@ export const servicesPage = catchAsync(async (req, res, next) => {
 });
 
 export const trainingPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "Training center - Astrik International Ltd";
+  metaTags.description = "We offers various training and capacity building programs, skill development & field investigation modules which are internationally accredited.";
   res.status(200).render('training',{
     metaTags
   });
 });
 
 export const loginPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "Login - Astrik International Ltd";
+  metaTags.description = null;
   res.status(200).render('login');
-});
-export const signupPage = catchAsync(async (req, res, next) => {
-  res.status(200).render('signup');
 });
 
 export const blogsPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "News - Astrik International Ltd";
+  metaTags.description = "View the latest news and activites ";
   const blogImages = await BlogImages.find();
   const blogs = await blogModel.aggregate([
     {
@@ -113,6 +116,7 @@ export const blogsPage = catchAsync(async (req, res, next) => {
 });
 
 export const blogPage = catchAsync(async (req, res, next) => {
+
   const { id } = req.params;
   const blogs = await blogModel.aggregate([
     {
@@ -169,7 +173,11 @@ export const blogPage = catchAsync(async (req, res, next) => {
     return next(new AppError('No Blog found with that ID', 404));
   }
 
+  metaTags.title = blog[0].title;
+  metaTags.description = blog[0].body;
+
   res.status(200).render('blog-details', {
+    metaTags,
     blog: blog[0],
     blogs,
   });
@@ -217,13 +225,19 @@ export const projectPage = catchAsync(async (req, res, next) => {
     return next(new AppError('No project found with that ID', 404));
   }
 
+  metaTags.title = project[0].name;
+  metaTags.description = project[0].description;
+
   res.status(200).render('project-details', {
+    metaTags,
     project: project[0],
     projects,
   });
 });
 
 export const projectsPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "Projects - Astrik International Ltd";
+  metaTags.description = "Our latest projects";
   const projects = await projectModel.aggregate([
     {
       $lookup: {
@@ -248,6 +262,8 @@ export const projectsPage = catchAsync(async (req, res, next) => {
 });
 
 export const resetpassword = catchAsync(async (req, res, next) => {
+  metaTags.title = "Reset password - Astrik International Ltd";
+  metaTags.description = null;
   const { token } = req.params;
   res.status(200).render('reset-password', {
     token,
@@ -255,10 +271,14 @@ export const resetpassword = catchAsync(async (req, res, next) => {
 });
 
 export const forgotPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "Forgot password - Astrik International Ltd";
+  metaTags.description = null;
   res.status(200).render('forgot-password');
 });
 
 export const aboutPage = catchAsync(async (req, res, next) => {
+  metaTags.title = "About us - Astrik International Ltd";
+  metaTags.description = "since its incorporation in 2014, the company has entered into partnerships with highly recognized international organizations/institutions, which operate at the forefront of technical excellence in developing infrastructure solutions around the world.";
   res.status(200).render('about',{
     metaTags
   });
