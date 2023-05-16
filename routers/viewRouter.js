@@ -13,7 +13,6 @@ import {
   servicesPage,
   blogPage,
   resetpassword,
-  subscription,
   careerPage,
 } from '../controllers/viewController.js';
 
@@ -47,7 +46,6 @@ router.get('/login', loginPage);
 router.get('/forgot', forgotPage);
 router.get('/signup', signupPage);
 router.get('/contact', contactPage);
-router.get('/subscription', protect, subscription);
 router.get('/resetpassword/:token', resetpassword);
 
 router.get('/admin', protect, adminPage);

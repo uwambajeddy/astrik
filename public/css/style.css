@@ -3291,6 +3291,7 @@ ol.list-num-count.list-outline-none > li:before {
   border-bottom: 1px solid transparent;
   background-color: #001c4e;
   color: #fff;
+  white-space: nowrap;
 }
 
 .wt-tabs.vertical.right.bg-tabs .nav-tabs > li > a {
@@ -3330,7 +3331,7 @@ ol.list-num-count.list-outline-none > li:before {
 /*4.5 tabs style 3  [ left-nav ] */
 .wt-tabs.vertical .nav-tabs {
   float: left;
-  width: 170px;
+  /* width: 170px; */
   border-bottom: none;
   border-right: 0px;
 }
@@ -3370,7 +3371,7 @@ ol.list-num-count.list-outline-none > li:before {
 }
 .wt-tabs.vertical .tab-content {
   border-left: 0px;
-  margin-left: 169px;
+  margin-left: 290px;
 }
 
 /*4.6 tabs style 4  [ left-nav & content with border ] */

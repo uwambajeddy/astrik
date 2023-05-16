@@ -4,7 +4,15 @@ import blogModel from '../models/blogModel.js';
 import mongoose from 'mongoose';
 import BlogImages from '../models/blogImagesModal.js';
 
+const metaTags = {
+    title: "",
+    description:""
+};
+
 export const homePage = catchAsync(async (req, res, next) => {
+  metaTags.title = "Home - Astrik International Ltd";
+  metaTags.description = "ASTRIK International Ltd is an experienced, privately owned Engineering Consulting Company with its office based in Kigali City of Kigali, Rwanda. Since its incorporation in January 2014, the Company has entered into partnerships with highly recognized International Organizations/Institutions, which operate at the forefront of technical excellence in developing professional engineering service and infrastructure solutions globally.";
+    
   const projects = await projectModel.aggregate([
     {
       $lookup: {
@@ -38,24 +46,39 @@ export const homePage = catchAsync(async (req, res, next) => {
   ]);
 
   res.status(200).render('index', {
+    metaTags,
     projects,
     blog
   });
 });
 
 export const contactPage = catchAsync(async (req, res, next) => { 
-  res.status(200).render('contact');
+  metaTags.title = "Contact us - Astrik International Ltd";
+  metaTags.description = "Get in touch with us";
+  res.status(200).render('contact',{
+    metaTags,
+  });
 });
 export const careerPage = catchAsync(async (req, res, next) => { 
-  res.status(200).render('careers');
+  metaTags.title = "Careers - Astrik International Ltd";
+  metaTags.description = "Get an opportunity to work with us";
+  res.status(200).render('careers',{
+    metaTags
+  });
 });
 
 export const servicesPage = catchAsync(async (req, res, next) => { 
-  res.status(200).render('services');
+  metaTags.title = "Service - Astrik International Ltd";
+  metaTags.description = "Get an opportunity to work with us";
+  res.status(200).render('services',{
+    metaTags
+  });
 });
 
 export const trainingPage = catchAsync(async (req, res, next) => {
-  res.status(200).render('training');
+  res.status(200).render('training',{
+    metaTags
+  });
 });
 
 export const loginPage = catchAsync(async (req, res, next) => {
@@ -83,6 +106,7 @@ export const blogsPage = catchAsync(async (req, res, next) => {
   ]);
 
   res.status(200).render('blog', {
+    metaTags,
     blogs,
     blogImages
   });
@@ -218,14 +242,11 @@ export const projectsPage = catchAsync(async (req, res, next) => {
   ]);
 
   res.status(200).render('project', {
+    metaTags,
     projects,
   });
 });
 
-
-export const subscription = catchAsync(async (req, res, next) => {
-  res.status(200).render('unsubscribe');
-});
 export const resetpassword = catchAsync(async (req, res, next) => {
   const { token } = req.params;
   res.status(200).render('reset-password', {
@@ -238,5 +259,7 @@ export const forgotPage = catchAsync(async (req, res, next) => {
 });
 
 export const aboutPage = catchAsync(async (req, res, next) => {
-  res.status(200).render('about');
+  res.status(200).render('about',{
+    metaTags
+  });
 });
