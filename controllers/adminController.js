@@ -4,6 +4,7 @@ import blogModel from '../models/blogModel.js';
 import userModel from '../models/userModel.js';
 import commentModel from '../models/commentModal.js';
 import messageModel from '../models/messageModal.js';
+import careerModal from '../models/careerModel.js';
 import mongoose from 'mongoose';
 import ProjectImages from '../models/projectImagesModal.js';
 import BlogImages from '../models/blogImagesModal.js';
@@ -114,10 +115,17 @@ export const adminCommentsPage = catchAsync(async (req, res, next) => {
 });
 
 export const adminUsersPage = catchAsync(async (req, res, next) => {
-    const users = await userModel.find().select('+active');;
+    const users = await userModel.find().select('+active');
 
     res.status(200).render('admin/users', {
         users,
+    });
+});
+export const adminCareerPage = catchAsync(async (req, res, next) => {
+    const jobs = await careerModal.find();
+
+    res.status(200).render('admin/jobs', {
+        jobs,
     });
 });
 export const adminProjectImagesPage = catchAsync(async (req, res, next) => {

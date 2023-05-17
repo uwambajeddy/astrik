@@ -1,7 +1,6 @@
 import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
 import careerModel from '../models/careerModel.js';
-import applicationModel from '../models/applicationModel.js';
 
 
 

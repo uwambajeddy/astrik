@@ -1,8 +1,10 @@
 import catchAsync from '../util/catchAsync.js';
 import projectModel from '../models/projectModel.js';
 import blogModel from '../models/blogModel.js';
+import careerModel from '../models/careerModel.js';
 import mongoose from 'mongoose';
 import BlogImages from '../models/blogImagesModal.js';
+import AppError from '../util/AppError.js';
 
 const metaTags = {
     title: "",
@@ -59,11 +61,16 @@ export const contactPage = catchAsync(async (req, res, next) => {
     metaTags,
   });
 });
+
 export const careerPage = catchAsync(async (req, res, next) => { 
   metaTags.title = "Careers - Astrik International Ltd";
   metaTags.description = "Get an opportunity to work with us";
+
+  const jobs = await careerModel.find();
+
   res.status(200).render('careers',{
-    metaTags
+    metaTags,
+    jobs
   });
 });
 
@@ -86,7 +93,9 @@ export const trainingPage = catchAsync(async (req, res, next) => {
 export const loginPage = catchAsync(async (req, res, next) => {
   metaTags.title = "Login - Astrik International Ltd";
   metaTags.description = null;
-  res.status(200).render('login');
+  res.status(200).render('login', {
+    metaTags
+  });
 });
 
 export const blogsPage = catchAsync(async (req, res, next) => {
@@ -234,6 +243,23 @@ export const projectPage = catchAsync(async (req, res, next) => {
     projects,
   });
 });
+export const jobPage = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
+
+  const job = await careerModel.findById(id)
+  if (!job) {
+    return next(new AppError('No job found with that ID', 404));
+  }
+
+  metaTags.title = job.title;
+  metaTags.description = job.description;
+
+  res.status(200).render('job-details', {
+    metaTags,
+    job,
+  });
+});
 
 export const projectsPage = catchAsync(async (req, res, next) => {
   metaTags.title = "Projects - Astrik International Ltd";
@@ -267,13 +293,16 @@ export const resetpassword = catchAsync(async (req, res, next) => {
   const { token } = req.params;
   res.status(200).render('reset-password', {
     token,
+    metaTags
   });
 });
 
 export const forgotPage = catchAsync(async (req, res, next) => {
   metaTags.title = "Forgot password - Astrik International Ltd";
   metaTags.description = null;
-  res.status(200).render('forgot-password');
+  res.status(200).render('forgot-password', {
+    metaTags
+  });
 });
 
 export const aboutPage = catchAsync(async (req, res, next) => {

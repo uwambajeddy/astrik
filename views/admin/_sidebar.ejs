@@ -56,6 +56,16 @@
                         </li>
                         <li>
                             <script>
+                                location.href.includes('career') ? document.write(
+                                        '<a href="/admin/careers" class="active"><i class="lnr lnr-paperclip"></i>') :
+                                    document
+                                    .write('<a href="/admin/careers"><i class="lnr lnr-paperclip"></i>')
+                            </script>
+                            <p>Careers</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
                                 location.href.includes('project') ? document.write(
                                         '<a href="/admin/projects" class="active"><i class="lnr lnr-bubble"></i>') :
                                     document

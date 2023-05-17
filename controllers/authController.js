@@ -169,6 +169,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
+
+
 export const resetPassword = catchAsync(async (req, res, next) => {
   const hashedToken = createHash('sha256')
     .update(req.params.token)
@@ -190,6 +192,11 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 
   createSendToken(user, 200, res);
 });
+
+
+
+
+
 
 export const updatePassword = catchAsync(async (req, res, next) => {
   const user = await userModel.findById(req.user.id).select('+password');

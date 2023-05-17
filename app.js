@@ -9,6 +9,7 @@ import viewRouter from './routers/viewRouter.js';
 import globalErrorHandler from './controllers/errorController.js';
 import AppError from './util/AppError.js';
 import messageRouter from './routers/messageRouter.js';
+import jobRouter from './routers/jobRouter.js';
 import userRouter from './routers/userRouter.js';
 import blogsRouter from './routers/blogsRouter.js';
 import projectsRouter from './routers/projectsRouter.js';
@@ -55,6 +56,7 @@ app.use('/api/v1/blog-images/', blogImagesRouter);
 app.use('/api/v1/projects/', projectsRouter);
 app.use('/api/v1/project-images/', projectImagesRouter);
 app.use('/api/v1/messages/', messageRouter);
+app.use('/api/v1/jobs/', jobRouter);
 app.use('/', viewRouter);
 
 app.all('*', (req, res, next) => {

@@ -13,6 +13,7 @@ import {
   blogPage,
   resetpassword,
   careerPage,
+  jobPage,
 } from '../controllers/viewController.js';
 
 import { isLoggedIn, protect } from '../controllers/authController.js';
@@ -27,6 +28,7 @@ import {
   adminUsersPage, 
   adminProfilePage,
   adminBlogImagesPage,
+  adminCareerPage,
 } from '../controllers/adminController.js';
 
 const router = express.Router();
@@ -36,6 +38,7 @@ router.get('/', homePage);
 router.get('/training', trainingPage);
 router.get('/about', aboutPage);
 router.get('/careers', careerPage);
+router.get('/career-details/:id', jobPage);
 router.get('/projects', projectsPage);
 router.get('/projects/:id', projectPage);
 router.get('/services', servicesPage);
@@ -55,6 +58,7 @@ router.get('/admin/subscribers', protect, adminSubscribersPage);
 router.get('/admin/projects', protect, adminProjectsPage);
 router.get('/admin/projects/:id', protect, adminProjectImagesPage);
 router.get('/admin/users', protect, adminUsersPage);
+router.get('/admin/careers', protect, adminCareerPage);
 router.get('/admin/profile', protect, adminProfilePage);
 
 export default router;
