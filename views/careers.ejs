@@ -47,7 +47,9 @@
 
     <!--CAREER SECTION START -->
     <div class="container p-tb20">
-            <% jobs.map( job =>{
+        <%
+         if(jobs.length !== 0){
+             jobs.map( job =>{
                 let deadLine= `${job.deadLine}`.split(" ");
                 
                 %>
@@ -67,7 +69,10 @@
                 </div>
             </div>
             
-            <% })%>
+            <% });
+        }else{%>
+            <center><h2>Not hiring at the moment. </h2></center>
+            <%}%>
         </div>
     <!--CAREER SECTION END -->
 
