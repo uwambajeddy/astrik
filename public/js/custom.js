@@ -861,3 +861,29 @@ All JavaScript fuctions Start
 //=== Switcher panal slide function END	=====================//
 
 })(window.jQuery);
+
+// ==================================================================
+let target = location.href.split('#')[1];
+switch (target) {
+	case 'building-13':
+		$('.nav a[href="#building-13"]').tab('show');
+		break;
+	case 'sanitation-13':
+		$('.nav a[href="#sanitation-13"]').tab('show');
+		break;
+	case 'dams-13':
+		$('.nav a[href="#dams-13"]').tab('show');
+		break;
+	case 'resilent-13':
+		$('.nav a[href="#resilent-13"]').tab('show');
+		break;
+	case 'infrastructure-13':
+		$('.nav a[href="#infrastructure-13"]').tab('show');
+		break;
+	case 'niche-13':
+		$('.nav a[href="#niche-13"]').tab('show');
+		break;
+	default:
+		break;
+
+}
