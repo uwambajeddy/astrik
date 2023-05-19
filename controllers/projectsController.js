@@ -47,7 +47,7 @@ export const deleteProject = catchAsync(async (req, res, next) => {
 });
 
 export const createProject = catchAsync(async (req, res, next) => {
-
+  req.body.description = decode(req.body.description);
   let project = await projectModel.create(req.body);
 
   if (req.file) {
@@ -85,6 +85,7 @@ export const createProjectImage = catchAsync(async (req, res, next) => {
 });
 
 export const updateProject = catchAsync(async (req, res, next) => {
+  if(req.body.description)  req.body.description = decode(req.body.description);
   const project = await projectModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true

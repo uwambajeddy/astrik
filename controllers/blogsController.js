@@ -82,6 +82,7 @@ export const deleteBlog = catchAsync(async (req, res, next) => {
 });
 
 export const createBlog = catchAsync(async (req, res, next) => {
+  req.body.body = decode(req.body.body);
   let blog = await blogModel.create(req.body);
 
   if (req.file) {
@@ -99,6 +100,7 @@ export const createBlog = catchAsync(async (req, res, next) => {
 });
 
 export const updateBlog = catchAsync(async (req, res, next) => {
+  if(req.body.body)  req.body.body = decode(req.body.body);
   const blog = await blogModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

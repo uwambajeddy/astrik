@@ -27,7 +27,7 @@ if (modalAdd) {
         const formData = new FormData(addjobForm);
         for (var [key, value] of formData.entries()) {
             dataValues[key] = value;
-          }
+        }
         try {
             await axios
                 .post(`/api/v1/jobs/`, dataValues);

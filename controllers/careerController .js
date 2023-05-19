@@ -1,6 +1,8 @@
 import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
 import careerModel from '../models/careerModel.js';
+import applicationModel from '../models/applicationModal.js';
+import  decode from 'decode-html';
 
 
 
@@ -45,6 +47,8 @@ export const deleteJob = catchAsync(async (req, res, next) => {
 });
 
 export const createJob = catchAsync(async (req, res, next) => {
+
+  req.body.body = decode(req.body.body);
   let career = await careerModel.create(req.body);
 
   res.status(201).json({
@@ -56,6 +60,7 @@ export const createJob = catchAsync(async (req, res, next) => {
 });
 
 export const updateJob = catchAsync(async (req, res, next) => {
+  if(req.body.body)  req.body.body = decode(req.body.body);
   const career = await careerModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

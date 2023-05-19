@@ -39,8 +39,11 @@
                 <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0]?.image%>" alt=""></a></div>
                 <div class="table_column" onclick="readMoreModal('Project name','<%= project.name%>')">
                     <%= project.name.slice(0,15)%>... </div>
-                <div class="table_column" onclick="readMoreModal('Full description','<%= project.description%>')">
-                    <%= project.description.slice(0,20)%>...</div>
+
+                    <div class="table_column">
+                        <button class="mod_btn update_btn"  onclick="readMoreModal('Full description',`<%=project.description%>`)"><span
+                            class="lnr lnr-eye"></span> View</button>
+                       </div>
                 <div class="table_column"><%=  project?.type %></div>
                 <div class="table_column"><%=  project?.client %></div>
                 <div class="table_column"><%=  project?.role %></div>
@@ -175,24 +178,6 @@ var dateStringTo = new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 600
 <!--  JavaScript -->
 <script src="/js/projects.js"></script>
 <script src="/js/main-dash.js"></script>
-<script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-                value: 'First.Name',
-                title: 'First Name'
-            },
-            {
-                value: 'Email',
-                title: 'Email'
-            },
-        ]
-    });
-</script>
 <!--  JavaScript -->
 </body>
 

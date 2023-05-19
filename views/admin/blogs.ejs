@@ -36,8 +36,10 @@
                             alt=""></a></div>
                 <div class="table_column" onclick="readMoreModal('Title',`<%= blog.title%>`)">
                     <%= blog.title.slice(0,15)%>... </div>
-                <div class="table_column" onclick="readMoreModal('Content',`<%= blog.body %>`)">
-                    <%- blog.body.slice(0,20)%>...</div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="readMoreModal('Content',`<%= blog.body %>`)"><span
+                            class="lnr lnr-eye"></span> View</button>
+                </div>
                 <div class="table_column"><a href="/admin/blogs/comments/<%= blog._id%>"
                         class="mod_btn nav_btn"><%= blog.comments.length%></a></div>
                 <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
@@ -123,24 +125,6 @@ var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
 <!--  JavaScript -->
 <script src="/js/blogs.js"></script>
 <script src="/js/main-dash.js"></script>
-<script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-                value: 'First.Name',
-                title: 'First Name'
-            },
-            {
-                value: 'Email',
-                title: 'Email'
-            },
-        ]
-    });
-</script>
 <!--  JavaScript -->
 </body>
 
