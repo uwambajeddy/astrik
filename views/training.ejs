@@ -1,5 +1,220 @@
 <%- include('_header')%>
 
+<!-- -TERMS AND CONDITION MODAL START -->
+<!-- MODAL -->
+<div id="large-Modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- MODAL CONTENT -->
+        <div class="modal-content">
+            <div class="modal-header bg-secondry">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-black">Terms and conditions</h4>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-uppercase font-20">payments</h2>
+                <p>Fees:
+                    For Participants : 1,000 USD , for 2 or more (950)
+                    USD
+                </p>
+                <p>The full fee is payable in advance and includes the cost of all
+                    lunches, refreshments, tuition, course certificate and
+                    documentation, including a copy of the FIDIC contracts to be
+                    discussed during the workshop. The language of the workshop is
+                    English.
+                </p>
+                <p>Payment of the fee is due in advance as follows:
+                    Cash, Credit card or bank transfer (in USD)
+                </p>
+                <p>JEA reserves the right to refuse admission or withhold materials
+                    if payment is not received.
+                    Invoices and/or receipts will be issued to all delegates.
+                </p>
+                <p>
+                    Refunds (less 10% charge to cover administration costs) will be
+                    made for cancellations received in writing no later than 14 days
+                    before the event. After this date it is regretted that refunds of fees
+                    will not be made.
+                </p>
+                <p>
+                    It may be necessary for reasons beyond the control of JEA to
+                    change the contents or timing of the program, the speakers, the
+                    date or the venue. In the unlikely event of the program being
+                    cancelled by JEA, we will automatically make a full refund.
+                </p>
+                <p>
+                    Participants are responsible for arranging their own travel, visas
+                    and overnight hotel accommodation and these are not included in
+                    the fee. Venue details will be sent following confirmation of
+                    registration.
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-button button-sm text-uppercase letter-spacing-2 cancel-button"
+                    data-dismiss="modal">I don't agree</button>
+                <button type="button" class="site-button text-uppercase button-sm letter-spacing-2"
+                    id="submit-button">agree & register
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -TERMS AND CONDITION MODAL START -->
+
+<!--REGISTRATION MODAL START -->
+<div id="with-form" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header bg-secondry">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-black">Register for training</h4>
+            </div>
+            <div class="modal-body">
+                <form id="demo-form" class="program-form form-horizontal mb-lg" novalidate>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Program</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="program" id="program" required>
+                                <option hidden disabled selected value>choose Program</option>
+                                <option value="Project Management Professional">Project Management Professional (PMP)
+                                </option>
+                                <option value="International Road Federation">International Road Federation</option>
+                                <option value="Fidic Training Program">Fidic Training Program</option>
+                                <option value="Asphalt Technology">Asphalt Technology</option>
+                                <option value="Hdm-4 version 2 training courses">Hdm-4 version 2 training courses
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class=" form-group mt-lg fidic-modules">
+                        <label class="col-sm-3 control-label">Choose module</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="module" id="module" multiple multiselect-search="true"
+                                multiselect-select-all="true" multiselect-max-items="4">
+                                <option value="Practical use of FIDIC Contracts">Module 1 - Practical use of FIDIC
+                                    Contracts
+                                </option>
+                                <option value="Claims and Dispute Resolutions unser FIDIC">Module 2 - Claims and Dispute
+                                    Resolutions unser FIDIC</option>
+                                <option value="Understanding DABs">Module 3 - Understanding DABs</option>
+                                <option value="FIDIC Contracts Management and Administration">Module 4 - FIDIC Contracts
+                                    Management and Administration</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input name="firstName" class="form-control" placeholder="Type your first name..." required
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input name="lastName" class="form-control" placeholder="Type your last name..." required
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input name="email" class="form-control" placeholder="Type your email..." required
+                                type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Cell</label>
+                        <div class="col-sm-9">
+                            <input name="number" class="form-control" placeholder="Type your Phone number..." required
+                                type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Company name</label>
+                        <div class="col-sm-9">
+                            <input name="companyName" class="form-control" placeholder="Type your company name..."
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Company address</label>
+                        <div class="col-sm-9">
+                            <input name="companyAddress" class="form-control" placeholder="Type your company address..."
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Payment details</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentDetails" value="Bank Transfer"
+                                    id="paymentDetails" checked>
+                                <label class="form-check-label" for="paymentDetails">
+                                    Bank Transfer(Own transfer charges on fee)
+
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentDetails" value="Cheque"
+                                    id="paymentDetails2" required>
+                                <label class="form-check-label" for="paymentDetails2">
+                                    Cheque
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Issue the invoice to</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="invoiceIssue" value="company"
+                                    id="invoiceIssue" checked>
+                                <label class="form-check-label" for="invoiceIssue">
+                                    Company
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="invoiceIssue" value="participant"
+                                    id="invoiceIssue2">
+                                <label class="form-check-label" for="invoiceIssue2">
+                                    Participant
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Specific requirement</label>
+                        <div class="col-sm-9">
+                            <textarea rows="5" class="form-control" name="specificRequirement"
+                                placeholder="Type your Specific requirement..." required></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="alert alert-info fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><i class="fa fa-info-circle"></i> </strong> Participants will be allowed to attend upon the
+                issue of purchase order.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-button text-uppercase button-sm letter-spacing-2 m-r15"
+                    data-dismiss="modal">Close</button>
+                <span class="validation-layer"></span>
+                <button type="button" class="site-button button-sm text-uppercase letter-spacing-2" data-dismiss="modal"
+                    data-toggle="modal" data-target="#large-Modal" id="continue-button">Continue</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--REGISTRATION MODAL END -->
+
 <!-- CONTENT START -->
 <div class="page-content">
     <!-- WHO WE ARE SECTION START -->
@@ -32,6 +247,10 @@
                                     participants
                                     during the training.
                                 </p>
+                                <button type="button"
+                                    class="site-button text-uppercase letter-spacing-2 font-weight-800 m-b30"
+                                    data-toggle="modal" data-target="#with-form">Register here</button>
+
                             </div>
                         </div>
                     </div>
@@ -109,6 +328,7 @@
     </div>
     <!-- WHO WE ARE SECTION END -->
 
+
     <!-- OUR PROGRAMS SECTION START -->
 
     <div class="container p-tb80">
@@ -140,7 +360,8 @@
                         Whether you would like to broaden your knowledge about project management or you would like
                         to get a certification as a PMP, this training is the right one for you. With our hands on and
                         practical approach, you will be able to come up to pace and flow with other participants.
-                        Come meet and network with other Project Leaders, Managers and Executives as have fun at our International Edition.
+                        Come meet and network with other Project Leaders, Managers and Executives as have fun at our
+                        International Edition.
                     </div>
                     <div class="m-tb30">
                         <div class="section-head">
@@ -362,7 +583,7 @@
                                 </tr>
                                 <tr>
                                     <td>Module 3</td>
-                                    <td>FIDIC Contracts Management and Administration</td>
+                                    <td>Understanding DABs</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -377,7 +598,7 @@
                             <tbody>
                                 <tr>
                                     <td>Module 4</td>
-                                    <td>Understanding DABs</td>
+                                    <td>FIDIC Contracts Management and Administration</td>
 
                                 </tr>
                             </tbody>
@@ -630,7 +851,9 @@
 <!-- JAVASCRIPT  FILES ========================================= -->
 <script src="/js/jquery-1.12.4.min.js"></script><!-- JQUERY.MIN JS -->
 <script src="/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+</script>
 
 
 <script src="/js/magnific-popup.min.js"></script><!-- MAGNIFIC-POPUP JS -->
@@ -650,7 +873,9 @@
 <script src="/js/particles.js"></script><!-- CANVAS EFFECT   -->
 <script src="/js/app.js"></script><!-- CANVAS EFFECT   -->
 
+<script src="/js/multiselect-dropdown.js"></script><!-- multiselect-dropdown FUCTIONS  -->
 <script src="/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="/js/training.js"></script><!-- CUSTOM FUCTIONS  -->
 <script src="/js/shortcode.js"></script><!-- SHORTCODE FUCTIONS  -->
 
 
@@ -666,6 +891,7 @@
 <script src="/js/rev-script-1.js"></script>
 
 <script src="/js/map.script.js"></script><!-- MAP FUCTIONS [ this file use with google map]  -->
+
 
 
 </body>

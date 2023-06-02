@@ -10,6 +10,7 @@ import globalErrorHandler from './controllers/errorController.js';
 import AppError from './util/AppError.js';
 import messageRouter from './routers/messageRouter.js';
 import jobRouter from './routers/jobRouter.js';
+import trainingRouter from './routers/trainingRouter.js';
 import userRouter from './routers/userRouter.js';
 import blogsRouter from './routers/blogsRouter.js';
 import projectsRouter from './routers/projectsRouter.js';
@@ -28,7 +29,7 @@ app.use(cors(corsConfig));
 app.options('*', cors(corsConfig));
 app.enable('trust proxy');
 
-app.use(function (req, res, next) { 
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', req.header('origin'));
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
@@ -44,7 +45,7 @@ app.use(xss());
 
 app.use(compression());
 
-app.set('view engine', 'ejs'); 
+app.set('view engine', 'ejs');
 app.set('views', ['./views', './views/admin']);
 app.use(express.static('public'));
 
@@ -57,6 +58,7 @@ app.use('/api/v1/projects/', projectsRouter);
 app.use('/api/v1/project-images/', projectImagesRouter);
 app.use('/api/v1/messages/', messageRouter);
 app.use('/api/v1/jobs/', jobRouter);
+app.use('/api/v1/training/', trainingRouter);
 app.use('/', viewRouter);
 
 app.all('*', (req, res, next) => {
@@ -68,4 +70,3 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 export default app;
-      
