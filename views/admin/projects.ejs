@@ -1,4 +1,7 @@
 <%- include("_sidebar")%>
+<script>
+    const quills = {}
+</script>
 <!--================Tables Banner Area =================-->
 <section class="tables_banner_area">
     <div class="main_title">
@@ -36,14 +39,16 @@
                 let to_date= `${project.date_to}`.split(" ");
                 %>
             <div class="table_row row_dark">
-                <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0]?.image%>" alt=""></a></div>
+                <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0]?.image%>"
+                            alt=""></a></div>
                 <div class="table_column" onclick="readMoreModal('Project name','<%= project.name%>')">
                     <%= project.name.slice(0,15)%>... </div>
 
-                    <div class="table_column">
-                        <button class="mod_btn update_btn"  onclick="readMoreModal('Full description',`<%=project.description%>`)"><span
+                <div class="table_column">
+                    <button class="mod_btn update_btn"
+                        onclick="readMoreModal('Full description',`<%=project.description%>`)"><span
                             class="lnr lnr-eye"></span> View</button>
-                       </div>
+                </div>
                 <div class="table_column"><%=  project?.type %></div>
                 <div class="table_column"><%=  project?.client %></div>
                 <div class="table_column"><%=  project?.role %></div>
@@ -101,14 +106,16 @@
                 <input type="date" class="form-control" id="date_to" name="date_to" placeholder="Project ending date">
             </div>
             <div class="form-group">
-                <select  class="form-control" name="type" id="type">
+                <select class="form-control" name="type" id="type">
                     <option hidden disabled selected value>Project type</option>
                     <option value="house">Building</option>
                     <option value="road">Road</option>
                 </select>
             </div>
             <div class="form-group">
-                <textarea type="text" class="form-control" id="description" name="description" placeholder="Project description"></textarea>
+                <input type="hidden" class="form-control" name="description" id="_body" />
+                <div id="editor-container" style="height: 200px;">
+                </div>
             </div>
             <button type="submit" value="submit" class="btn submit_btn">Add</button>
         </div>
@@ -136,32 +143,37 @@ var dateStringTo = new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 600
                 <input type="text" class="form-control" id="name" name="name" value="<%= project.name%>">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="client" name="client" value="<%= project.client%>" placeholder="Project client">
+                <input type="text" class="form-control" id="client" name="client" value="<%= project.client%>"
+                    placeholder="Project client">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="location" name="location" value="<%= project.location%>" placeholder="Project location">
+                <input type="text" class="form-control" id="location" name="location" value="<%= project.location%>"
+                    placeholder="Project location">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="role" name="role" value="<%= project.role%>" placeholder="Project role">
+                <input type="text" class="form-control" id="role" name="role" value="<%= project.role%>"
+                    placeholder="Project role">
             </div>
             <div class="form-group" title="Project starting date">
                 <input type="date" class="form-control" id="date" name="date" placeholder="Project date"
                     value="<%=dateString%>">
             </div>
             <div class="form-group" title="Project ending date">
-                <input type="date" class="form-control" id="date_to" name="date_to" 
-                value="<%=dateStringTo%>">
+                <input type="date" class="form-control" id="date_to" name="date_to" value="<%=dateStringTo%>">
             </div>
             <div class="form-group">
-                <select name="type"  class="form-control" id="type">
-                    
-                    <option value="<%= project.type %>" ><%= project.type %></option>
-                    <option value="house" >Building</option>
+                <select name="type" class="form-control" id="type">
+
+                    <option value="<%= project.type %>"><%= project.type %></option>
+                    <option value="house">Building</option>
                     <option value="road">Road</option>
                 </select>
             </div>
             <div class="form-group">
-                <textarea type="text" class="form-control" id="description" name="description" placeholder="Project description"><%= project.description%></textarea>
+                <input type="hidden" class="form-control" name="description" id="_description_<%= project._id%>" />
+                <div id="editor-container-<%= project._id%>" style="height: 200px;">
+                    <%- project.description%>
+                </div>
             </div>
         </div>
 
@@ -171,11 +183,102 @@ var dateStringTo = new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 600
 
     </form>
 </section>
+<!--  JavaScript -->
+<script>
+    quills["<%= project._id %>"] = new Quill('#editor-container-<%= project._id%>', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quills["<%= project._id %>"].on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_description_<%= project._id%>").value = quills["<%= project._id %>"].root
+            .innerHTML;
+    });
+</script>
+<!--  JavaScript -->
 <% });%>
 <!--================Modal Banner Area =================-->
 
 
 <!--  JavaScript -->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quill.on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body").value = quill.root.innerHTML;
+    });
+</script>
 <script src="/js/projects.js"></script>
 <script src="/js/main-dash.js"></script>
 <!--  JavaScript -->

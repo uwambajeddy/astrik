@@ -33,21 +33,31 @@
                 %>
             <div class="table_row row_dark">
                 <div class="table_column"><%= application.firstName%> <%= application.lastName%></div>
-                <div class="table_column"><%= application.email%> </div>
+                <div class="table_column" onclick="readMoreModal('Email',`<%= application.email%>`)">
+                    <%= application.email.slice(0,7)%>... </div>
                 <div class="table_column"><%= application.program%> </div>
-                <div class="table_column" onclick="readMoreModal('Massage',`<%= application.application%>`)">
-                    <%= application.application.slice(0,15)%>... </div>
-                <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
-                <div class="table_column">
-                    <button class="mod_btn update_btn"><a href="mailto:<%= application.email%>" target="_blank"><i
-                                class="lnr lnr-checkmark-circle"></i> Reply</a></button>
-                    <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= application._id%>`)"><span
-                            class="lnr lnr-trash"></span> Delete</button>
-                </div>
+                <%if(application.module){%>
+                <div class="table_column" onclick="readMoreModal('Modules',`<%= application.module.join(', ')%>`)">
+                    <%= application.module.join(",").slice(0,15)%>... </div>
+                <%}%>
+                <div class="table_column"><%= application.companyName%>
             </div>
-            <% });%>
-
+            <div class="table_column"><%= application.companyAddress%></div>
+            <div class="table_column"><%= application.number%></div>
+            <div class="table_column"><%= application.paymentDetails%></div>
+            <div class="table_column"><%= application.invoiceIssue%></div>
+            <div class="table_column" onclick="readMoreModal('Requirements',`<%= application.specificRequirement%>`)">
+                <%= application.specificRequirement.slice(0,15)%>... </div>
+            <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %>
+            </div>
+            <div class="table_column">
+                <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= application._id%>`)"><span
+                        class="lnr lnr-trash"></span> Delete</button>
+            </div>
         </div>
+        <% });%>
+
+    </div>
     </div>
     <div class="main_footer">
 
@@ -61,7 +71,7 @@
 
 
 <!--  JavaScript -->
-<script src="/js/adminMessages.js"></script>
+<script src="/js/adminTraining.js"></script>
 <script src="/js/main-dash.js"></script>
 <!--  JavaScript -->
 </body>

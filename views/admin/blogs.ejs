@@ -1,5 +1,7 @@
 <%- include("_sidebar")%>
-
+<script>
+    const quills = {}
+</script>
 <!--================Tables Banner Area =================-->
 <section class="tables_banner_area">
     <div class="main_title">
@@ -83,10 +85,11 @@
 
         <div class="contact_form_message">
             <div class="form-group">
-                <textarea class="form-control" name="body" id="body" rows="1" placeholder="Body"></textarea>
+                <input type="hidden" class="form-control" name="body" id="_body" />
+                <div id="editor-container" style="height: 200px;">
+                </div>
+                <button type="submit" value="submit" class="btn submit_btn">Create</button>
             </div>
-            <button type="submit" value="submit" class="btn submit_btn">Create</button>
-        </div>
 
     </form>
 </section>
@@ -112,17 +115,110 @@ var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
 
         <div class="contact_form_message">
             <div class="form-group">
-                <textarea class="form-control" name="body" id="body" rows="1"><%= blog.body%></textarea>
+                <input type="hidden" class="form-control" name="body" id="_body_<%= blog._id%>" />
+                <div id="editor-container-<%= blog._id%>" style="height: 200px;">
+                    <%- blog.body%>
+                </div>
             </div>
             <button type="submit" class="btn submit_btn">Update</button>
         </div>
 
     </form>
 </section>
+<!--  JavaScript -->
+<script>
+    quills["<%= blog._id %>"] = new Quill('#editor-container-<%= blog._id%>', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quills["<%= blog._id %>"].on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body_<%= blog._id%>").value = quills["<%= blog._id %>"].root.innerHTML;
+    });
+</script>
+<!--  JavaScript -->
 <% });%>
 <!--================Modal Banner Area =================-->
 
 <!--  JavaScript -->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quill.on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body").value = quill.root.innerHTML;
+    });
+</script>
 <script src="/js/blogs.js"></script>
 <script src="/js/main-dash.js"></script>
 <!--  JavaScript -->

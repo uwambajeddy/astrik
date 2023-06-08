@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+import decode from 'decode-html';
 import mongoose from 'mongoose';
 import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
@@ -88,7 +88,7 @@ export const createBlog = catchAsync(async (req, res, next) => {
   if (req.file) {
     req.body.image = await fileUpload(req);
     const blogImage = await BlogImages.create({ blog: blog._id, image: req.body.image });
-  
+
     blog.image = blogImage;
   }
   res.status(201).json({
@@ -100,7 +100,7 @@ export const createBlog = catchAsync(async (req, res, next) => {
 });
 
 export const updateBlog = catchAsync(async (req, res, next) => {
-  if(req.body.body)  req.body.body = decode(req.body.body);
+  if (req.body.body) req.body.body = decode(req.body.body);
   const blog = await blogModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -186,9 +186,9 @@ export const createBlogImage = catchAsync(async (req, res, next) => {
   if (!req.file) {
     return next(new AppError('Image required', 400));
   }
-    req.body.image = await fileUpload(req);
-    req.body.blog = req.params.id;
-    const blogImage = await BlogImages.create(req.body);
+  req.body.image = await fileUpload(req);
+  req.body.blog = req.params.id;
+  const blogImage = await BlogImages.create(req.body);
 
   res.status(201).json({
     status: 'success',
@@ -205,7 +205,7 @@ export const updateBlogImage = catchAsync(async (req, res, next) => {
 
   req.body.image = await fileUpload(req);
 
-  const image = await BlogImages.findByIdAndUpdate(req.params.id, {image: req.body.image}, {
+  const image = await BlogImages.findByIdAndUpdate(req.params.id, { image: req.body.image }, {
     new: true,
     runValidators: true
   });

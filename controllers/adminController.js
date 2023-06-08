@@ -8,6 +8,7 @@ import careerModal from '../models/careerModel.js';
 import mongoose from 'mongoose';
 import ProjectImages from '../models/projectImagesModal.js';
 import BlogImages from '../models/blogImagesModal.js';
+import Training from '../models/trainingModal.js';
 
 export const adminPage = catchAsync(async (req, res, next) => {
     const projects = await projectModel.find();
@@ -39,6 +40,12 @@ export const adminMessagesPage = catchAsync(async (req, res, next) => {
     const messages = await messageModel.find();
     res.status(200).render('admin/messages', {
         messages
+    });
+});
+export const adminTrainingsPage = catchAsync(async (req, res, next) => {
+    const applications = await Training.find();
+    res.status(200).render('admin/trainings', {
+        applications
     });
 });
 export const adminProjectsPage = catchAsync(async (req, res, next) => {
@@ -134,7 +141,7 @@ export const adminProjectImagesPage = catchAsync(async (req, res, next) => {
 
     if (!images) {
         return next(new AppError('No Images found with that ID', 404));
-      }
+    }
 
     res.status(200).render('admin/project_images', {
         images,
@@ -146,7 +153,7 @@ export const adminBlogImagesPage = catchAsync(async (req, res, next) => {
 
     if (!images) {
         return next(new AppError('No Images found with that ID', 404));
-      }
+    }
 
     res.status(200).render('admin/blog_images', {
         images,

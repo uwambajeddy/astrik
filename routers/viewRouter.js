@@ -25,10 +25,11 @@ import {
   adminProjectsPage,
   adminSubscribersPage,
   adminProjectImagesPage,
-  adminUsersPage, 
+  adminUsersPage,
   adminProfilePage,
   adminBlogImagesPage,
   adminCareerPage,
+  adminTrainingsPage,
 } from '../controllers/adminController.js';
 
 const router = express.Router();
@@ -50,6 +51,7 @@ router.get('/contact', contactPage);
 router.get('/resetpassword/:token', resetpassword);
 
 router.get('/admin', protect, adminPage);
+router.get('/admin/trainings', protect, adminTrainingsPage);
 router.get('/admin/blogs', protect, adminBlogsPage);
 router.get('/admin/blogs/:id', protect, adminBlogImagesPage);
 router.get('/admin/blogs/comments/:id', protect, adminCommentsPage);
