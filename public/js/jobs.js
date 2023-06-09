@@ -72,10 +72,14 @@ function updateModal(id) {
     formSubmit.addEventListener("submit", async (e) => {
         e.preventDefault();
         popupLoading('Updating job...');
+        let dataValues = {};
         const formData = new FormData(formSubmit);
+        for (var [key, value] of formData.entries()) {
+            dataValues[key] = value;
+        }
         try {
             await axios
-                .patch(`/api/v1/jobs/${id}`, formData);
+                .patch(`/api/v1/jobs/${id}`, dataValues);
             popupLoadingRemove();
             popup(success, 'job updated successfully');
             setTimeout(() => {

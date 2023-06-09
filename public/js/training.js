@@ -1,4 +1,5 @@
 const programForm = document.querySelector('.program-form');
+const programPrice = document.querySelector('#program-price');
 const submitButton = document.querySelector('#submit-button');
 const modules = document.querySelector('#module');
 const continueButton = document.querySelector('#continue-button');
@@ -19,7 +20,6 @@ submitButton.addEventListener("click", async (e) => {
  } else {
   dataValues.module = []
  }
-
 
  try {
   await axios
@@ -56,7 +56,6 @@ validateLayer.addEventListener("click", () => {
  } else {
   delete dataValues.module;
  }
- console.log(dataValues)
  for (var [key, value] of Object.entries(dataValues)) {
 
   if (value.length == 0) {
@@ -64,5 +63,28 @@ validateLayer.addEventListener("click", () => {
   }
 
  }
+ switch (dataValues.program) {
+
+  case "Fidic Training Program":
+
+   programPrice.innerHTML = `$${800 * dataValues.module.length}`
+   break;
+  case "Project Management Professional":
+   programPrice.innerHTML = "$800"
+   break;
+  case "International Road Federation":
+   programPrice.innerHTML = "$800"
+   break;
+  case "Asphalt Technology":
+   programPrice.innerHTML = "$800"
+   break;
+  case "Hdm-4 version 2 training courses":
+   programPrice.innerHTML = "$800"
+   break;
+  default:
+   programPrice.innerHTML = "damn"
+   break;
+ }
+
  continueButton.click()
 });

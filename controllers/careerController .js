@@ -2,7 +2,7 @@ import catchAsync from '../util/catchAsync.js';
 import AppError from '../util/AppError.js';
 import careerModel from '../models/careerModel.js';
 import applicationModel from '../models/applicationModal.js';
-import  decode from 'decode-html';
+import decode from 'decode-html';
 
 
 
@@ -20,7 +20,7 @@ export const getJobs = catchAsync(async (req, res, next) => {
 
 export const getJob = catchAsync(async (req, res, next) => {
   const { id } = req.params;
-  const career = await careerModel.find({_id:id});
+  const career = await careerModel.find({ _id: id });
   if (!career) {
     return next(new AppError('No Job found with that ID', 404));
   }
@@ -60,7 +60,7 @@ export const createJob = catchAsync(async (req, res, next) => {
 });
 
 export const updateJob = catchAsync(async (req, res, next) => {
-  if(req.body.body)  req.body.body = decode(req.body.body);
+  if (req.body.body) req.body.body = decode(req.body.body);
   const career = await careerModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -95,7 +95,7 @@ export const getApplications = catchAsync(async (req, res, next) => {
 
 export const getApplication = catchAsync(async (req, res, next) => {
   const { id } = req.params;
-  const application = await applicationModel.find({_id:id});
+  const application = await applicationModel.find({ _id: id });
   if (!application) {
     return next(new AppError('No Application found with that ID', 404));
   }
