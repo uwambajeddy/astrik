@@ -3,6 +3,7 @@ import AppError from '../util/AppError.js';
 import careerModel from '../models/careerModel.js';
 import applicationModel from '../models/applicationModal.js';
 import decode from 'decode-html';
+import { fileUpload } from '../util/multer.js';
 
 
 
@@ -122,6 +123,10 @@ export const deleteApplication = catchAsync(async (req, res, next) => {
 });
 
 export const createApplication = catchAsync(async (req, res, next) => {
+
+  if (req.file) {
+    req.body.resume = await fileUpload(req);;
+  }
   let application = await applicationModel.create(req.body);
 
   res.status(201).json({

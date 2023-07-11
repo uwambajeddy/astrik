@@ -30,6 +30,7 @@ import {
   adminBlogImagesPage,
   adminCareerPage,
   adminTrainingsPage,
+  adminJobApplicantsPage,
 } from '../controllers/adminController.js';
 
 const router = express.Router();
@@ -56,6 +57,7 @@ router.get('/admin/blogs', protect, adminBlogsPage);
 router.get('/admin/blogs/:id', protect, adminBlogImagesPage);
 router.get('/admin/blogs/comments/:id', protect, adminCommentsPage);
 router.get('/admin/messages', protect, adminMessagesPage);
+router.get('/admin/applicants', protect, adminJobApplicantsPage);
 router.get('/admin/subscribers', protect, adminSubscribersPage);
 router.get('/admin/projects', protect, adminProjectsPage);
 router.get('/admin/projects/:id', protect, adminProjectImagesPage);

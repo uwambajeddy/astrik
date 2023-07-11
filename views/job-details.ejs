@@ -46,14 +46,15 @@
 					</div>
 					<div class="wt-post-meta">
 						<ul>
-							<li class="post-date"><strong><%= publishDate[0] %> <%= publishDate[1] %></strong> <span> <%= publishDate[2] %>
+							<li class="post-date"><strong><%= publishDate[0] %> <%= publishDate[1] %></strong> <span>
+									<%= publishDate[2] %>
 									<%= publishDate[3] %></span> </li>
 						</ul>
 					</div>
 					<div class="wt-post-text">
 						<%- job.body%>
 					</div>
-				
+
 				</div>
 
 			</div>
@@ -71,11 +72,10 @@
 
 							<form class="comment-form" id="commentform">
 
-								<input type="text" value="<%= job._id %>" name="job" placeholder="job" id="job"
-									hidden>
+								<input type="text" value="<%= job._id %>" name="job" placeholder="job" id="job" hidden>
 								<p class="comment-form-author">
-									<label for="author">Name <span class="required">*</span></label>
-									<input class="form-control" type="text" value="" name="author" placeholder="Author"
+									<label for="author">Full name <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="name" placeholder="Full name"
 										id="author" required>
 								</p>
 
@@ -84,10 +84,20 @@
 									<input class="form-control" type="text" value="" name="email" placeholder="Email"
 										id="email" required>
 								</p>
+								<p class="comment-form-number">
+									<label for="number">Phone number <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="number"
+										placeholder="Phone number" id="number" required>
+								</p>
+								<p class="comment-form-file">
+									<label for="file" style="display: block;">Resume <span
+											class="required">*</span></label>
+									<input class="form-control" type="file" value="" name="resume" id="file" required>
+								</p>
 
 								<p class="comment-form-comment">
-									<label for="comment">Comment</label>
-									<textarea class="form-control" rows="8" name="comment" placeholder="Comment"
+									<label for="comment">Cover letter</label>
+									<textarea class="form-control" rows="8" name="comment" placeholder="Cover letter"
 										id="comment" required></textarea>
 								</p>
 
@@ -103,16 +113,16 @@
 					</div>
 				</div>
 			</div>
-			</div>
-
-			
-			<!-- job END -->
-
 		</div>
+
+
+		<!-- job END -->
+
 	</div>
-	<!-- SECTION CONTENT END -->
+</div>
+<!-- SECTION CONTENT END -->
 
 </div>
 <!-- CONTENT END -->
-<script src="/js/comments.js"></script>
+<script src="/js/applications.js"></script>
 <%- include('_footer_white')%>

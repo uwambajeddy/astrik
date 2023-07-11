@@ -1,0 +1,64 @@
+<%- include("_sidebar")%>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Job applications</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Names</div>
+                <div class="table_column">Email</div>
+                <div class="table_column">Number</div>
+                <div class="table_column">Cover letter</div>
+                <div class="table_column">Resume</div>
+                <div class="table_column">Date</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <% applications.map( application =>{
+                let date= `${application.date}`.split(" ");
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><%= application.name%> </div>
+                <div class="table_column"><%= application.email%> </div>
+                <div class="table_column"><%= application.number%> </div>
+                <div class="table_column" onclick="readMoreModal('Cover letter',`<%= application.letter%>`)">
+                    <%= application.letter.slice(0,15)%>... </div>
+                <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn"><a href="mailto:<%= application.email%>" target="_blank"><i
+                                class="lnr lnr-checkmark-circle"></i> Reply</a></button>
+                    <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= application._id%>`)"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <% });%>
+
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+
+
+<!--  JavaScript -->
+<script src="/js/adminApplications.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

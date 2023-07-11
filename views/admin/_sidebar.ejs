@@ -69,6 +69,16 @@
                         </li>
                         <li>
                             <script>
+                                location.href.includes('applicant') ? document.write(
+                                        '<a href="/admin/applicants" class="active"><i class="lnr lnr-user"></i>') :
+                                    document
+                                    .write('<a href="/admin/applicants"><i class="lnr lnr-user"></i>')
+                            </script>
+                            <p>Job applications</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
                                 location.href.includes('career') ? document.write(
                                         '<a href="/admin/careers" class="active"><i class="lnr lnr-paperclip"></i>') :
                                     document

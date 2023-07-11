@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import ProjectImages from '../models/projectImagesModal.js';
 import BlogImages from '../models/blogImagesModal.js';
 import Training from '../models/trainingModal.js';
+import Application from '../models/applicationModal.js';
 
 export const adminPage = catchAsync(async (req, res, next) => {
     const projects = await projectModel.find();
@@ -40,6 +41,12 @@ export const adminMessagesPage = catchAsync(async (req, res, next) => {
     const messages = await messageModel.find();
     res.status(200).render('admin/messages', {
         messages
+    });
+});
+export const adminCareerPage = catchAsync(async (req, res, next) => {
+    const jobs = await careerModal.find();
+    res.status(200).render('admin/jobs', {
+        jobs
     });
 });
 export const adminTrainingsPage = catchAsync(async (req, res, next) => {
@@ -128,11 +135,11 @@ export const adminUsersPage = catchAsync(async (req, res, next) => {
         users,
     });
 });
-export const adminCareerPage = catchAsync(async (req, res, next) => {
-    const jobs = await careerModal.find();
+export const adminJobApplicantsPage = catchAsync(async (req, res, next) => {
+    const applications = await Application.find();
 
-    res.status(200).render('admin/jobs', {
-        jobs,
+    res.status(200).render('admin/applicants', {
+        applications,
     });
 });
 export const adminProjectImagesPage = catchAsync(async (req, res, next) => {
