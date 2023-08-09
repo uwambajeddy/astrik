@@ -3,7 +3,6 @@
 /* eslint-disable import/no-named-as-default */
 import moongose from 'mongoose';
 import "dotenv/config";
-import open from "open";
 
 import app from './app.js';
 
@@ -31,10 +30,6 @@ const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
-
-  // if (process.env.NODE_ENV === "development") {
-  //   open(`http://localhost:${port}`);
-  // }
 
 process.on('unhandledRejection', (err) => {
   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
