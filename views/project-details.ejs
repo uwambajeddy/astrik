@@ -1,0 +1,169 @@
+<%- include('_header')%>
+
+<!-- CONTENT START -->
+<div class="page-content ">
+	<!-- INNER PAGE BANNER -->
+	<div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
+		<div class="overlay-main bg-black opacity-07"></div>
+					<div class="container">
+									<div class="wt-bnr-inr-entry">
+										<div class="banner-title-outer">
+														<div class="banner-title-name">
+															<h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">high quality, effective, and inspiring built space.</h2>
+																	</div>
+													</div>
+													<!-- BREADCRUMB ROW -->                            
+													<div class="p-tb20">
+																	<div>
+																					<ul class="wt-breadcrumb breadcrumb-style-2">
+																									<li><a href="/">Home</a></li>
+																									<li>Post Details</li>
+																					</ul>
+																	</div>
+													</div>
+													<!-- BREADCRUMB ROW END -->                        
+									</div>
+					</div>
+	</div>
+	<!-- INNER PAGE BANNER END -->
+	
+	<!-- SECTION CONTENT START -->
+	<% 
+	let date= `${project.date}`.split(" ");
+	let dateTo= `${project.date_to}`.split(" ");
+	let URL = `https://astrikltd.com/projects/${project._id.toJSON()}`;
+	%>
+	<div class="section-full p-tb90 square_shape1 square_shape3">
+					<div class="container">
+									<div class="blog-post blog-lg date-style-1 text-black">
+	
+													<div class="wt-post-media">
+																	<!--Fade slider-->
+																	<div class="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right">
+																	
+																		<% 
+																		project.images.map(image =>{
+																		%>
+																					<div class="item">
+																									<div class="aon-thum-bx">
+																										<img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1680510708/<%= image.image.split('/').pop()%>" alt="">
+																									</div>
+																					</div>
+																					
+																				    <%})%>                                     
+																	
+																	</div>
+																	<!--fade slider END-->
+													</div>
+													<div class="wt-post-info p-t30 bg-white">
+																	<div class="wt-post-title ">
+																					<h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-2 font-weight-600"><%= project.name%></a></h2>
+																	</div>
+																	<div class="wt-post-meta">
+																					<ul>
+																									<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
+																					</ul>
+																	</div>
+																	<div class="wt-post-text">
+																					<p><%= project.description%></p>
+																	</div>
+																	<table class="table m-tb100">
+																		<thead>
+																						<tr>
+																										<th>Client</th>
+																										<th>Location</th>
+																										<th>Role</th>
+																										<th>Starting date</th>
+																										<th>Ending date</th>
+																						</tr>
+																		</thead>
+																		<tbody>
+																						<tr>
+																										<td><%= project.client%></td>
+																										<td><%= project.location%></td>
+																										<td><%= project.role%></td>
+																										<td><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></td>
+																										<td><%= dateTo[0] %> <%= dateTo[1] %> <%= dateTo[2] %> <%= dateTo[3] %></td>
+																						</tr>
+																		</tbody>
+														</table>
+
+																	<div class="row">
+																					<div class="col-md-4 col-sm-6">
+																									<div class="wt-box">
+																									<div class="row  p-lr15">
+																													<h4 class="tagcloud text-uppercase">Share this Post:</h4>
+																													<div class="widget_social_inks">
+																														<ul class="social-icons social-md social-square social-dark m-b0">
+																															<li><a href="https://www.facebook.com/sharer/sharer.php?u=<%= URL%>" class="fa fa-facebook"></a></li>
+																															<li><a href="https://twitter.com/share?url=<%= URL%>&text=<TEXT>via='astrik ltd'" class="fa fa-twitter"></a></li>
+																															<li><a href="https://reddit.com/submit?url=<%= URL%>&title=<%= project.name%>" class="fa fa-rss"></a></li>
+																															<li><a href="https://www.linkedin.com/shareArticle?url=<%= URL%>&title=<%= project.name%>&summary=<SUMMARY>&source=<%= URL%>" class="fa fa-linkedin"></a></li>
+																															<li><a href="mailto:?subject=<%= project.name%>&body=<BODY>" class="fa fa-envelope-o"></a></li>
+																											</ul>
+																												</div>
+																									</div>
+																									
+																					</div>
+																					</div>
+																	</div>
+													</div>
+													
+									</div>
+									<!-- BLOG START -->
+									<div class="wt-divider divider-3px bg-gray-dark"><i class="icon-dot c-square"></i></div>
+									
+									<div class="section-content">
+										<!-- TITLE START -->
+										<div class="text-left">
+														<h2 class="text-uppercase font-36">More Projects</h2>
+														<div class="wt-separator-outer">
+																		<div class="wt-separator bg-black"></div>
+														</div>
+										</div>
+										<!-- TITLE END -->
+										<!-- CAROUSEL -->
+										<div class="section-content">
+																		<div class="owl-carousel blog-related-slider  owl-btn-top-right">
+																						<!-- COLUMNS 1 --> 
+																						<% projects.map( project =>{
+																							let date= `${project.date}`.split(" ");
+																							
+																							%>
+																						<div class="item">
+																											<div class="blog-post blog-grid date-style-1">
+																														<div class="wt-post-media wt-img-effect zoom-slow">
+																															<a href="/projects/<%= project._id%>"><img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= project.images[0]?.image.split('/').pop()%>"  alt=""></a>
+																														</div>
+																														<div class="wt-post-info p-a20 bg-gray text-black">
+																																		<div class="wt-post-title ">
+																																						<h2 class="post-title"><a href="/projects/<%= project._id%>" class="text-black font-16 letter-spacing-2 font-weight-600"><%= project.name%></a></h2>
+																																		</div>
+																																		<div class="wt-post-meta ">
+																																						<ul>
+																																										<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
+																																						</ul>
+																																		</div>
+																																		<div class="wt-post-text">
+																																			<p><%= project.description.slice(0,30)%></p> 
+																																		</div>
+																																		<a href="/projects/<%= project._id%>" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
+																														</div>
+																										</div>
+																						</div>
+																						<% })%>
+																		</div>
+														</div>
+						</div>
+									
+									
+									<!-- BLOG END -->
+													
+					</div>
+	</div>
+	<!-- SECTION CONTENT END -->
+
+</div>
+<!-- CONTENT END -->
+
+<%- include('_footer_white')%>

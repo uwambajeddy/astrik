@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <title>Astrik | Admin</title>
+    <!-- Icons -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendors/flaticon/flaticon.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="/vendors/linericon/style.css">
+    <link rel="stylesheet" href="/css/style-dash.css">
+    <link rel="stylesheet" href="/css/responsive-dash.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('../popup')
+    %>
+    <!--================Main Area =================-->
+    <div class="main">
+        <div class="container">
+            <!--=============modal Banner Area =================-->
+            <section class="menu_banner_area">
+                <div class="user-icon">
+                    <img src="/images/favicon.png" alt="">
+                    <a href="/admin">
+                        Astrik international ltd
+                    </a>
+                </div>
+                <div class="navbar-nav">
+                    <ul class="list basic_info">
+                        <li>
+                            <script>
+                                location.href.split('/').length === 4 ? document.write(
+                                        '<a href="/admin" class="active"><i class="lnr lnr-chart-bars"></i>') : document
+                                    .write('<a href="/admin"><i class="lnr lnr-chart-bars"></i>')
+                            </script>
+                            <p> Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('blog') ? document.write(
+                                        '<a href="/admin/blogs" class="active"><i class="lnr lnr-license"></i>') :
+                                    document
+                                    .write('<a href="/admin/blogs"><i class="lnr lnr-license"></i>')
+                            </script>
+                            <p>Blogs</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('training') ? document.write(
+                                        '<a href="/admin/trainings" class="active"><i class="lnr lnr-user"></i>') :
+                                    document
+                                    .write('<a href="/admin/trainings"><i class="lnr lnr-user"></i>')
+                            </script>
+                            <p>Training applications</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('applicant') ? document.write(
+                                        '<a href="/admin/applicants" class="active"><i class="lnr lnr-user"></i>') :
+                                    document
+                                    .write('<a href="/admin/applicants"><i class="lnr lnr-user"></i>')
+                            </script>
+                            <p>Job applications</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('career') ? document.write(
+                                        '<a href="/admin/careers" class="active"><i class="lnr lnr-paperclip"></i>') :
+                                    document
+                                    .write('<a href="/admin/careers"><i class="lnr lnr-paperclip"></i>')
+                            </script>
+                            <p>Careers</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('project') ? document.write(
+                                        '<a href="/admin/projects" class="active"><i class="lnr lnr-bubble"></i>') :
+                                    document
+                                    .write('<a href="/admin/projects"><i class="lnr lnr-bubble"></i>')
+                            </script>
+                            <p>Projects</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('messages') ? document.write(
+                                        '<a href="/admin/messages" class="active"><i class="lnr lnr-envelope"></i>') :
+                                    document
+                                    .write('<a href="/admin/messages"><i class="lnr lnr-envelope"></i>')
+                            </script>
+                            <p>Messages</p>
+                            </a>
+                        </li>
+                        <li>
+                            <script>
+                                location.href.includes('profile') ? document.write(
+                                        '<a href="/admin/profile" class="active"><i class="lnr lnr-license"></i>') :
+                                    document
+                                    .write('<a href="/admin/profile"><i class="lnr lnr-license"></i>')
+                            </script>
+                            <p>Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logout_btn" onclick="logoutDash()">
+                    <i class="lnr lnr-exit"></i> Logout
+                </div>
+            </section>
+            <!--================Menu Banner Area =================-->

@@ -1,0 +1,89 @@
+<%- include("_sidebar")%>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Project Images</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="add_btn">
+            <i class="lnr lnr-checkmark-circle"></i> Add image
+        </div>
+        <div class="image-container">
+            <%
+            images.map( image =>{
+                %>
+
+            <div class="item">
+                <div class="image" style="--clip-start: ellipse(0 0 at 0 0); --clip-end: ellipse(150% 150% at 0 0);">
+                    <img src="<%= image.image%>" /><img src="<%= image.image%>" />
+                </div>
+                <div class="modify-btn">
+
+                    <button class="mod_btn update_btn" onclick="updateModal('<%= image._id%>')"><span
+                            class="lnr lnr-upload"></span> Update</button>
+                    <button class="mod_btn delete_btn" onclick="deleteProject('<%= image._id%>')"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <%})%>
+        </div>
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+<!--================Modal Banner Area =================-->
+<div class="model_block">
+
+</div>
+<section class="modal_banner_area modal_banner_add">
+    <h2>Upload Image</h2>
+    <form class="contact_form" id="contact_form_add" method="post">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <button type="submit" value="submit" class="btn submit_btn">Upload</button>
+        </div>
+
+    </form>
+</section>
+<!--================Modal Banner Area =================-->
+<!--================Modal Banner Area =================-->
+<%  images.map( image =>{
+
+    %>
+<section class="modal_banner_area modal_banner_update_<%= image._id%>">
+    <h2>Update Image</h2>
+    <form class="contact_form" id="form_<%= image._id%>">
+        <div class="contact_form_text">
+            
+            <div class="form-group">
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+        <div class="contact_form_message">
+            <button type="submit" value="submit" class="btn submit_btn">Update</button>
+        </div>
+
+    </form>
+</section>
+<% });%>
+<!--================Modal Banner Area =================-->
+
+<!--  JavaScript -->
+<script src="/js/project-images.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

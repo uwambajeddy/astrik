@@ -1,0 +1,244 @@
+<%- include('_header')%>
+
+<!-- CONTENT START -->
+<div class="page-content ">
+	<!-- INNER PAGE BANNER -->
+	<div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center" data-stellar-background-ratio="0.5"
+		style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
+		<div class="overlay-main bg-black opacity-07"></div>
+		<div class="container">
+			<div class="wt-bnr-inr-entry">
+				<div class="banner-title-outer">
+					<div class="banner-title-name">
+						<h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">high quality,
+							effective, and inspiring built space.</h2>
+					</div>
+				</div>
+				<!-- BREADCRUMB ROW -->
+				<div class="p-tb20">
+					<div>
+						<ul class="wt-breadcrumb breadcrumb-style-2">
+							<li><a href="javascript:void(0);">Home</a></li>
+							<li>Post Details</li>
+						</ul>
+					</div>
+				</div>
+				<!-- BREADCRUMB ROW END -->
+			</div>
+		</div>
+	</div>
+	<!-- INNER PAGE BANNER END -->
+
+	<!-- SECTION CONTENT START -->
+	<% 
+	let date= `${blog.date}`.split(" ");
+	let URL = `https://astrikltd.com/news/${blog._id.toJSON()}`;
+	
+	%>
+	<div class="section-full p-tb90 square_shape1 square_shape3">
+		<div class="container">
+			<div class="blog-post blog-lg date-style-1 text-black">
+
+				<div class="wt-post-media">
+					<!--Fade slider-->
+					<div class="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right">
+
+						<% 
+																		blog.images.map(image =>{
+																		%>
+						<div class="item">
+							<div class="aon-thum-bx">
+								<img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1680510708/<%= image.image.split('/').pop()%>"
+									alt="">
+							</div>
+						</div>
+
+						<%})%>
+
+					</div>
+					<!--fade slider END-->
+				</div>
+				<div class="wt-post-info p-t30 bg-white">
+					<div class="wt-post-title ">
+						<h2 class="post-title"><a href="javascript:void(0);"
+								class="text-black font-20 letter-spacing-2 font-weight-600"><%= blog.title%></a></h2>
+					</div>
+					<div class="wt-post-meta">
+						<ul>
+							<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %>
+									<%= date[3] %></span> </li>
+							<li class="post-comment"><a href="javascript:void(0);"><%= blog.comments.length%>
+									Comments</a> </li>
+						</ul>
+					</div>
+					<div class="wt-post-text">
+					<%- blog.body%>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="wt-box">
+								<div class="row  p-lr15">
+									<h4 class="tagcloud text-uppercase">Share this Post:</h4>
+									<div class="widget_social_inks">
+										<ul class="social-icons social-md social-square social-dark m-b0">
+											<li><a href="https://www.facebook.com/sharer/sharer.php?u='https://astrikltd.com/news/<%= blog._id%>'"
+													class="fa fa-facebook"></a></li>
+											<li><a href="https://twitter.com/share?url='https://astrikltd.com/news/<%= blog._id%>'&text='<%= blog.title%>'via='astrik ltd'"
+													class="fa fa-twitter"></a></li>
+											<li><a href="https://reddit.com/submit?url='https://astrikltd.com/news/<%= blog._id%>'&title=<%= blog.title%>"
+													class="fa fa-rss"></a></li>
+											<li><a href="https://www.linkedin.com/shareArticle?url='https://astrikltd.com/news/<%= blog._id%>'&title=<%= blog.title%>&summary=<%= blog.title%>&source='https://astrikltd.com/news/<%= blog._id%>'"
+													class="fa fa-linkedin"></a></li>
+											<li><a href="mailto:?subject=<%= blog.title%>&body=<%= blog.body%>"
+													class="fa fa-envelope-o"></a></li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- BLOG START -->
+			<div class="clear" id="comment-list">
+				<div class="comments-area" id="comments">
+					<h2 class="comments-title"><%= blog.comments.length%> Comments</h2>
+					<div class="p-tb30">
+						<!-- COMMENT LIST START -->
+						<ol class="comment-list">
+							<% blog.comments.map( comment =>{
+																				let date= `${comment.date}`.split(" ");
+																				%>
+							<li class="comment">
+								<!-- COMMENT BLOCK -->
+								<div class="comment-body">
+									<div class="comment-author vcard">
+										<img class="avatar photo" src="/images/testimonials/pic3.jpg" alt="">
+										<cite class="fn"><%=comment.author%></cite>
+										<span class="says">says:</span>
+									</div>
+									<div class="comment-meta">
+										<a href="javascript:void(0);"><%= date[0] %> <%= date[1] %>, <%= date[2] %>
+											<%= date[3] %></a>
+									</div>
+									<p><%=comment.comment%></p>
+
+								</div>
+
+							</li>
+							<% });%>
+						</ol>
+						<!-- COMMENT LIST END -->
+
+						<!-- LEAVE A REPLY START -->
+						<div class="comment-respond bg-gray p-a30" id="respond">
+
+							<h2 class="comment-reply-title" id="reply-title">Leave a Comments
+								<small>
+									<a style="display:none;" href="#" id="cancel-comment-reply-link"
+										rel="nofollow">Cancel reply</a>
+								</small>
+							</h2>
+
+							<form class="comment-form" id="commentform">
+
+								<input type="text" value="<%= blog._id %>" name="blog" placeholder="blog" id="blog"
+									hidden>
+								<p class="comment-form-author">
+									<label for="author">Name <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="author" placeholder="Author"
+										id="author" required>
+								</p>
+
+								<p class="comment-form-email">
+									<label for="email">Email <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="email" placeholder="Email"
+										id="email" required>
+								</p>
+
+								<p class="comment-form-comment">
+									<label for="comment">Comment</label>
+									<textarea class="form-control" rows="8" name="comment" placeholder="Comment"
+										id="comment" required></textarea>
+								</p>
+
+								<p class="form-submit">
+									<button class="site-button black radius-no text-uppercase" type="submit"><span
+											class="font-12 letter-spacing-5">Submit Comment</span></button>
+								</p>
+
+							</form>
+
+						</div>
+						<!-- LEAVE A REPLY END -->
+					</div>
+				</div>
+			</div>
+			<div class="wt-divider divider-3px bg-gray-dark"><i class="icon-dot c-square"></i></div>
+
+			<div class="section-content">
+				<!-- TITLE START -->
+				<div class="text-left">
+					<h2 class="text-uppercase font-36">More news</h2>
+					<div class="wt-separator-outer">
+						<div class="wt-separator bg-black"></div>
+					</div>
+				</div>
+				<!-- TITLE END -->
+				<!-- CAROUSEL -->
+				<div class="section-content">
+					<div class="owl-carousel blog-related-slider  owl-btn-top-right">
+						<!-- COLUMNS 1 -->
+						<% blogs.map( blog =>{
+																							let date= `${blog.date}`.split(" ");
+																							
+																							%>
+						<div class="item">
+							<div class="blog-post blog-grid date-style-1">
+								<div class="wt-post-media wt-img-effect zoom-slow">
+									<a href="/news/<%= blog._id%>"><img
+											src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= blog.images[0]?.image.split('/').pop()%>"
+											alt=""></a>
+								</div>
+								<div class="wt-post-info p-a20 bg-gray text-black">
+									<div class="wt-post-title ">
+										<h2 class="post-title"><a href="/news/<%= blog._id%>"
+												class="text-black font-16 letter-spacing-2 font-weight-600"><%= blog.title.slice(0,15)%></a>
+										</h2>
+									</div>
+									<div class="wt-post-meta ">
+										<ul>
+											<li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span>
+													<%= date[2] %> <%= date[3] %></span> </li>
+											<li class="post-author"><a href="javascript:void(0);">By
+													<span>Admin</span></a> </li>
+										</ul>
+									</div>
+									<div class="wt-post-text">
+										<p><%= blog.body.slice(0,30)%></p>
+									</div>
+									<a href="/news/<%= blog._id%>"
+										class="site-button black radius-no text-uppercase"><span
+											class="font-12 letter-spacing-5"> Read More </span></a>
+								</div>
+							</div>
+						</div>
+						<% })%>
+					</div>
+				</div>
+			</div>
+
+			
+			<!-- BLOG END -->
+
+		</div>
+	</div>
+	<!-- SECTION CONTENT END -->
+
+</div>
+<!-- CONTENT END -->
+
+<script src="/js/comments.js"></script>
+<%- include('_footer_white')%>

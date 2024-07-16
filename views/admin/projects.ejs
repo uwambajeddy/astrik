@@ -1,0 +1,287 @@
+<%- include("_sidebar")%>
+<script>
+    const quills = {}
+</script>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Projects</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="add_btn">
+            <i class="lnr lnr-checkmark-circle"></i> Add Project
+        </div>
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Image</div>
+                <div class="table_column">Name</div>
+                <div class="table_column">Description</div>
+                <div class="table_column">Type</div>
+                <div class="table_column">Client</div>
+                <div class="table_column">Role</div>
+                <div class="table_column">Location</div>
+                <div class="table_column">Starting Date</div>
+                <div class="table_column">Ending Date</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <%
+            projects.map( project =>{
+                const images = projectImages.filter(image=> image.project.toJSON() == project._id.toJSON());
+                let date= `${project.date}`.split(" ");
+                let to_date= `${project.date_to}`.split(" ");
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><a href="/admin/projects/<%= project._id%>"><img src="<%= images[0]?.image%>"
+                            alt=""></a></div>
+                <div class="table_column" onclick="readMoreModal('Project name','<%= project.name%>')">
+                    <%= project.name.slice(0,15)%>... </div>
+
+                <div class="table_column">
+                    <button class="mod_btn update_btn"
+                        onclick="readMoreModal('Full description',`<%=project.description%>`)"><span
+                            class="lnr lnr-eye"></span> View</button>
+                </div>
+                <div class="table_column"><%=  project?.type %></div>
+                <div class="table_column"><%=  project?.client %></div>
+                <div class="table_column"><%=  project?.role %></div>
+                <div class="table_column"><%=  project?.location %></div>
+                <div class="table_column">
+                    <%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
+                <div class="table_column">
+                    <%= to_date[0] %> <%= to_date[1] %> <%= to_date[2] %> <%= to_date[3] %></div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="updateModal('<%= project._id%>')"><span
+                            class="lnr lnr-upload"></span> Update</button>
+                    <button class="mod_btn delete_btn" onclick="deleteProject('<%= project._id%>')"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <% });%>
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+<!--================Modal Banner Area =================-->
+<div class="model_block">
+
+</div>
+<section class="modal_banner_area modal_banner_add">
+    <h2>Add Project</h2>
+    <form class="contact_form" id="contact_form_add" method="post">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Project name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="client" name="client" placeholder="Project client">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Project location">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="role" name="role" placeholder="Project role">
+            </div>
+            <div class="form-group" title="Project starting date">
+                <input type="date" class="form-control" id="date" name="date" placeholder="Project starting date">
+            </div>
+            <div class="form-group" title="Project ending date">
+                <input type="date" class="form-control" id="date_to" name="date_to" placeholder="Project ending date">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="type" id="type">
+                    <option hidden disabled selected value>Project type</option>
+                    <option value="house">Building</option>
+                    <option value="road">Road</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="description" id="_body" />
+                <div id="editor-container" style="height: 200px;">
+                </div>
+            </div>
+            <button type="submit" value="submit" class="btn submit_btn">Add</button>
+        </div>
+
+    </form>
+</section>
+<!--================Modal Banner Area =================-->
+<!--================Modal Banner Area =================-->
+<% projects.map( project =>{
+    var date = new Date(project.date);
+var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    var dateTo = new Date(project.date_to);
+var dateStringTo = new Date(dateTo.getTime() - (dateTo.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+
+    %>
+<section class="modal_banner_area modal_banner_update_<%= project._id%>">
+    <h2>Update Project</h2>
+    <form class="contact_form" id="form_<%= project._id%>">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" value="<%= project.name%>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="client" name="client" value="<%= project.client%>"
+                    placeholder="Project client">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="location" name="location" value="<%= project.location%>"
+                    placeholder="Project location">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="role" name="role" value="<%= project.role%>"
+                    placeholder="Project role">
+            </div>
+            <div class="form-group" title="Project starting date">
+                <input type="date" class="form-control" id="date" name="date" placeholder="Project date"
+                    value="<%=dateString%>">
+            </div>
+            <div class="form-group" title="Project ending date">
+                <input type="date" class="form-control" id="date_to" name="date_to" value="<%=dateStringTo%>">
+            </div>
+            <div class="form-group">
+                <select name="type" class="form-control" id="type">
+
+                    <option value="<%= project.type %>"><%= project.type %></option>
+                    <option value="house">Building</option>
+                    <option value="road">Road</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="description" id="_description_<%= project._id%>" />
+                <div id="editor-container-<%= project._id%>" style="height: 200px;">
+                    <%- project.description%>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact_form_message">
+            <button type="submit" value="submit" class="btn submit_btn">Update</button>
+        </div>
+
+    </form>
+</section>
+<!--  JavaScript -->
+<script>
+    quills["<%= project._id %>"] = new Quill('#editor-container-<%= project._id%>', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quills["<%= project._id %>"].on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_description_<%= project._id%>").value = quills["<%= project._id %>"].root
+            .innerHTML;
+    });
+</script>
+<!--  JavaScript -->
+<% });%>
+<!--================Modal Banner Area =================-->
+
+
+<!--  JavaScript -->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quill.on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body").value = quill.root.innerHTML;
+    });
+</script>
+<script src="/js/projects.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<%- include('_header')%>
+ <!-- CONTENT START -->
+ <div class="page-content">
+    <!-- INNER PAGE BANNER -->
+    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center"  data-stellar-background-ratio="0.5"  style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
+        <div class="overlay-main bg-black opacity-07"></div>
+        <div class="container">
+            <div class="wt-bnr-inr-entry">
+                <div class="banner-title-outer">
+                    <div class="banner-title-name">
+                        <h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">A whole different kind of architectural firm.</h2>
+                    </div>
+                </div>
+                <!-- BREADCRUMB ROW -->                            
+                <div class="p-tb20">
+                    <div>
+                        <ul class="wt-breadcrumb breadcrumb-style-2">
+                            <li><a href="javascript:void(0);">Home</a></li> 
+                            <li>News</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- BREADCRUMB ROW END -->                        
+            </div>
+        </div>
+    </div>
+    <!-- INNER PAGE BANNER END -->
+    
+    <!-- SECTION CONTENT START -->
+    <div class="section-full p-tb90">
+        <!-- GALLERY CONTENT START -->
+        <div class="container-fluid">
+            <div class="portfolio-wrap mfp-gallery news-masonry clearfix">
+                <div class="row">
+                    <% blogs.map( blog =>{
+                        const images = blogImages.filter(image=> image?.blog?.toJSON() == blog?._id?.toJSON());
+                        let date= `${blog.date}`.split(" ");
+                        
+                        %>
+                    <div class="masonry-item col-lg-3 col-md-6 col-sm-6">
+                        <div class="blog-post blog-grid date-style-1">
+                            <div class="wt-post-media wt-img-effect zoom-slow">
+                                <a href="/news/<%= blog._id%>"><img src="http://res.cloudinary.com/debij8tqo/image/upload/c_lfill,f_auto,g_auto,h_300,q_auto,w_500/v1680510708/<%= images[0]?.image.split('/').pop()%>" alt=""></a>
+                            </div>
+                            <div class="wt-post-info p-t30 text-black">
+                                <div class="wt-post-title ">
+                                    <h2 class="post-title"><a href="/news/<%= blog._id%>" class="text-black font-20 letter-spacing-4 font-weight-600"> <%= blog.title %></a></h2>
+                                </div>
+                                <div class="wt-post-meta ">
+                                    <ul>
+                                        <li class="post-date"><strong><%= date[0] %> <%= date[1] %></strong> <span> <%= date[2] %> <%= date[3] %></span> </li>
+                                        <li class="post-author"><a href="javascript:void(0);"><%= blog.comments.length%> <span>Comments</span></a> </li>
+                                    </ul>
+                                </div>
+                                <div class="wt-post-text">
+                                    <p><%- blog.body.slice(0,150)%>...</p> 
+                                </div>
+                                <a href="/news/<%= blog._id%>" class="m-b15 site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <% });%>
+                                                                                   
+                </div>
+            </div>
+         </div>
+        <!-- GALLERY CONTENT END -->
+    
+    </div>
+    <!-- SECTION CONTENT END  -->
+
+</div>
+<!-- CONTENT END -->
+<%- include('_footer_white')%>

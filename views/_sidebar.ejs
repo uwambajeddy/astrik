@@ -1,0 +1,68 @@
+<div class="blog_area_content_b">
+  <div class="blog_right_sidebar">
+    <aside class="single_sidebar_widget search_widget">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Posts" />
+        <span class="input-group-btn">
+          <button class="btn-default" type="button">
+            <i class="lnr lnr-magnifier"></i>
+          </button>
+        </span>
+      </div>
+      <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget author_widget">
+      <img
+        class="author_img rounded-circle"
+        src="<%= admin.image.includes('http') ? admin.image : `/img/users/${admin.image}` %>"
+        alt=""
+      />
+      <h4><%= admin.name%></h4>
+      <p>web developer</p>
+      <div class="social_icon">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-behance"></i></a>
+      </div>
+      <p>
+        I am a website developer specialized with building server side
+        applications using nodeJs
+      </p>
+      <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget popular_post_widget">
+      <h3 class="widget_title">Popular Posts</h3>
+      <% blogs.slice(0,5).map( blog =>{ let date= `${blog.date}`.split(" "); %>
+      <div class="post_item">
+        <img
+          class="post_item_img"
+          src="/img/blog/<%= blog.image%>"
+          alt="post"
+        />
+        <div class="post_item_content">
+          <a href="/blog/<%= blog._id%>"
+            ><h3><%= blog.title.slice(0,25) %>... %></h3></a
+          >
+          <p><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></p>
+        </div>
+      </div>
+      <%})%>
+      <div class="br"></div>
+    </aside>
+    <% if(!locals.user?.id){%>
+    <aside class="single-sidebar-widget newsletter_widget">
+      <h4 class="widget_title">Newsletter</h4>
+      <p>
+        Here, I focus on a range of items and features that we use in life
+        without giving them a second thought.
+      </p>
+      <div class="form-group">
+        <a href="/signup" class="bbtns">Signup</a>
+      </div>
+      <p class="text-bottom">You can unsubscribe at any time</p>
+      <div class="br"></div>
+    </aside>
+    <% }%>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<%- include('_header')%>
+<!-- <div class="under-construction" style="
+    position: fixed;
+    width: -webkit-fill-available;
+    z-index: 1000;
+    height: 100%;
+    backdrop-filter: blur(15px);
+    background: #0000006e;
+"><h3 style="
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    font-size: xxx-large;
+">👷 UNDER CONSTRUCTION 🚧</h3></div> -->
+<!-- CONTENT START -->
+<div class="page-content">
+
+    <!-- INNER PAGE BANNER -->
+    <div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center" data-stellar-background-ratio="0.5"
+        style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
+        <div class="overlay-main bg-black opacity-07"></div>
+        <div class="container">
+            <div class="wt-bnr-inr-entry">
+                <div class="banner-title-outer">
+                    <div class="banner-title-name">
+                        <h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">Get an
+                            opportunity with us.</h2>
+                    </div>
+                </div>
+                <!-- BREADCRUMB ROW -->
+                <div class="p-tb20">
+                    <div>
+                        <ul class="wt-breadcrumb breadcrumb-style-2">
+                            <li><a href="/">Home</a></li>
+                            <li>Careers</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- BREADCRUMB ROW END -->
+            </div>
+        </div>
+    </div>
+    <!-- INNER PAGE BANNER END -->
+
+
+    <!--CAREER SECTION START -->
+    <div class="container p-tb20">
+        <%
+         if(jobs.length !== 0){
+             jobs.map( job =>{
+                let deadLine= `${job.deadLine}`.split(" ");
+                
+                %>
+            <div class="job-item p-xy10 m-b15">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 d-flex align-items-center">
+                        <div class="text-start ps-4">
+                            <h5 class="m-b3"><%= job.title%></h5>
+                            <span class=" m-r20"><i class="lnr lnr-map-marker"></i> <%= job.location%></span>
+                            <span class=" m-r20"><i class="lnr lnr-history"></i> <%= job.jobNature%></span>
+                            <span class=" m-r20"><i class="lnr lnr-calendar-full"></i> DeadLine: <strong><%= deadLine[0] %> <%= deadLine[1] %></strong> <span> <%= deadLine[2] %> <%= deadLine[3] %></span></span>
+                        </div>
+                    </div>
+                        <div class="col-sm-12 col-md-2 p-t10">
+                            <a class="btn  text-white bg-green" href="/career-details/<%= job._id%>">Apply Now</a>
+                        </div>
+                </div>
+            </div>
+            
+            <% });
+        }else{%>
+            <center><h2>Keep checking our website for career opportunities. </h2></center>
+            <%}%>
+        </div>
+    <!--CAREER SECTION END -->
+
+</div>
+<!-- CONTENT END -->
+
+
+<%- include('_footer_white')%>

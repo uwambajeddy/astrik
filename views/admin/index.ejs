@@ -1,0 +1,125 @@
+<%- include("_sidebar")%>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Welcome back,</h2>
+            <p>Your Portfolio analytics dashboard.</p>
+        </span>
+    </div>
+    <div class="main_header">
+        <ul class="list main_info">
+            <li><a href="/admin/users" class=""><i class="lnr lnr-chart-bars"></i><span>
+                        <p> Total Users</p>
+                        <p><%= users.length%></p>
+                    </span></a></li>
+            <li><a href="/admin/blogs"><i class="lnr lnr-license"></i> <span>
+                        <p>Blogs</p>
+                        <p><%= blogs.length%></p>
+                    </span></a></li>
+            <li><a href="/admin/projects"><i class="lnr lnr-rocket"></i> <span>
+                        <p>Projects</p>
+                        <p><%= projects.length%></p>
+                    </span></a></li>
+            <li><a href="#"><i class="lnr lnr-bubble"></i><span>
+                        <p> Total Comments</p>
+                        <p><%= comments.length%></p>
+                    </span></a></li>
+            <li><a href="/admin/subscribers"><i class="lnr lnr-pushpin"></i><span>
+                        <p> Subscribers</p>
+                        <p><%= subscribers.length%></p>
+                    </span></a></li>
+            <li><a href="/admin/messages"><i class="lnr lnr-envelope"></i> <span>
+                        <p>Messages</p>
+                        <p><%= messages.length%></p>
+                    </span></a></li>
+        </ul>
+    </div>
+    <div class="main_content">
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Name</div>
+                <div class="table_column">Email</div>
+                <div class="table_column">Message</div>
+                <div class="table_column">Date</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <% messages.map( message =>{
+                let date= `${message.date}`.split(" ");
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><%= message.name%> </div>
+                <div class="table_column"><%= message.email%> </div>
+                <div class="table_column" onclick="readMoreModal('Massage',`<%= message.message%>`)">
+                    <%= message.message.slice(0,15)%>... </div>
+                <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn"><a href="mailto:<%= message.email%>"  target="_blank"><i class="lnr lnr-checkmark-circle"></i> Reply</a></button>
+                    <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= message._id%>`)"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <% });%>
+
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+
+<!--================Modal Banner Area =================-->
+<div class="model_block">
+
+</div>
+<% blogs.map( blog =>{
+    let yyyy= new Date(blog.date).getFullYear();
+    let mm= new Date(blog.date).getMonth();
+    let dd= new Date(blog.date).getDate();
+    let date= `${blog.date}`.split(" ");
+    %>
+<section class="modal_banner_area modal_banner_update_<%= blog._id%>">
+    <h2>Update Blog</h2>
+    <form class="contact_form" id="form_<%= blog._id%>">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" value="<%= blog.title%>">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" id="date" name="date"
+                    value="<%= yyyy%>-<%= mm >= 10 ? mm : '0'+mm%>-<%= dd >= 10 ? dd : '0'+dd%>">
+            </div>
+        </div>
+
+        <div class="contact_form_message">
+            <div class="form-group">
+                <textarea class="form-control" name="body" id="body" rows="1"><%= blog.body%></textarea>
+            </div>
+            <button type="submit" value="submit" class="btn submit_btn">Update</button>
+        </div>
+
+    </form>
+</section>
+<% });%>
+<!--================Modal Banner Area =================-->
+
+<!--  JavaScript -->
+<script src="/js/adminMessages.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

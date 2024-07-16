@@ -1,0 +1,889 @@
+<%- include('_header')%>
+
+<!-- -TERMS AND CONDITION MODAL START -->
+<!-- MODAL -->
+<div id="large-Modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- MODAL CONTENT -->
+        <div class="modal-content">
+            <div class="modal-header bg-secondry">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-black">Terms and conditions</h4>
+            </div>
+            <div class="modal-body">
+                <p><strong>&nbsp;PAYMENT </strong></p>
+                <p>Training course fee is <strong><em id="program-price"></em></strong> including
+                    VAT (18%)
+                    <strong><em>Exchange of Selling Commercial bank rate can be used</em></strong></p>
+                <p><span style="color: rgb(112, 48, 160);">·&nbsp;&nbsp;&nbsp;&nbsp;</span>Bank Transfer or Cheques are
+                    payable to:<strong> ASTRIK INTERNATIONAL LTD</strong></p>
+                <p><strong>KCB</strong> Bank <strong>A/C: 44018 17923 EUR</strong> <br>
+                    <strong>KCB Bank A/C: 4490692870 (USD)</strong> <br>
+                    <strong>ECOBANK </strong>Bank A/C: <strong>6780001829 (FRW)</strong></p>
+
+                <p><span style="color: rgb(112, 48, 160);">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Participants are
+                    allowed to attend the training upon the agreed financial arrangement or&nbsp;issuing of the payment
+                    order from the Company/Institutions</p>
+
+                <p><strong>&nbsp;CANCELLATIONS &amp; TRANSFERS:</strong></p>
+                <p><span style="color: rgb(112, 48, 160);">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>If participant(s) are
+                    unable to attend, a substitute candidate(s) will be allowed at no extra charge. </p>
+                <p class="ql-align-justify"><span
+                        style="color: rgb(112, 48, 160);">·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Organizers reserve the
+                    right to cancel or defer the event if the required participant’s number is less than 20 subscribed
+                    five days prior to event In the event of cancellation deferring the event by organizer five days’
+                    notice will be issued or change of new date or refunds in full to the participants. </p>
+                <p><br></p>
+                <blockquote>&nbsp;<strong>Tel:</strong> + 250 733 304 735 / 250 788 304 735 <br>
+                    <strong>Email:</strong> info@astrikltd.com
+                </blockquote>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-button button-sm text-uppercase letter-spacing-2 cancel-button"
+                    data-dismiss="modal">I don't agree</button>
+                <button type="button" class="site-button text-uppercase button-sm letter-spacing-2"
+                    id="submit-button">agree & register
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -TERMS AND CONDITION MODAL START -->
+
+<!--REGISTRATION MODAL START -->
+<div id="with-form" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header bg-secondry">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-black">Register for training</h4>
+            </div>
+            <div class="modal-body">
+                <form id="demo-form" class="program-form form-horizontal mb-lg" novalidate>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Program</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="program" id="program" required>
+                                <option hidden disabled selected value>choose Program</option>
+                                <option value="Project Management Professional">Project Management Professional (PMP)
+                                </option>
+                                <option value="Road Safety and safety audit program">Road Safety and safety audit program</option>
+                                <option value="Fidic Training Program">Fidic Training Program</option>
+                                <option value="Asphalt Technology">Asphalt Technology</option>
+                                <option value="Hdm-4 version 2 training courses">Hdm-4 version 2 training courses
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class=" form-group mt-lg fidic-modules">
+                        <label class="col-sm-3 control-label">Choose module</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="module" id="module" multiple multiselect-search="true"
+                                multiselect-select-all="true" multiselect-max-items="4">
+                                <option value="Practical use of FIDIC Contracts">Module 1 - Practical use of FIDIC
+                                    Contracts
+                                </option>
+                                <option value="Claims and Dispute Resolutions unser FIDIC">Module 2 - Claims and Dispute
+                                    Resolutions unser FIDIC</option>
+                                <option value="Understanding DABs">Module 3 - Understanding DABs</option>
+                                <option value="FIDIC Contracts Management and Administration">Module 4 - FIDIC Contracts
+                                    Management and Administration</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input name="firstName" class="form-control" placeholder="Type your first name..." required
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input name="lastName" class="form-control" placeholder="Type your last name..." required
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input name="email" class="form-control" placeholder="Type your email..." required
+                                type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Cell</label>
+                        <div class="col-sm-9">
+                            <input name="number" class="form-control" placeholder="Type your Phone number..." required
+                                type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Company name</label>
+                        <div class="col-sm-9">
+                            <input name="companyName" class="form-control" placeholder="Type your company name..."
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Company address</label>
+                        <div class="col-sm-9">
+                            <input name="companyAddress" class="form-control" placeholder="Type your company address..."
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Payment details</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentDetails" value="Bank Transfer"
+                                    id="paymentDetails" checked>
+                                <label class="form-check-label" for="paymentDetails">
+                                    Bank Transfer(Own transfer charges on fee)
+
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentDetails" value="Cheque"
+                                    id="paymentDetails2" required>
+                                <label class="form-check-label" for="paymentDetails2">
+                                    Cheque
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Issue the invoice to</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="invoiceIssue" value="company"
+                                    id="invoiceIssue" checked>
+                                <label class="form-check-label" for="invoiceIssue">
+                                    Company
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="invoiceIssue" value="participant"
+                                    id="invoiceIssue2">
+                                <label class="form-check-label" for="invoiceIssue2">
+                                    Participant
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Specific requirement</label>
+                        <div class="col-sm-9">
+                            <textarea rows="5" class="form-control" name="specificRequirement"
+                                placeholder="Type your Specific requirement..." required></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="alert alert-info fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><i class="fa fa-info-circle"></i> </strong> Participants will be allowed to attend upon the
+                issue of purchase order.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-button text-uppercase button-sm letter-spacing-2 m-r15"
+                    data-dismiss="modal">Close</button>
+                <span class="validation-layer"></span>
+                <button type="button" class="site-button button-sm text-uppercase letter-spacing-2" data-dismiss="modal"
+                    data-toggle="modal" data-target="#large-Modal" id="continue-button">Continue</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--REGISTRATION MODAL END -->
+
+<!-- CONTENT START -->
+<div class="page-content">
+    <!-- WHO WE ARE SECTION START -->
+    <div class="section-full p-t140 bg-repeat" style="background-image:url(images/background/ptn-1.png);">
+        <div class="container-fluid">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-12">
+                        <div class="wt-left-part">
+                            <div class="text-black">
+                                <span class="text-uppercase font-30 font-weight-300">Welcome to </span>
+                                <h2 class="text-uppercase font-40">
+                                    Astrik training center (ASTC)
+                                </h2>
+                                <p>Astrik Training Center, (ASTC) is located on the 2nd Floor of Astrik International
+                                    Building. We offers various training and capacity building programs, skill
+                                    development & field investigation modules which are internationally accredited. The
+                                    training are presented by the Accredited Trainers who are renowned and recognized
+                                    worldwide. Many of these courses are sponsored by the Government Agencies, Private
+                                    Companies and individuals. The offered learning programs create opportunities for
+                                    practitioners in the Construction Industry to acquire, on-job skill and share, and
+                                    apply global and local knowledge and experiences in their job activities. There are
+                                    two ways of imparting training and capacity building the most preferred is through
+                                    face-to –face interactions between trainer and participants. The other is by using
+                                    on-line (virtual) training. The Training Center is equipped with mordent training
+                                    equipment
+                                    (computers i11, modelling software, sound system, smart screen (all in one)) which
+                                    create a pleasant studying environment in both face-to face and on-line training
+                                    method. The Training Center also has a restaurant which offers delicious menu to the
+                                    participants
+                                    during the training.
+                                </p>
+                                <button type="button"
+                                    class="site-button text-uppercase letter-spacing-2 font-weight-800 m-b30"
+                                    data-toggle="modal" data-target="#with-form">Register here</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-8 col-sm-12">
+                        <div class="m-carousel-2">
+                            <div class="owl-carousel carousel-hover home-carousel-2 owl-btn-vertical-center">
+                                <!-- COLUMNS 1 -->
+                                <div class="item">
+                                    <div class="wt-box">
+                                        <div class="ow-img wt-carousel-block gradi-black">
+                                            <img src="images/projects/pic-1.jpg" alt="">
+                                            <div class="p-a50 wt-carousel-info text-white">
+                                                <div class="carousel-line">
+                                                    <h2 class="font-28 font-weight-400 m-b10">We promote new
+                                                        technologies and on-job skill development</h2>
+                                                    <p class="m-b0">We offers various training and capacity building
+                                                        programs, skill development & field investigation modules which
+                                                        are internationally accredited.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- COLUMNS 2 -->
+                                <div class="item">
+                                    <div class="wt-box">
+                                        <div class="ow-img wt-carousel-block gradi-black">
+                                            <img src="images/projects/pic-2.jpg" alt="">
+                                            <div class="p-a50 wt-carousel-info text-white">
+                                                <div class="carousel-line">
+                                                    <h2 class="font-28 font-weight-400 m-b10">FIDIC Training program
+                                                    </h2>
+                                                    <p class="m-b0">FIDIC conditions of contract (red, yellow, green,
+                                                        silver and pink books)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- COLUMNS 3 -->
+                                <div class="item">
+                                    <div class="wt-box">
+                                        <div class="ow-img wt-carousel-block gradi-black">
+                                            <img src="images/projects/pic-3.jpg" alt="">
+                                            <div class="p-a50 wt-carousel-info text-white">
+                                                <div class="carousel-line">
+                                                    <h2 class="font-28 font-weight-400 m-b10">Project Management for
+                                                        Professional (PMP)</h2>
+                                                    <p class="m-b0">On-job training on pavement technology, (materials,
+                                                        recycling for rehabilitation, upgrading,) NMT, Lab and field
+                                                        testing
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-bg-img">
+                                <img src="images/slider-corner.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="hilite-title p-lr20 m-tb20 text-left text-uppercase bdr-gray bdr-left">
+                    <strong>4+ Programs</strong>
+                    <span class="text-black">Available</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- WHO WE ARE SECTION END -->
+
+
+    <!-- OUR PROGRAMS SECTION START -->
+
+    <div class="container p-tb80">
+        <!-- TITLE START -->
+        <div class="section-head">
+            <h3>OUR PROGRAMS</h3>
+            <div class="wt-separator-outer">
+                <div class="wt-separator bg-black"></div>
+            </div>
+        </div>
+        <!-- TITLE END -->
+
+        <!-- PROGRAMS  BG DARK -->
+        <div class="wt-tabs vertical bg-tabs">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#pmp-15">Project Management Professional</a></li>
+                <li><a data-toggle="tab" href="#irf-15">Road Safety and safety audit</a></li>
+                <li><a data-toggle="tab" href="#fidic-15">Fidic Training Program</a></li>
+                <li><a data-toggle="tab" href="#asphalt-15">Asphalt Technology</a></li>
+                <li><a data-toggle="tab" href="#hdm-15">Hdm-4 version 2 training courses</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <div id="pmp-15" class="tab-pane active">
+                    <div class="acod-content">This intensive four-day course will give an in-depth and
+                        comprehensive coverage of the key skills and knowledge for ective project management as
+                        detailed in PMI's "Body of knowledge". This course satisfies the 35 contact hour training
+                        requirement for Project Management Professional(PMP) Certification. <br>
+                        Whether you would like to broaden your knowledge about project management or you would like
+                        to get a certification as a PMP, this training is the right one for you. With our hands on and
+                        practical approach, you will be able to come up to pace and flow with other participants.
+                        Come meet and network with other Project Leaders, Managers and Executives as have fun at our
+                        International Edition.
+                    </div>
+                    <div class="m-tb30">
+                        <div class="section-head">
+                            <h3>Programme content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="row">
+
+
+                                <div class="col-md-6 col-sm-6">
+                                    <ul class="list-arrow-circle green">
+                                        <li>Tuition</li>
+                                        <li>Soft copies of course</li>
+                                        <li>Material Online pre-course</li>
+                                        <li>Post Course exam simulator</li>
+                                        <li>PMI Registration support</li>
+                                        <li>PMP Credential application support</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="section-content m-b80">
+                        <!-- TITLE START -->
+                        <div class="section-head">
+                            <h3>Course content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <!-- TITLE END -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Modules</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Module 1</td>
+                                    <td>Project Management Framework/ Processes</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 2</td>
+                                    <td>Project Integration Management</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 3</td>
+                                    <td>Project Scope management</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 4</td>
+                                    <td>Project Time Management </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 5</td>
+                                    <td>Project Cost Management</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 6</td>
+
+                                    <td>Project Quality Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 7</td>
+
+                                    <td>Project Humun Resource Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 8</td>
+
+                                    <td>Project Communications Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 9</td>
+
+                                    <td>Project Risk Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 10</td>
+
+                                    <td>Project Procurement Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 11</td>
+
+                                    <td>Project Stakeholder Management</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 12</td>
+
+                                    <td>Professional and Social Responsibility</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="irf-15" class="tab-pane">
+                    <div class="acod-content p-tb15">
+                        <p><b>Training on Road Network Safety Management and Audit</b></p>
+                        Risk assessment procedures can typically be applied at successive stages of road planning,
+                        design, opening and operations. They all serve the common purpose of identifying risk
+                        factors related to road design or traffic control that may lead to crashes, or make crashes
+                        more severe. In many cases, they help network highway operators and city traffic departments
+                        identify engineering weaknesses and hazardous road sections, even in the absence of robust
+                        traffic injury data. <br>
+                        This course introduces practical pathways to improved road safety performance through
+                        policies and measures that target recurrent road safety management and engineering
+                        weaknesses.
+                        <br>
+                        <br>
+                        <br>
+                        <p><b>Training on Implementing Pavement Management Systems</b></p>
+                        The goal of the training workshop will be to help those working with PMS systems better
+                        understand the damage mechanisms that affect the lifetime of paved and gravel road networks
+                        and how they can be monitored with different technologies. Theoretical and practical
+                        examples will be given on how organizations adopt more economical proactive maintenance
+                        policies. The contents will be based on the latest research results as well as the hands-on
+                        experiences of the course instructor. <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p><b>Training on Roadway Work Zone Safety</b></p>
+                        This in-person, interactive training workshop will cover the primary principles of Roadway
+                        Work Zone Safety. The content will be based on Africa, US and international standards as
+                        well as the hands-on experience of the course instructors. The workshop is addressed at
+                        highway agency executives, risk managers, occupational safety & health professionals, and
+                        private sector contractors. The main topics of the workshop include funding, contracts, and
+                        authority for work zones; roadway work zone elements and components; training for workers
+                        and supervisors; planning and implementation of work zones; maintenance and demobilization
+                        of work zones; preventing struck-by and runover/ backover incidents; and safety for workers
+                        and the public.
+
+                    </div>
+                    <div class="m-tb30">
+                        <div class="section-head">
+                            <h3>Programme content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="row">
+
+
+                                <div class="col-md-6 col-sm-6">
+                                    <ul class="list-arrow-circle green">
+                                        <li>Tuition</li>
+                                        <li>Soft copies of course</li>
+                                        <li>Online IRF Subscription News letter</li>
+                                        <li>IRF Registration support</li>
+                                        <li>IRF Credential application support</li>
+                                        <li>IRF Acredited Training Certificate</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="fidic-15" class="tab-pane">
+                    <div class="section-content m-b80">
+                        <!-- TITLE START -->
+                        <div class="section-head">
+                            <h3>Course content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <!-- TITLE END -->
+                        <h5>BEGINNER LEVEL</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Modules</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Module 1</td>
+                                    <td>Practical use of FIDIC Contracts</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5>INTERMEDIATE LEVEL</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Modules</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Module 1</td>
+                                    <td>Advanced</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 2</td>
+                                    <td>Claims and Dispute Resolutions unser FIDIC</td>
+                                </tr>
+                                <tr>
+                                    <td>Module 3</td>
+                                    <td>Understanding DABs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5>ADVANCED LEVEL</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Modules</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Module 4</td>
+                                    <td>FIDIC Contracts Management and Administration</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="m-tb30">
+                        <div class="section-head">
+                            <h3>Programme content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="row">
+
+
+                                <div class="col-md-6 col-sm-6">
+                                    <ul class="list-arrow-circle green">
+                                        <li>Tuition</li>
+                                        <li>Soft copies of course material</li>
+                                        <li>Online FIDIC Subscription News letter</li>
+                                        <li>FIDIC Acredited Training Certificate</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="asphalt-15" class="tab-pane">
+                    <div class="acod-content p-tb15">Decades of experties are represented in our Asphalt institute
+                        seminars, webinars and training materials. We are dedicated to teaching best practices for
+                        testing, design and application of the asphalt in the paving and roofing industries</div>
+
+                    <div class="m-tb30">
+                        <div class="section-head">
+                            <h3>Programme content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="row">
+
+
+                                <div class="col-md-6 col-sm-6">
+                                    <ul class="list-arrow-circle green">
+                                        <li>Tuition</li>
+                                        <li>Soft copies of course materials</li>
+                                        <li>Online Asphalt Subscription News Letter</li>
+                                        <li>ASPHALT Acredited Training Certificate</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="section-content m-b80">
+                        <!-- TITLE START -->
+                        <div class="section-head">
+                            <h3>Course content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <!-- TITLE END -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Modules</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Module 1</td>
+                                    <td>Asphalt Binders</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 2</td>
+                                    <td>Asphalt Mix Design</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 3</td>
+                                    <td>Asphalt Construction</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 4</td>
+                                    <td>Bitumen Emusions and Foamed Bitumen</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 5</td>
+                                    <td>Maintenance, Repair and Rehabilitation</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Module 6</td>
+
+                                    <td>Additives in Asphalt (Parts 1 - 3)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="hdm-15" class="tab-pane">
+                    <div class="acod-content p-tb15">Highway Developement and Management tools for the development
+                        of economic and technical strategies of highways in low and middle income countries.<br> The
+                        duration and frequency of these courses will vary with perhaps half day sessions required
+                        for `awareness raising` perhaps 2- 3 days for general users and up to 2 - 3 weeks for expert
+                        users and trainers. The train-the trainers course in the Asia - Pacific project was of
+                        3-weeks duration and comprised </div>
+                    <div class="m-tb30">
+                        <div class="section-head">
+                            <h3>Programme content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <div class="section-content">
+                            <div class="row">
+
+
+                                <div class="col-md-6 col-sm-6">
+                                    <ul class="list-arrow-circle green">
+                                        <li>Tuition</li>
+                                        <li>Soft copies of course materials</li>
+                                        <li>HDM-4 software acquisation support</li>
+                                        <li>HDM-4 Acredited User Certificate</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="section-content m-b80">
+                        <!-- TITLE START -->
+                        <div class="section-head">
+                            <h3>Course content</h3>
+                            <div class="wt-separator-outer">
+                                <div class="wt-separator bg-black"></div>
+                            </div>
+                        </div>
+                        <!-- TITLE END -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Hours</th>
+                                    <th>Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3 hours</td>
+                                    <td>Introductory sessions</td>
+
+                                </tr>
+                                <tr>
+                                    <td>24 hours</td>
+                                    <td>Technical presentations</td>
+
+                                </tr>
+                                <tr>
+                                    <td> 8 hours</td>
+                                    <td>Trainer-led HDM-4 worked example</td>
+
+                                </tr>
+                                <tr>
+                                    <td>22 hours</td>
+                                    <td>Hands on case studies and exercises using HDM-4 application</td>
+
+                                </tr>
+                                <tr>
+                                    <td>14 hours</td>
+                                    <td>Training skills presentations</td>
+
+                                </tr>
+                                <tr>
+                                    <td> 18 hours</td>
+                                    <td>Training skills workshops</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PROGRAMS  BG DARK END-->
+
+
+    </div>
+    <!-- OUR PROGRAMS SECTION END -->
+
+
+
+</div>
+<!-- CONTENT END -->
+<!-- FOOTER START -->
+<footer class="site-footer   footer-dark footer-wide relative overflow-hide">
+    <div class="footer-bottom overlay-wraper">
+        <div class="overlay-main bg-black" style="opacity:0;"></div>
+        <div class="container p-t30">
+            <div class="row">
+
+                <div class="col-md-4 wt-footer-bot-left">
+                    <a href="/"><img src="/images/logo-light.png" width="140" height="58" alt=""></a>
+                </div>
+
+                <div class="col-md-4 text-center copyright-block p-t15">
+                    <span class="copyrights-text">© 2023 ASTRIK LTD. All Rights Reserved.</span>
+                </div>
+
+                <div class="col-md-4 wt-footer-bot-right p-t15">
+                    <ul class="copyrights-nav pull-right">
+                        <li><a href="https://astrikltd.com/cpanel">Webmail</a></li>
+                        <li><a href="/login">Admin</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="particles-dark" class="particles-canvas"></div>
+</footer>
+<!-- FOOTER END -->
+
+<!-- BUTTON TOP START -->
+<button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
+
+</div>
+
+<!-- LOADING AREA START ===== -->
+<!-- <div class="loading-area">
+    <div class="loading-box"></div>
+    <div class="loading-pic">
+        <img src="/media/training.gif" alt="">
+    </div>
+</div> -->
+<!-- LOADING AREA  END ====== -->
+
+<!-- JAVASCRIPT  FILES ========================================= -->
+<script src="/js/jquery-1.12.4.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+</script>
+
+
+<script src="/js/magnific-popup.min.js"></script><!-- MAGNIFIC-POPUP JS -->
+
+<script src="/js/waypoints.min.js"></script><!-- WAYPOINTS JS -->
+<script src="/js/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="/js/waypoints-sticky.min.js"></script><!-- COUNTERUP JS -->
+
+<script src="/js/isotope.pkgd.min.js"></script><!-- MASONRY  -->
+
+<script src="/js/owl.carousel.min.js"></script><!-- OWL  SLIDER  -->
+<script src="/js/jquery.owl-filter.js"></script>
+
+<script src="/js/stellar.min.js"></script><!-- PARALLAX BG IMAGE   -->
+<script src="/js/scrolla.min.js"></script><!-- ON SCROLL CONTENT ANIMTE   -->
+
+<script src="/js/particles.js"></script><!-- CANVAS EFFECT   -->
+<script src="/js/app.js"></script><!-- CANVAS EFFECT   -->
+
+<script src="/js/multiselect-dropdown.js"></script><!-- multiselect-dropdown FUCTIONS  -->
+<script src="/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="/js/training.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="/js/shortcode.js"></script><!-- SHORTCODE FUCTIONS  -->
+
+
+<!-- REVOLUTION JS FILES -->
+
+<script src="/plugin/revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="/plugin/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="/plugin/revolution/revolution/js/extensions/revolution-plugin.js"></script>
+
+<!-- REVOLUTION SLIDER SCRIPT FILES -->
+<script src="/js/rev-script-1.js"></script>
+
+<script src="/js/map.script.js"></script><!-- MAP FUCTIONS [ this file use with google map]  -->
+
+
+
+</body>
+
+</html>

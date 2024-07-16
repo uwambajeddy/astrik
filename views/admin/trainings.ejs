@@ -1,0 +1,79 @@
+<%- include("_sidebar")%>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Training applications</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Name</div>
+                <div class="table_column">Email</div>
+                <div class="table_column">program</div>
+                <div class="table_column">modules</div>
+                <div class="table_column">company name</div>
+                <div class="table_column">company address</div>
+                <div class="table_column">Phone number</div>
+                <div class="table_column">Payment details</div>
+                <div class="table_column">Invoice issue</div>
+                <div class="table_column">Specific Requirement</div>
+                <div class="table_column">Date</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <% applications.map( application =>{
+                let date= `${application.date}`.split(" ");
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><%= application.firstName%> <%= application.lastName%></div>
+                <div class="table_column" onclick="readMoreModal('Email',`<%= application.email%>`)">
+                    <%= application.email.slice(0,7)%>... </div>
+                <div class="table_column"><%= application.program%> </div>
+                <%if(application.module){%>
+                <div class="table_column" onclick="readMoreModal('Modules',`<%= application.module.join(', ')%>`)">
+                    <%= application.module.join(",").slice(0,15)%>... </div>
+                <%}%>
+                <div class="table_column"><%= application.companyName%>
+            </div>
+            <div class="table_column"><%= application.companyAddress%></div>
+            <div class="table_column"><%= application.number%></div>
+            <div class="table_column"><%= application.paymentDetails%></div>
+            <div class="table_column"><%= application.invoiceIssue%></div>
+            <div class="table_column" onclick="readMoreModal('Requirements',`<%= application.specificRequirement%>`)">
+                <%= application.specificRequirement.slice(0,15)%>... </div>
+            <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %>
+            </div>
+            <div class="table_column">
+                <button class="mod_btn delete_btn" onclick="deleteMessage(`<%= application._id%>`)"><span
+                        class="lnr lnr-trash"></span> Delete</button>
+            </div>
+        </div>
+        <% });%>
+
+    </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+
+
+<!--  JavaScript -->
+<script src="/js/adminTraining.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

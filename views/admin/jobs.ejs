@@ -1,0 +1,262 @@
+<%- include("_sidebar")%>
+<script>
+    const quills = {}
+</script>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Jobs</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="add_btn">
+            <i class="lnr lnr-checkmark-circle"></i> Add a job
+        </div>
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Title</div>
+                <div class="table_column">Description</div>
+                <div class="table_column">Location</div>
+                <div class="table_column">Nature</div>
+                <div class="table_column">Publish date</div>
+                <div class="table_column">Dead line</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <%
+            jobs.map( job =>{
+                let publishDate= `${job.publishDate}`.split(" ");
+                let deadLine= `${job.deadLine}`.split(" ");
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column" onclick="readMoreModal('job name','<%= job.title%>')">
+                    <%= job.title.slice(0,15)%>... </div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="readMoreModal('Full description',`<%=job.body%>`)"><span
+                            class="lnr lnr-eye"></span> View</button>
+                </div>
+                <div class="table_column"><%=  job?.location %></div>
+                <div class="table_column"><%=  job?.jobNature %></div>
+                <div class="table_column">
+                    <%= publishDate[0] %> <%= publishDate[1] %> <%= publishDate[2] %> <%= publishDate[3] %></div>
+                <div class="table_column">
+                    <%= deadLine[0] %> <%= deadLine[1] %> <%= deadLine[2] %> <%= deadLine[3] %></div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="updateModal('<%= job._id%>')"><span
+                            class="lnr lnr-upload"></span> Update</button>
+                    <button class="mod_btn delete_btn" onclick="deletejob('<%= job._id%>')"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <% });%>
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+<!--================Modal Banner Area =================-->
+<div class="model_block">
+
+</div>
+<section class="modal_banner_area modal_banner_add">
+    <h2>Add job</h2>
+    <form class="contact_form" id="contact_form_add" method="post">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="job title">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="location" name="location" placeholder="job location">
+            </div>
+
+            <div class="form-group" title="job publish date">
+                <input type="date" class="form-control" id="publishDate" name="publishDate"
+                    placeholder="job publish date">
+            </div>
+            <div class="form-group" title="job deadline">
+                <input type="date" class="form-control" id="deadLine" name="deadLine" placeholder="job deadline">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="jobNature" id="jobNature">
+                    <option hidden disabled selected value>job nature</option>
+                    <option value="Full-time">Full time</option>
+                    <option value="Part-time">Part time</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="body" id="_body" />
+                <div id="editor-container" style="height: 200px;">
+                </div>
+            </div>
+            <button type="submit" value="submit" class="btn submit_btn">Add</button>
+        </div>
+
+    </form>
+</section>
+<!--================Modal Banner Area =================-->
+<!--================Modal Banner Area =================-->
+<% jobs.map( job =>{
+    var publishDate = new Date(job.publishDate);
+var dateString = new Date(publishDate.getTime() - (publishDate.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    var deadLine = new Date(job.deadLine);
+var dateStringTo = new Date(deadLine.getTime() - (deadLine.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+
+    %>
+<section class="modal_banner_area modal_banner_update_<%= job._id%>">
+    <h2>Update job</h2>
+    <form class="contact_form" id="form_<%= job._id%>">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="job title"
+                    value="<%= job.title%>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="location" name="location" value="<%= job.location%>"
+                    placeholder="job location">
+            </div>
+            <div class="form-group" title="job publish date">
+                <input type="date" class="form-control" id="publishDate" name="publishDate"
+                    placeholder="job publish Date" value="<%=dateString%>">
+            </div>
+            <div class="form-group" title="job dead line">
+                <input type="date" class="form-control" id="deadLine" name="deadLine" value="<%=dateStringTo%>">
+            </div>
+            <div class="form-group">
+                <select name="type" class="form-control" id="jobNature">
+
+                    <option value="<%= job.jobNature %>"><%= job.jobNature %></option>
+                    <option value="Full-time">Full time</option>
+                    <option value="Part-time">Part time</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="body" id="_body_<%= job._id%>" />
+                <div id="editor-container-<%= job._id%>" style="height: 200px;">
+                    <%- job.body%>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact_form_message">
+            <button type="submit" value="submit" class="btn submit_btn">Update</button>
+        </div>
+
+    </form>
+</section>
+<!--  JavaScript -->
+<script>
+    quills["<%= job._id %>"] = new Quill('#editor-container-<%= job._id%>', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quills["<%= job._id %>"].on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body_<%= job._id%>").value = quills["<%= job._id %>"].root.innerHTML;
+    });
+</script>
+<!--  JavaScript -->
+<% });%>
+<!--================Modal Banner Area =================-->
+
+
+<!--  JavaScript -->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quill.on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body").value = quill.root.innerHTML;
+    });
+</script>
+<script src="/js/adminJobs.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<%- include('_header')%>
+
+<!-- CONTENT START -->
+<div class="page-content ">
+	<!-- INNER PAGE BANNER -->
+	<div class="wt-bnr-inr overlay-wraper bg-parallax bg-top-center" data-stellar-background-ratio="0.5"
+		style="background-image:url('https://res.cloudinary.com/dvibmdi1y/image/upload/c_lfill,f_auto,g_auto,h_700,q_auto,w_1000/v1681117669/astrik/images/banner/6_tiffe4.jpg');">
+		<div class="overlay-main bg-black opacity-07"></div>
+		<div class="container">
+			<div class="wt-bnr-inr-entry">
+				<div class="banner-title-outer">
+					<div class="banner-title-name">
+						<h2 class="text-white text-uppercase letter-spacing-5 font-18 font-weight-300">high quality,
+							effective, and inspiring built space.</h2>
+					</div>
+				</div>
+				<!-- BREADCRUMB ROW -->
+				<div class="p-tb20">
+					<div>
+						<ul class="wt-breadcrumb breadcrumb-style-2">
+							<li><a href="/">Home</a></li>
+							<li>Job Details</li>
+						</ul>
+					</div>
+				</div>
+				<!-- BREADCRUMB ROW END -->
+			</div>
+		</div>
+	</div>
+	<!-- INNER PAGE BANNER END -->
+
+	<!-- SECTION CONTENT START -->
+	<% 
+	let publishDate= `${job.publishDate}`.split(" ");
+	let deadLine= `${job.deadLine}`.split(" ");
+	
+	%>
+	<div class="section-full p-tb90 square_shape1 square_shape3">
+		<div class="container">
+			<div class="blog-post blog-lg date-style-1 text-black">
+
+				<div class="wt-post-info p-t30 bg-white">
+					<div class="wt-post-title ">
+						<h2 class="post-title"><a href="javascript:void(0);"
+								class="text-black font-20 letter-spacing-2 font-weight-600"><%= job.title%></a></h2>
+					</div>
+					<div class="wt-post-meta">
+						<ul>
+							<li class="post-date"><strong><%= publishDate[0] %> <%= publishDate[1] %></strong> <span>
+									<%= publishDate[2] %>
+									<%= publishDate[3] %></span> </li>
+						</ul>
+					</div>
+					<div class="wt-post-text">
+						<%- job.body%>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- BLOG START -->
+			<div class="clear" id="comment-list">
+				<div class="comments-area" id="comments">
+					<div class="p-tb30">
+
+
+						<!-- LEAVE A REPLY START -->
+						<div class="comment-respond bg-gray p-a30" id="respond">
+
+							<h2 class="comment-reply-title" id="reply-title">Apply For The Job
+							</h2>
+
+							<!-- <form class="comment-form" id="commentform">
+
+								<input type="text" value="<%= job._id %>" name="job" placeholder="job" id="job" hidden>
+								<p class="comment-form-author">
+									<label for="author">Full name <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="name" placeholder="Full name"
+										id="author" required>
+								</p>
+
+								<p class="comment-form-email">
+									<label for="email">Email <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="email" placeholder="Email"
+										id="email" required>
+								</p>
+								<p class="comment-form-number">
+									<label for="number">Phone number <span class="required">*</span></label>
+									<input class="form-control" type="text" value="" name="number"
+										placeholder="Phone number" id="number" required>
+								</p>
+								<p class="comment-form-file">
+									<label for="file" style="display: block;">Resume <span
+											class="required">*</span></label>
+									<input class="form-control" type="file" value="" name="resume" id="file" required>
+								</p>
+
+								<p class="comment-form-comment">
+									<label for="comment">Cover letter</label>
+									<textarea class="form-control" rows="8" name="comment" placeholder="Cover letter"
+										id="comment" required></textarea>
+								</p>
+
+								<p class="form-submit">
+									<button class="site-button black radius-no text-uppercase" type="submit"><span
+											class="font-12 letter-spacing-5">Apply now</span></button>
+								</p>
+
+							</form> -->
+								<a  class="site-button black radius-no text-uppercase" href="mailto:md@astrikltd.com"  target="_blank">Apply now</a>
+
+						</div>
+						<!-- LEAVE A REPLY END -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- job END -->
+
+	</div>
+</div>
+<!-- SECTION CONTENT END -->
+
+</div>
+<!-- CONTENT END -->
+<script src="/js/applications.js"></script>
+<%- include('_footer_white')%>

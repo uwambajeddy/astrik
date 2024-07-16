@@ -1,0 +1,227 @@
+<%- include("_sidebar")%>
+<script>
+    const quills = {}
+</script>
+<!--================Tables Banner Area =================-->
+<section class="tables_banner_area">
+    <div class="main_title">
+        <button class="navbar-toggler">
+            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-a"></span>
+            <span class="icon-bar icon-bar-b"></span>
+        </button>
+        <span class="main_text">
+            <h2>Blogs</h2>
+
+        </span>
+    </div>
+    <div class="main_content">
+        <div class="add_btn">
+            <i class="lnr lnr-checkmark-circle"></i> Add blog
+        </div>
+        <div class="main_table">
+            <div class="table_row row_header">
+                <div class="table_column">Image</div>
+                <div class="table_column">Title</div>
+                <div class="table_column">Body</div>
+                <div class="table_column">Comments</div>
+                <div class="table_column">Date</div>
+                <div class="table_column">Modify</div>
+            </div>
+            <% blogs.map( blog =>{
+                const images = blogImages.filter(image=> image?.blog?.toJSON() == blog?._id?.toJSON());
+                let date= `${blog.date}`.split(" ");
+                
+                %>
+            <div class="table_row row_dark">
+                <div class="table_column"><a href="/admin/blogs/<%= blog._id%>"><img src="<%= images[0]?.image%>"
+                            alt=""></a></div>
+                <div class="table_column" onclick="readMoreModal('Title',`<%= blog.title%>`)">
+                    <%= blog.title.slice(0,15)%>... </div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="readMoreModal('Content',`<%= blog.body %>`)"><span
+                            class="lnr lnr-eye"></span> View</button>
+                </div>
+                <div class="table_column"><a href="/admin/blogs/comments/<%= blog._id%>"
+                        class="mod_btn nav_btn"><%= blog.comments.length%></a></div>
+                <div class="table_column"><%= date[0] %> <%= date[1] %> <%= date[2] %> <%= date[3] %></div>
+                <div class="table_column">
+                    <button class="mod_btn update_btn" onclick="updateModal('<%= blog._id%>')"><span
+                            class="lnr lnr-upload"></span> Update</button>
+                    <button class="mod_btn delete_btn" onclick="deleteBlog('<%= blog._id%>')"><span
+                            class="lnr lnr-trash"></span> Delete</button>
+                </div>
+            </div>
+            <% });%>
+        </div>
+    </div>
+    <div class="main_footer">
+
+    </div>
+
+</section>
+<!--================Tables Banner Area =================-->
+</div>
+</div>
+<!--================Main Area =================-->
+<!--================Modal Banner Area =================-->
+<div class="model_block">
+
+</div>
+<section class="modal_banner_area modal_banner_add">
+    <h2>Create Blog</h2>
+    <form class="contact_form" id="contact_form_add">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" id="date" name="date" placeholder="date">
+            </div>
+        </div>
+
+        <div class="contact_form_message">
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="body" id="_body" />
+                <div id="editor-container" style="height: 200px;">
+                </div>
+                <button type="submit" value="submit" class="btn submit_btn">Create</button>
+            </div>
+
+    </form>
+</section>
+<!--================Modal Banner Area =================-->
+<!--================Modal Banner Area =================-->
+<% blogs.map( blog =>{
+    var date = new Date(blog.date);
+var dateString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+                    .toISOString()
+                    .split("T")[0];
+    %>
+<section class="modal_banner_area modal_banner_update_<%= blog._id%>">
+    <h2>Update Blog</h2>
+    <form class="contact_form" id="form_<%= blog._id%>">
+        <div class="contact_form_text">
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" value="<%= blog.title%>">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" id="date" name="date" value="<%= dateString%>">
+            </div>
+        </div>
+
+        <div class="contact_form_message">
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="body" id="_body_<%= blog._id%>" />
+                <div id="editor-container-<%= blog._id%>" style="height: 200px;">
+                    <%- blog.body%>
+                </div>
+            </div>
+            <button type="submit" class="btn submit_btn">Update</button>
+        </div>
+
+    </form>
+</section>
+<!--  JavaScript -->
+<script>
+    quills["<%= blog._id %>"] = new Quill('#editor-container-<%= blog._id%>', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quills["<%= blog._id %>"].on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body_<%= blog._id%>").value = quills["<%= blog._id %>"].root.innerHTML;
+    });
+</script>
+<!--  JavaScript -->
+<% });%>
+<!--================Modal Banner Area =================-->
+
+<!--  JavaScript -->
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }],
+                [{
+                    header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "sub"
+                }, {
+                    script: "super"
+                }],
+                ["blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }],
+                [{
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }, {
+                    align: []
+                }],
+                ["link", "image", "video"],
+                ["clean"],
+            ],
+        },
+        theme: 'snow'
+    });
+    quill.on('text-change', function (delta, oldDelta, source) {
+        document.getElementById("_body").value = quill.root.innerHTML;
+    });
+</script>
+<script src="/js/blogs.js"></script>
+<script src="/js/main-dash.js"></script>
+<!--  JavaScript -->
+</body>
+
+</html>
